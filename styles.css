@@ -1,0 +1,80 @@
+*,
+*:after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: url("asoggetti-442227.jpg") #3A1421;
+  background-position: 0 5%;
+  background-size: cover;
+  background-repeat: repeat-x;
+  padding: 0;
+  margin: 0;
+}
+
+.logo {
+  width: 45%;
+  min-width: 375px;
+  margin: 20% auto 0 auto;
+  padding: 0;
+}
+.logo img {
+  margin: 0 10px;
+}
+.contact {
+  text-align: center;
+  padding: 25px 0;
+}
+.contact a {
+  background-color:rgba(255,255,255,0.25);
+  color:#000;
+  display:inline-block;
+  font-size:1.25rem;
+  font-weight:300;
+  letter-spacing:1px;
+  margin:15px 25px;
+  outline:none;
+  padding:15px 0;
+  position:relative;
+  text-decoration:none;
+  text-shadow:0 0 1px rgba(255,255,255,0.3);
+}
+
+.contact a::before {
+  margin-right: 10px;
+  content: '[';
+  -webkit-transform: translateX(20px);
+  -moz-transform: translateX(20px);
+  transform: translateX(20px);
+}
+.contact a::after {
+  margin-left: 10px;
+  content: ']';
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  transform: translateX(-20px);
+}
+.contact a::before,
+.contact a::after {
+  display: inline-block;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+  transition: transform 0.3s, opacity 0.2s;
+}
+.contact a:hover {
+  background-color: rgba(255, 255, 255, 0.30);
+}
+.contact a:hover::before,
+.contact a:hover::after,
+.contact a:focus::before,
+.contact a:focus::after {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  transform: translateX(0px);
+}
