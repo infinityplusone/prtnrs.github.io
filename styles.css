@@ -8,19 +8,69 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: url("asoggetti-442227.jpg") #3A1421;
   background-position: 0 5%;
   background-size: cover;
   background-repeat: repeat-x;
   padding: 0;
   margin: 0;
 }
-
+.container {
+  position: relative;
+  padding-bottom: 100px;
+}
+.container-inner {
+  padding: 0 0 0 94px;
+}
+.container-inner.lightbg {
+  background-color: #fff;
+}
+.container.darkbg {
+  background-color: #323A44;
+  color: #D6D7D9;
+}
+.container.home {
+  background: url("header-bg.png") #323A44;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  height: 750px;
+  color: #fff;
+}
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+.logo-header{
+  position: relative;
+  border: 1px solid red;
+  display: block;
+}
+.logo-header .logo {
+  display: inline-block;
+}
+.logo-header button {
+  position: absolute;;
+  display: inline-block;
+  right: 0;
+  top: 8px;
+  height: 38px;
+  width: 165px;
+  text-transform: uppercase;
+}
+button.lets-talk {
+  background-color: #202020;
+  border-radius: 19px;
+  color: #fff;
+}
+.vertical-rule {
+  border-left: 1px solid #323A44;
+  height: 61px;
+  margin-left: 22px;
+}
+.vertical-rule.white {
+  border-left: 1px solid #fff;
+}
 .logo {
-  width: 45%;
-  min-width: 375px;
-  margin: 20% auto 0 auto;
-  padding: 0;
 }
 .logo img {
   margin: 0 10px;
