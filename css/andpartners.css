@@ -226,6 +226,10 @@ a {
   background-color: #48a463;
 }
 
+.sending-message {
+  display: none;
+}
+
 .image {
   margin-bottom: 10px;
 }

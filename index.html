@@ -66,15 +66,18 @@
           <label for="name" class="field-label">Name</label>
           <input type="text" id="name" name="name" data-name="Name" maxlength="256" class="text-field w-input" required>
           <label for="email" class="field-label">Email Address</label>
-          <input type="email" class="text-field w-input" maxlength="256" name="_replyto" data-name="Email" id="email" required="">
+          <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" id="email" required="">
           <label class="field-label">How can we help?</label>
           <textarea id="message" name="message" placeholder="Type your message here" maxlength="5000" required="" class="text-field w-input" required></textarea>
           <input type="submit" value="Submit" data-wait="Please wait..." class="button-primary button-black w-button">
         </form>
-        <div class="success-message w-form-done"><img src="images/checkmark-01.svg" width="20" alt="" class="image">
+        <div id="form-inflight" class="sending-message">
+          <div>Sending message...</div>
+        </div>
+        <div id="form-ok" class="success-message w-form-done"><img src="images/checkmark-01.svg" width="20" alt="" class="image">
           <div class="whitetext">Thank you! Your submission has been received!</div>
         </div>
-        <div class="error-message w-form-fail">
+        <div id="form-notok" class="error-message w-form-fail">
           <div>Oops! Something went wrong while submitting the form.</div>
         </div>
       </div>
@@ -93,6 +96,54 @@
       document.getElementById("email-confirm").style.display = "block";
       window.history.replaceState({}, document.title, "/");
       setTimeout(function(){ document.getElementById("email-confirm").style.display = "none" }, 5000);
+    }
+  </script>
+  <script>
+    let contactForm = document.getElementById('email-form');
+    contactForm.onsubmit = function(e) {
+      e.preventDefault();
+      contactForm.style.display = "none";
+      document.getElementById('form-inflight').style.display = "block";
+      ajaxPost(contactForm, function(res) {
+        if (res.currentTarget.status === 200) {
+          document.getElementById('form-inflight').style.display = "none";
+          document.getElementById('form-ok').style.display = "block";
+        } else {
+          document.getElementById('form-inflight').style.display = "none";
+          document.getElementById('form-notok').style.display = "block";
+        }
+      });
+      return false;
+    };
+
+    function ajaxPost (form, callback) {
+      var url = form.action,
+          xhr = new XMLHttpRequest();
+
+      //This is a bit tricky, [].fn.call(form.elements, ...) allows us to call .fn
+      //on the form's elements, even though it's not an array. Effectively
+      //Filtering all of the fields on the form
+      var params = [].filter.call(form.elements, function(el) {
+          //Allow only elements that don't have the 'checked' property
+          //Or those who have it, and it's checked for them.
+          return typeof(el.checked) === 'undefined' || el.checked || el.type !== 'checkbox' || el.type !== 'radio';
+          //Practically, filter out checkboxes/radios which aren't checekd.
+      })
+      .filter(function(el) { return !!el.name; }) //Nameless elements die.
+      .filter(function(el) { return !el.disabled; }) //Disabled elements die.
+      .map(function(el) {
+          //Map each field into a name=value string, make sure to properly escape!
+          return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value);
+      }).join('&'); //Then join all the strings by &
+
+      xhr.open("POST", url);
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+      //.bind ensures that this inside of the function is the XHR object.
+      xhr.onload = callback.bind(xhr);
+
+      //All preperations are clear, send the request!
+      xhr.send(params);
     }
   </script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
