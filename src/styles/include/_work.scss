@@ -1,0 +1,180 @@
+// WORK
+$slide-width: 85vw;
+$slide-width-large: 720px;
+
+.work-carousel {
+  position: relative;
+  width: $slide-width;
+  min-height: 250px;
+  overflow: hidden;
+
+  .work-carousel--buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .carousel-button {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: $gray;
+    text-decoration: none;
+    transition: background 0.15s ease-in-out;
+
+    &.active {
+      background: $light-gray;
+    }
+
+    &:hover {
+      background: $white;
+    }
+  }
+
+  @media (min-width: 900px) {
+    min-height: 420px;
+    width: $slide-width-large;
+  }
+
+} // .work-carousel
+
+.work-slides {
+  display: inline-flex;
+  position: relative;
+  margin-left: 0;
+  margin-bottom: 0;
+  white-space: nowrap;
+  transition: margin-left 1s ease-in-out 0.1s;
+}
+
+.work-slide {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-decoration: none;
+  margin-right: 30px;
+  width: $slide-width;
+  white-space: normal;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: $font;
+
+  .work-slide--image {
+    background: $gray;
+    width: 100%;
+    min-height: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+  }
+
+  .work-slide--partner {
+    width: 100%;
+    font-size: 1em;
+    line-height: 1.2;
+    text-align: center;
+    color: $medium-gray;
+  }
+
+  .work-slide--project {
+    width: 100%;
+    font-size: 1.25em;
+    line-height: 1.25;
+    text-align: center;
+    margin: 15px 0;
+    color: $white;
+  }
+
+  .work-slide--blurb {
+    display: none;
+    font-family: $serif-font;
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0 0 1.5rem;
+    text-align: justify;
+    color: $light-text;
+    max-width: 95%;
+  }
+
+  @media (min-width: 900px) {
+    font-size: 20px;
+    width: $slide-width-large;
+
+    .work-slide--image {
+      min-height: 200px;
+      height: 200px;
+    }
+
+    .work-slide--project {
+      line-height: 2;
+      margin: 0;
+    }
+
+    .work-slide--blurb {
+      display: block;
+    }
+  }
+
+
+} // .work-slide
+
+
+.modal--work {
+
+    .work--partner, .work--project {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .work--partner {
+      font-size: 1.1em;
+    }
+
+    .work--project {
+      font-size: 1.25em;
+    }
+
+    .work--tags {
+      display: none;
+      margin: 25px 0 0;
+
+      .work-tag {
+        display: inline-block;
+        border-radius: 100px;
+        padding: 0 20px;
+        color: $white;
+        background: lighten($slate-gray, 25%);
+        font-size: 14px;
+        font-weight: normal;
+        font-family: $font;
+        line-height: 25px;
+        cursor: pointer;
+        transition: all 0.25s;
+
+        &:hover {
+          background: lighten($slate-gray, 10%);
+        }
+      }
+    }
+
+  .work-detail {
+    margin-bottom: 60px;
+  }
+
+  @media (min-width: 900px) {
+
+    .work--tags {
+      display: none;
+    }
+
+  }
+
+
+}

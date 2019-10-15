@@ -36188,7 +36188,6 @@ window.PRTNRS = {
     if($next) {
       $next.trigger('click');
       if($modal.length) {
-        console.log('hi');
         $('.work-slide.active').trigger('click');
       }
       else {
@@ -36223,11 +36222,12 @@ window.PRTNRS = {
     e.preventDefault();
 
     var $this = $(this),
-        $slides = $this.closest('.work-carousel').find('.work-slides');
+        $slides = $this.closest('.work-carousel').find('.work-slides'),
+        slideWidth = PRTNRS.elems.$slides.first().width();
     
     $this.addClass('active').siblings().removeClass('active');
 
-    $slides.css('margin-left', ($this.data('index') * -750) + 'px');
+    $slides.css('margin-left', '-' + ($this.data('index') * (slideWidth + 30)) + 'px');
     $($this.attr('href')).addClass('active').siblings().removeClass('active');
 
     $('.modal.in').removeClass('in');
