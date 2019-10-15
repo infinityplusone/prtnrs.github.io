@@ -6,10 +6,13 @@ var $ = require('jquery'),
 
 window.PRTNRS = {
 
+  autoScroll: null,
+
   data: {
     projects: require('../data/projects.json')
   },
 
+  elems: {},
   templates: {},
 
   processTemplates: function() {
@@ -34,49 +37,100 @@ window.PRTNRS = {
 
   loadWork: function() {
     var partnerData = _.sortBy(_.filter(PRTNRS.data.projects, 'spotlight'), ['spotlight']);
-    console.log(partnerData);
     var $ourWork = $('#our-work');
     $ourWork.html(PRTNRS.templates['our-work']({projects: partnerData}));
+
+    PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
+    PRTNRS.elems.$slides = $ourWork.find('.work-slide');
+    PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
   }, // loadWork
+
+  moveSlide: function($next) {
+    var $modal = $('.modal.in');
+
+    if($next) {
+      $next.trigger('click');
+      if($modal.length) {
+        console.log('hi');
+        $('.work-slide.active').trigger('click');
+      }
+      else {
+        PRTNRS.autoScroll = setTimeout(function() {
+          PRTNRS.moveSlide({originalEvent: { key: 'ArrowRight' }});
+        }, 7500);
+      }
+    }
+  }, // moveSlide
+
+  closeModal: function(e) {
+    e.preventDefault();
+    $('.modal').removeClass('in');
+    $body.removeClass('show-modal');
+    PRTNRS.moveSlide(PRTNRS.elems.$buttons.filter('.active').first());
+    return false;
+  }, // closeModal
+
+  toggleModal: function(e) {
+    clearTimeout(PRTNRS.autoScroll);
+    e.preventDefault();
+    var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')});
+    var $modal = $(PRTNRS.templates['work-modal'](project));
+    $body.append($modal).addClass('show-modal');
+    setTimeout(function() {
+      $modal.addClass('in').siblings('.modal').remove();
+    }, 250);
+    return false;
+  }, // toggleModal
+
+  toggleSlide: function(e) {
+    e.preventDefault();
+
+    var $this = $(this),
+        $slides = $this.closest('.work-carousel').find('.work-slides');
+    
+    $this.addClass('active').siblings().removeClass('active');
+
+    $slides.css('margin-left', ($this.data('index') * -750) + 'px');
+    $($this.attr('href')).addClass('active').siblings().removeClass('active');
+
+    $('.modal.in').removeClass('in');
+    return false;
+
+  }, // toggleSlide
+
+  onKeyDown: function(e) {
+    clearTimeout(PRTNRS.autoScroll);
+    var key = e.originalEvent.key,
+        $active = PRTNRS.elems.$buttons.filter('.active').first();
+
+    switch(key) {
+      case 'ArrowLeft':
+        PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($active)===0 ? PRTNRS.elems.$buttons.last() : $active.prev());
+        break;
+      case 'ArrowRight':
+        PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($active)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $active.next());
+        break;
+      case 'Enter':
+        PRTNRS.elems.$slides.filter('.active').trigger('click');
+        break;
+      case 'Escape':
+        PRTNRS.closeModal(e);
+        break;
+      default:
+        break;
+    }
+
+  }, // onKeyDown
 
   init: function() {
 
     $body
-      .on('templates:processed', this.loadWork)
-      .on('click', '[data-toggle="slide"]', function(e) {
-        e.preventDefault();
+      .on('click', '[data-toggle="slide"]', this.toggleSlide)
+      .on('click', '[data-toggle="modal"]', this.toggleModal)
+      .on('click', '[data-close="modal"]', this.closeModal)
+      .on('templates:processed', this.loadWork);
 
-        var $this = $(this),
-            $slides = $this.closest('.work-carousel').find('.work-slides');
-        
-        $this.addClass('active').siblings().removeClass('active');
-
-        $slides.css('margin-left', ($this.data('index') * -750) + 'px');
-
-        return false;
-
-      });
-
-    $window.on('keydown', function(e) {
-      var $active = $('.carousel-button.active'),
-          $buttons = $active.parent().find('.carousel-button'),
-          $next = false;
-
-      switch(e.originalEvent.key) {
-        case 'ArrowLeft':
-          $next = $buttons.index($active)===0 ? $buttons.last() : $active.prev();
-          break;
-        case 'ArrowRight':
-          $next = $buttons.index($active)===$buttons.length-1 ? $buttons.first() : $active.next();
-          break;
-        default:
-          break;
-      }
-
-      if($next) {
-        $next.trigger('click');
-      }
-    });
+    $window.on('keydown', this.onKeyDown);
 
     this.processTemplates();
 

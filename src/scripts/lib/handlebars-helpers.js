@@ -35,6 +35,47 @@ handlebars.registerHelper('preCompile', function(data) {
   return handlebars.compile(data)(this);
 }); // preCompile
 
+handlebars.registerHelper('reformat', function(data) {
+  if(!data) { return []; }
+  var lines = data.split(/\n/gim),
+      formatted = [],
+      list = false;
+
+  lines.forEach(function(line, i) {
+    console.log(i, line);
+    if(line.indexOf(' *')===0) {
+
+      if(!list) {
+        list = true;
+        formatted.push({
+          tag: 'li',
+          text: line.substr(2),
+          openList: true
+        });
+      }
+      else {
+        formatted.push({
+          tag: 'li',
+          text: line.substr(2)
+        });
+      }
+    }
+    else {
+      if(list) {
+        list = false;
+        formatted[formatted.length-1].closeList = true;
+      }
+      formatted.push({
+        tag: 'p',
+        text: line
+      });
+    }
+  });
+
+
+  return formatted;
+}); // reformat
+
 handlebars.registerHelper({
   and: function() {
     for(var i=0, len=arguments.length-1; i<len; i++) {
