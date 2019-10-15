@@ -1,0 +1,75 @@
+.work-carousel {
+  position: relative;
+  width: 720px;
+  min-height: 420px;
+  overflow: hidden; }
+  .work-carousel .work-carousel--buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0; }
+  .work-carousel .carousel-button {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: #5b616a;
+    text-decoration: none;
+    transition: background 0.15s ease-in-out; }
+    .work-carousel .carousel-button.active {
+      background: #d6d7d9; }
+    .work-carousel .carousel-button:hover {
+      background: #fff; }
+
+.work-slides {
+  display: inline-flex;
+  position: relative;
+  margin-left: 0;
+  margin-bottom: 0;
+  white-space: nowrap;
+  transition: margin-left 1s ease-in-out 0.1s; }
+
+.work-slide {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 720px;
+  margin-right: 30px;
+  white-space: normal;
+  font-size: 20px;
+  font-weight: normal;
+  font-family: akagi-pro, sans-serif; }
+  .work-slide .work-slide--image {
+    background: #5b616a;
+    width: 100%;
+    min-height: 200px;
+    height: 200px;
+    margin-bottom: 20px; }
+  .work-slide .work-slide--partner {
+    width: 100%;
+    font-size: 1em;
+    line-height: 1.2;
+    text-align: center;
+    color: #8e959f; }
+  .work-slide .work-slide--project {
+    width: 100%;
+    font-size: 1.25em;
+    line-height: 2;
+    text-align: center;
+    color: #fff; }
+  .work-slide .work-slide--blurb {
+    font-family: ff-tisa-web-pro, sans-serif;
+    font-size: 1em;
+    line-height: 1.5;
+    margin: 0 0 1.5rem;
+    text-align: justify;
+    color: #d6d7d9;
+    max-width: 95%; }
+
+/*# sourceMappingURL=bundled.css.map */
