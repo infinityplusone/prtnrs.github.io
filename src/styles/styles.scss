@@ -158,7 +158,7 @@ $slide-width: 720px;
     align-items: flex-start;
     justify-content: center;
     height: 150px;
-    padding: 0 60px;
+    padding: 15px 60px;
     box-shadow: 0 0px 1px fade-out($gray, 0.9);
 
     .work--partner, .work--project {
@@ -216,7 +216,7 @@ $slide-width: 720px;
     position: relative;
     height: calc(100% - 150px);
     margin: 0 10px 0 60px;
-    padding: 0 110px 30px 0;
+    padding: 15px 110px 30px 0;
     overflow-y: auto;
 
     .work-detail {
