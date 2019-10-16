@@ -4,6 +4,9 @@ var $ = require('jquery'),
     $body = $('body'),
     $window = $(window);
 
+handlebars.registerPartial('list', require('../templates/list.partial.hbs'));
+handlebars.registerPartial('work-slide', require('../templates/work-slide.partial.hbs'));
+
 window.PRTNRS = {
 
   autoScroll: null,
@@ -13,32 +16,15 @@ window.PRTNRS = {
   },
 
   elems: {},
-  templates: {},
-
-  processTemplates: function() {
-
-    $.ajax({
-      url: './src/templates/templates.hbs',
-      type: 'get',
-      dataType: 'html', 
-      success: function(markup) {
-        var $templates = $(markup);
-        $templates.find('[data-partial-id]').each(function(i, v) {
-          handlebars.registerPartial(v.getAttribute('data-partial-id'), $(v).html());
-        });
-
-        $templates.find('[data-template-id]').each(function(i, v) {
-          PRTNRS.templates[v.getAttribute('data-template-id')] = handlebars.compile($(v).html());
-        });
-        $body.trigger('templates:processed');
-      } // success
-    });
-  }, // processTemplates
+  templates: {
+    'work-carousel': require('../templates/work-carousel.hbs'),
+    'work-modal': require('../templates/work-modal.hbs'),
+  },
 
   loadWork: function() {
     var partnerData = _.sortBy(_.filter(PRTNRS.data.projects, 'spotlight'), ['spotlight']);
     var $ourWork = $('#our-work');
-    $ourWork.html(PRTNRS.templates['our-work']({projects: partnerData}));
+    $ourWork.html(PRTNRS.templates['work-carousel']({projects: partnerData}));
 
     PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
     PRTNRS.elems.$slides = $ourWork.find('.work-slide');
@@ -127,12 +113,11 @@ window.PRTNRS = {
     $body
       .on('click', '[data-toggle="slide"]', this.toggleSlide)
       .on('click', '[data-toggle="modal"]', this.toggleModal)
-      .on('click', '[data-close="modal"]', this.closeModal)
-      .on('templates:processed', this.loadWork);
+      .on('click', '[data-close="modal"]', this.closeModal);
 
     $window.on('keydown', this.onKeyDown);
 
-    this.processTemplates();
+    this.loadWork();
 
   }, // init
 

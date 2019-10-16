@@ -19,6 +19,7 @@
 </head>
 <body class="body yoni">
   <div class="email-confirm" id="email-confirm" style="display: none">Message successfuly sent</div>
+
   <div class="section">
     <div class="container w-container"><a href="#" class="w-inline-block"><img src="images/logo-white.png" width="50" alt=""></a><a href="#contact-us" class="button-primary button-black button-header w-button">Let&#x27;s Talk</a>
       <div class="cover-header-spacing">
@@ -27,36 +28,60 @@
       </div>
     </div>
     <div class="container-margin w-container">
-      <h4 class="whitetext">About</h4>
-      <div class="vertical-rule"></div>
+      <h4 class="section-header">About</h4>
     </div>
   </div>
-  <div>
-    <div class="container-margin w-container">
-      <div class="vertical-rule black-rule"></div>
-      <h2>We are immigrants. We are servicemembers. We are veterans. We are designers, engineers, product managers, civil servants. We are Americans. We are true believers that technology, policy, and a critical eye to the challenges that society faces can help bring about equality and improve all of our ways of life.<br>‍<br>Our team is comprised of product designers, product managers, and software engineers who have focused in the civic tech space for the past several years working with government agencies and nonprofits helping them deliver better services for their constituency.<br>‍<br>We are a minority-owned small business, and we are certified as Service Disabled Veteran Owned Small Business (SDVOSB).<br><br>We believe that partnered with you, we can achieve anything.</h2>
-      <h4>Our Work</h4>
-      <div class="vertical-rule black-rule"></div>
-    </div>
-  </div>
+
   <div class="section-dark">
     <div class="container-margin w-container">
-      <div class="vertical-rule"></div>
-      <div class="fake-h2-ourwork" id="our-work">
-        <div class="work-carousel">
-        </div>
+      <div class="body-text">
+        <p>We are immigrants. We are servicemembers. We are veterans. We are designers, engineers, product managers, civil servants, creators, collaborators, artists. We are Americans.</p>
+        <p>We are a minority-owned small business, and we are certified as a Service Disabled Veteran Owned Small Business (SDVOSB).</p>
+        <h2>Partnered with you, we can achieve anything.</h2>
       </div>
-      <div class="fake-h2-ourwork" style="margin-top:30px;">
-        <h2 class="whitetext our-work grey-text">There’s a lot more we’ve done, but we’d rather talk about what we can do next partnering with you.</h2>
-      </div>
-      <h4 class="whitetext">Let&#x27;s Talk</h4>
-      <div class="vertical-rule"></div>
+      <h4 class="section-header">Our Work</h4>
     </div>
   </div>
-  <div id="contact-us">
+
+  <div class="section-light">
     <div class="container-margin w-container">
-      <div class="vertical-rule black-rule"></div>
-      <h2>Let us help you take your ideas further. Please let us know how we can help by emailing us at <a href="mailto:hello@andpartners.io?subject=Help%20me%20Obi%20Wan%20Kenobi">hello@andpartners.io</a></h2>
+      <div class="body-text" id="our-work">
+        <div class="work-carousel"></div>
+      </div>
+      <div class="body-text">
+        <h2>There’s a lot more we’ve done, but we’d rather talk about what we can do next partnering with you.</h2>
+      </div>
+      <h4 class="section-header">Our Team</h4>
+    </div>
+  </div>
+
+  <div class="section-dark" id="our-team">
+    <div class="container-margin w-container">
+      <div class="body-text">
+        <p>Our team is comprised of product designers, product managers, software engineers, user experience designers, researchers, and storytellers whose collective work in the civic tech space has helped government agencies and nonprofits deliver better, more equitable services for their constituencies.</p>
+        <p>We believe in the power of small, cross-functional teams to collaborate and get things done. Our team is nimble, adaptable, and uses Agile practices internally and externally.</p>
+      </div>
+      <h4 class="section-header">Our Approach</h4>
+    </div>
+  </div>
+
+  <div class="section-light" id="our-approach">
+    <div class="container-margin w-container">
+      <div class="body-text">
+        <p>We focus on people’s needs to determine how design can help them.</p>
+        <p>We believe partnerships with people are more valuable than contracts with companies.</p>
+        <p>We foster a supportive, creative work environment and take a holistic, intentional approach to projects so that we can provide the best solutions possible.</p>
+        <p>We believe that technology should do no harm. We believe that technology can be designed with people at its center and have positive social impact that, when paired with policy and a critical eye to the challenges that society faces, can improve our way of life. Our <a href="https://github.com/prtnrs/intake-framework" target="_blank">intake framework</a> ensures our core values are imbued in every product, practice, partnership, and service we undertake.</p>
+      </div>
+      <h4 class="section-header">Let&#x27;s Talk</h4>
+    </div>
+  </div>
+
+  <div class="section-dark" id="contact-us">
+    <div class="container-margin w-container">
+      <div class="body-text">
+        <p>Let us help you take your ideas further. Please let us know how we can help by emailing us at <a href="mailto:hello@andpartners.io?subject=Help%20me%20Obi%20Wan%20Kenobi">hello@andpartners.io</a>.</p>
+      </div>
       <div class="form-block w-form">
         <form action="https://us-central1-prtnrs-web.cloudfunctions.net/web-email-contact" method="POST" id="email-form" name="email-form" data-name="Email Form" method="post" class="form">
           <label for="name" class="field-label">Name</label>
@@ -77,12 +102,16 @@
           <div>Oops! Something went wrong while submitting the form.</div>
         </div>
       </div>
-      <div class="vertical-rule black-rule"></div>
     </div>
   </div>
+
   <div class="footer">
     <div class="container-margin w-container">
-      <div class="social-links"><a href="https://www.linkedin.com/company/prtnrsco/" target="_blank" class="social-link w-inline-block"><img src="images/social-links-02.svg" width="20" alt=""></a><a href="https://twitter.com/andprtnrs" target="_blank" class="social-link w-inline-block"><img src="images/social-links-01.svg" width="20" alt=""></a></div>
+      <div class="social-links">
+          <a href="https://medium.com/andpartners" target="_blank" class="social-link w-inline-block"><img src="images/social-links-medium-box.svg" height="20" alt=""></a>
+          <a href="https://www.linkedin.com/company/prtnrsco/" target="_blank" class="social-link w-inline-block"><img src="images/social-links-02.svg" height="20" alt=""></a>
+          <a href="https://twitter.com/andprtnrs" target="_blank" class="social-link w-inline-block"><img src="images/social-links-01.svg" height="20" alt=""></a>
+      </div>
       <div class="footer-buttons w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny"><a href="#" class="button-primary button-footer w-button">Report a bug</a><a href="#" class="button-primary button-footer w-button">POLICIES</a></div>
     </div>
   </div>

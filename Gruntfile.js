@@ -27,7 +27,18 @@ module.exports = function(grunt) {
     // }, // autoprefixer
 
     browserify: {
-      './js/bundled.js': ['<%=meta.dir.scripts%>/script.js']
+      './js/bundled.js': ['<%=meta.dir.scripts%>/script.js'],
+      options: {
+        transform: [
+          [
+            "hbsfy", {
+              "extensions": [
+                "hbs"
+              ]
+            }
+          ]
+        ]
+      }
     }, // browserify
 
     // clean: {
@@ -86,9 +97,10 @@ module.exports = function(grunt) {
       // },
       scripts: {
         files: [
+          './src/templates/*.hbs',
           './src/data/*.json',
           './src/scripts/lib/*.js',
-          './src/scripts/*.js'
+          './src/scripts/*.js',
         ],
         tasks: ['browserify']
       },
@@ -98,13 +110,6 @@ module.exports = function(grunt) {
         ],
         tasks: ['sass']
       },
-      // templates: {
-      //   files: [
-      //     './src/templates/*.tmpl',
-      //     './src/templates/*.part'
-      //   ],
-      //   tasks: ['merge-templates']
-      // }
     } // watch
   });
 

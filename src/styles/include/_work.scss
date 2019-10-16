@@ -7,6 +7,8 @@ $slide-width-large: 720px;
   width: $slide-width;
   min-height: 250px;
   overflow: hidden;
+  margin: 30px 0;
+  padding-bottom: 30px;
 
   .work-carousel--buttons {
     display: flex;
@@ -21,20 +23,22 @@ $slide-width-large: 720px;
 
   .carousel-button {
     display: block;
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
+    width: 1.25em;
+    height: 1.25em;
+    min-width: 20px;
+    min-height: 20px;
+    margin: 0 auto;
     border-radius: 50%;
-    background: $gray;
+    background: $light-gray;
     text-decoration: none;
     transition: background 0.15s ease-in-out;
 
     &.active {
-      background: $light-gray;
+      background: $gray;
     }
 
     &:hover {
-      background: $white;
+      background: $dark-gray;
     }
   }
 
@@ -89,7 +93,7 @@ $slide-width-large: 720px;
     line-height: 1.25;
     text-align: center;
     margin: 15px 0;
-    color: $white;
+    color: $gray;
   }
 
   .work-slide--blurb {
@@ -99,7 +103,7 @@ $slide-width-large: 720px;
     line-height: 1.5;
     margin: 0 0 1.5rem;
     text-align: justify;
-    color: $light-text;
+    color: $text;
     max-width: 95%;
   }
 

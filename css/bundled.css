@@ -105,7 +105,9 @@ body.show-modal {
   position: relative;
   width: 85vw;
   min-height: 250px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin: 30px 0;
+  padding-bottom: 30px; }
   .work-carousel .work-carousel--buttons {
     display: flex;
     justify-content: center;
@@ -117,17 +119,19 @@ body.show-modal {
     right: 0; }
   .work-carousel .carousel-button {
     display: block;
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
+    width: 1.25em;
+    height: 1.25em;
+    min-width: 20px;
+    min-height: 20px;
+    margin: 0 auto;
     border-radius: 50%;
-    background: #5b616a;
+    background: #d6d7d9;
     text-decoration: none;
     transition: background 0.15s ease-in-out; }
     .work-carousel .carousel-button.active {
-      background: #d6d7d9; }
+      background: #5b616a; }
     .work-carousel .carousel-button:hover {
-      background: #fff; }
+      background: #333; }
   @media (min-width: 900px) {
     .work-carousel {
       min-height: 420px;
@@ -171,7 +175,7 @@ body.show-modal {
     line-height: 1.25;
     text-align: center;
     margin: 15px 0;
-    color: #fff; }
+    color: #5b616a; }
   .work-slide .work-slide--blurb {
     display: none;
     font-family: ff-tisa-web-pro, sans-serif;
@@ -179,7 +183,7 @@ body.show-modal {
     line-height: 1.5;
     margin: 0 0 1.5rem;
     text-align: justify;
-    color: #d6d7d9;
+    color: #333;
     max-width: 95%; }
   @media (min-width: 900px) {
     .work-slide {

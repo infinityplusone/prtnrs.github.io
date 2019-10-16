@@ -1,0 +1,12 @@
+<div class="work-carousel">
+  <div class="work-slides">
+    {{#each projects}}
+      {{>work-slide}}
+    {{/each}}
+  </div>
+  <div class="work-carousel--buttons">
+    {{#each projects}}
+      <a href="#slide-{{hyphenize project}}" class="carousel-button{{#if @fisrst}} active{{/if}}" data-toggle="slide" data-index="{{@index}}"></a>
+    {{/each}}
+  </div>
+</div>

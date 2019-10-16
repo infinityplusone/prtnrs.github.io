@@ -1,20 +1,19 @@
 h1 {
   max-width: 720px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin: 0;
   font-family: ff-tisa-web-pro, sans-serif;
   font-size: 40px;
-  line-height: 44px;
+  line-height: 1.5;
   font-weight: 300;
 }
 
 h2 {
   max-width: 720px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 60px;
+  margin-bottom: 0;
   font-family: ff-tisa-web-pro, sans-serif;
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 24px;
+  line-height: 1.75;
   font-weight: 300;
 }
 
@@ -33,15 +32,105 @@ a {
   text-decoration: underline;
 }
 
-.button {
-  padding: 29px;
-}
 
 .section {
+  color: #333;
   background-image: -webkit-linear-gradient(0deg, #17181a, transparent), url('../images/jorge-alcala-325378-unsplash.jpg');
   background-image: linear-gradient(90deg, #17181a, transparent), url('../images/jorge-alcala-325378-unsplash.jpg');
   background-position: 0px 0px, 50% 50%;
   background-size: auto, cover;
+}
+
+.section-light {
+  padding-top: 60px;
+  color: #333;
+}
+
+.section-dark {
+  padding-top: 60px;
+  background-image: -webkit-linear-gradient(270deg, #323a44, #323a44);
+  background-image: linear-gradient(180deg, #323a44, #323a44);
+  color: #fff;
+}
+
+.section-dark a {
+  color: #509fd3;
+  text-decoration: underline;
+}
+
+.section-light .vertical-rule {
+  border-color: #323a44;
+}
+
+.section-dark .vertical-rule {
+  border-color: #5f646e;
+}
+
+.vertical-rule {
+  display: none;
+  height: 60px;
+  margin-left: 20px;
+  border-color: #5f646e;
+  border-left-style: solid;
+  border-left-width: 1px;
+}
+
+.vertical-rule.black-rule {
+  border-color: #323a44;
+}
+
+.section-header {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 60px;
+}
+
+.section-header:after {
+  content: " ";
+  height: 120px;
+  margin-left: 20px;
+  border-color: #5f646e;
+  border-left-style: solid;
+  border-left-width: 1px;
+  position: absolute;
+  top: calc(100% - 50px);
+  left: 0;
+  filter: invert(0.5);
+}
+
+.section-dark .section-header {
+  color: #fff;
+}
+
+.section-light .section-header {
+  color: #323a44;
+}
+
+.section-dark .section-header:after {
+  border-color: #5f646e;
+}
+
+.section-light .section-header:after {
+  border-color: #323a44;
+}
+
+.body-text {
+  max-width: 720px;
+}
+
+.body-text p {
+  max-width: 720px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: ff-tisa-web-pro, sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 300;
+}
+
+.button {
+  padding: 29px;
 }
 
 .button-2 {
@@ -97,7 +186,8 @@ a {
 }
 
 .container {
-  padding: 40px 20px;
+  /*padding: 40px 20px;*/ /*JSK*/ 
+  padding: 40px 0;
 }
 
 .whitetext {
@@ -130,20 +220,9 @@ a {
 
 .cover-header-spacing {
   padding-top: 0px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 
-.vertical-rule {
-  height: 60px;
-  margin-left: 20px;
-  border-color: #5f646e;
-  border-left-style: solid;
-  border-left-width: 1px;
-}
-
-.vertical-rule.black-rule {
-  border-color: #323a44;
-}
 
 .heading {
   font-weight: 300;
@@ -155,11 +234,6 @@ a {
 
 .heading-3 {
   max-width: 720px;
-}
-
-.section-dark {
-  background-image: -webkit-linear-gradient(270deg, #323a44, #323a44);
-  background-image: linear-gradient(180deg, #323a44, #323a44);
 }
 
 .div-block {
@@ -212,6 +286,7 @@ a {
 .social-link {
   margin: 5px;
   padding: 10px;
+  color: #323a44;
 }
 
 .footer-buttons {

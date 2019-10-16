@@ -5,7 +5,7 @@
 var _ = require('lodash'),
     // moment = require('moment'),
     // pluralize = require('pluralize'),
-    handlebars = require('handlebars');
+    handlebars = require('hbsfy/runtime');
 
 var DATE_FORMATS = {
   // for date and time format options, see: http://momentjs.com/docs/#/displaying/format/
@@ -23,17 +23,9 @@ var DATE_FORMATS = {
   FROMNOW: 'FROMNOW'                          // this is stupid but it makes the code below simpler :)
 };
 
-
 handlebars.registerHelper('check', function(x) {
   console.log('Check:', x);
 });
-
-handlebars.registerHelper('preCompile', function(data) {
-  if(!!data && !!data.join) {
-    data = data.join('\n');
-  }
-  return handlebars.compile(data)(this);
-}); // preCompile
 
 handlebars.registerHelper('reformat', function(data) {
   if(!data) { return []; }
