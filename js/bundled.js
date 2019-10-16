@@ -28957,7 +28957,7 @@ module.exports=[{
   "spotlight": 4,
   "id": 105
 }, {
-  "partner": "Vera Institute of Justice &amp; New America",
+  "partner": "Vera Institute of Justice | New America",
   "project": "Immigrant Connection Project",
   "blurb": null,
   "challenge": "During the child separation human rights crisis at the US-Mexico border, lawyers and social workers had no way of connecting with families who needed their help. We wanted to provide a simple solution using open source technology.",
