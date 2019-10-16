@@ -2408,8 +2408,11 @@ a {
     margin-top: 75px; }
 
   .whitetext.cover-header {
-    font-size: 30px;
-    line-height: 33px; }
+    font-size: 30px; }
+
+  .social-links {
+    display: flex;
+    justify-content: space-around; }
 
   .footer-buttons {
     float: none; } }

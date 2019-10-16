@@ -41,7 +41,7 @@ window.PRTNRS = {
       }
       else {
         PRTNRS.autoScroll = setTimeout(function() {
-          PRTNRS.moveSlide({originalEvent: { key: 'ArrowRight' }});
+          PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($next)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $next.next());
         }, 7500);
       }
     }

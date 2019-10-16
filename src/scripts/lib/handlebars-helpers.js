@@ -34,7 +34,6 @@ handlebars.registerHelper('reformat', function(data) {
       list = false;
 
   lines.forEach(function(line, i) {
-    console.log(i, line);
     if(line.indexOf(' *')===0) {
 
       if(!list) {

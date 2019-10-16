@@ -29027,7 +29027,7 @@ module.exports=[{
   "spotlight": false,
   "id": 110
 }, {
-  "partner": "Health &amp; Human Services | Indian Health Service",
+  "partner": "Health and Human Services | Indian Health Service",
   "project": "Legacy Health IT Assessment",
   "blurb": "We identified, assessed, and evaluated key drivers to determine whether the legacy Indian Health Service (IHS) Resource and Patient Management System (RPMS) could be modernized, and if so, how.",
   "challenge": "We were tasked with identifying, assessing, and evaluating key drivers to determine whether the legacy Indian Health Service (IHS) Resource and Patient Management System (RPMS) could be modernized, and if so, how.",
@@ -29105,7 +29105,6 @@ handlebars.registerHelper('reformat', function(data) {
       list = false;
 
   lines.forEach(function(line, i) {
-    console.log(i, line);
     if(line.indexOf(' *')===0) {
 
       if(!list) {
@@ -29443,7 +29442,7 @@ window.PRTNRS = {
       }
       else {
         PRTNRS.autoScroll = setTimeout(function() {
-          PRTNRS.moveSlide({originalEvent: { key: 'ArrowRight' }});
+          PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($next)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $next.next());
         }, 7500);
       }
     }

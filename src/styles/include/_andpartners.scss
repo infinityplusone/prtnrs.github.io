@@ -331,7 +331,10 @@ a {
   }
   .whitetext.cover-header {
     font-size: 30px;
-    line-height: 33px;
+  }
+  .social-links {
+    display: flex;
+    justify-content: space-around;
   }
   .footer-buttons {
     float: none;
