@@ -1120,7 +1120,11 @@ a {
       max-width: 940px; }
   .modal .modal-header {
     height: 120px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
     padding: 15px calc(15px * 2) 15px 15px;
     background: rgba(50, 58, 68, 0.15);
     box-shadow: 0 0px 1px rgba(50, 58, 68, 0.2); }
@@ -1155,6 +1159,7 @@ a {
     height: calc(100% - 150px);
     margin: 0 0 0 15px;
     padding: 15px calc(15px * 2) 30px 0;
+    top: 120px;
     overflow-y: auto; }
     .modal .modal-body p, .modal .modal-body li {
       font-size: 1em;
@@ -1174,6 +1179,7 @@ a {
         .modal .modal-header .modal-close {
           margin-right: 30px; }
       .modal .modal-body {
+        top: 150px;
         margin: 0 10px 0 60px; } }
   .modal.in {
     transform: scale(1, 1); }

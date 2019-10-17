@@ -42,7 +42,11 @@
 
   .modal-header {
     height: 120px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
     padding: $gutter-small calc(#{$gutter-small} * 2) $gutter-small $gutter-small;
     background: fade-out($slate-gray, 0.85);
     box-shadow: 0 0px 1px fade-out($slate-gray, 0.8);
@@ -85,6 +89,7 @@
     height: calc(100% - 150px);
     margin: 0 0 0 $gutter-small;
     padding: 15px calc(#{$gutter-small} * 2) 30px 0;
+    top: 120px;
     overflow-y: auto;
 
     p, li {
@@ -116,6 +121,7 @@
     }
 
     .modal-body {
+      top: 150px;
       margin: 0 10px 0 $gutter-large;
       // padding: 15px calc($gutter-large * 2) 30px 0;
     }
