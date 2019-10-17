@@ -1120,7 +1120,7 @@ a {
       max-width: 940px; }
   .modal .modal-header {
     height: 120px;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -1175,7 +1175,8 @@ a {
       font-size: 20px; }
       .modal .modal-header {
         height: 150px;
-        padding: 15px 60px; }
+        padding: 15px 60px;
+        position: absolute; }
         .modal .modal-header .modal-close {
           margin-right: 30px; }
       .modal .modal-body {

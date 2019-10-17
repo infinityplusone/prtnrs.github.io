@@ -42,7 +42,7 @@
 
   .modal-header {
     height: 120px;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -114,6 +114,7 @@
     .modal-header {
       height: 150px;
       padding: 15px $gutter-large;
+      position: absolute;
 
       .modal-close {
         margin-right: 30px;
