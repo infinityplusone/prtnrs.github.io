@@ -59,7 +59,10 @@ window.PRTNRS = {
         $('.work-slide.active').trigger('click');
       }
       else {
+        clearTimeout(PRTNRS.autoScroll);
         PRTNRS.autoScroll = setTimeout(function() {
+          $body.removeClass('show-modal');
+          clearTimeout(PRTNRS.autoScroll);
           PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($next)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $next.next());
         }, 7500);
       }
