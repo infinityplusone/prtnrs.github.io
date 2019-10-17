@@ -1,7 +1,8 @@
 // WORK
 $slide-width: 85vw;
 $slide-width: 280px;
-$slide-width-large: calc(100vw - 10px);
+// $slide-width-large: calc(100vw - 10px);
+$slide-width-large: 100vw;
 
 .work-container {
   padding: 0;
@@ -38,6 +39,7 @@ $slide-width-large: calc(100vw - 10px);
     width: 50px;
     outline: none;
     right: 10px;
+    display: none;
 
     * {
       fill: $white;
@@ -79,9 +81,9 @@ $slide-width-large: calc(100vw - 10px);
       background: $gray;
     }
 
-    &:hover {
-      background: $dark-gray;
-    }
+    // &:hover {
+    //   background: $dark-gray;
+    // }
   }
 
   .work-slides {

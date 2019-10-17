@@ -1220,7 +1220,8 @@ body.show-modal {
     height: 50px;
     width: 50px;
     outline: none;
-    right: 10px; }
+    right: 10px;
+    display: none; }
     .work-carousel .button--pause * {
       fill: #fff; }
     .work-carousel .button--pause .fa-play-circle {
@@ -1242,8 +1243,6 @@ body.show-modal {
     transition: background 0.15s ease-in-out; }
     .work-carousel .carousel-button.active {
       background: #5f646e; }
-    .work-carousel .carousel-button:hover {
-      background: #333; }
   .work-carousel .work-slides {
     display: inline-flex;
     position: relative;
