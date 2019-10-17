@@ -35,16 +35,8 @@ window.PRTNRS = {
     PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
     PRTNRS.elems.$slides = $ourWork.find('.work-slide');
     PRTNRS.elems.$slides.swipe({
-      swipeLeft: function(e) {
-        console.log(e);
-        e.stopImmediatePropagation();
-        PRTNRS.onKeyDown(e, 'ArrowRight');
-      },
-      swipeRight: function(e) {
-        console.log(e);
-        e.stopImmediatePropagation();
-        PRTNRS.onKeyDown(e, 'ArrowLeft');
-      }
+      swipeLeft: PRTNRS.onKeyDown,
+      swipeRight: PRTNRS.onKeyDown
     });
 
     PRTNRS.startCarousel(PRTNRS.elems.$buttons.first());
@@ -52,8 +44,8 @@ window.PRTNRS = {
 
   startCarousel: function($slide) {
     clearTimeout(PRTNRS.autoScroll);
+    $body.removeClass('show-modal');
     if(window.innerWidth<769) {
-
       PRTNRS.moveSlide($slide);
     }
   }, // startCarousel
@@ -83,7 +75,6 @@ window.PRTNRS = {
   }, // closeModal
 
   toggleModal: function(e) {
-    console.log('toggleModal', e);
     clearTimeout(PRTNRS.autoScroll);
     e.preventDefault();
     var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')});
@@ -100,14 +91,11 @@ window.PRTNRS = {
     e.stopImmediatePropagation();
     clearTimeout(PRTNRS.autoScroll);
     var $button = $(this);
-
+    $body.removeClass('show-modal');
     $button.toggleClass('paused');
-
     if(!$button.hasClass('paused')) {
       PRTNRS.moveSlide(PRTNRS.elems.$buttons.filter('.active').first());
     }
-
-    console.log($button.hasClass('paused'));
   }, // togglePause
 
   toggleSlide: function(e) {
@@ -131,27 +119,25 @@ window.PRTNRS = {
     if(window.innerWidth<500) {
       $slides.css('margin-left', '-' + ($slides.find('.active').data('index') * window.innerWidth) + 'px');
     }
-
   }, // onResize
 
   onKeyDown: function(e, key) {
-    console.log('onKeyDown');
     var $active = PRTNRS.elems.$buttons.filter('.active').first();
 
     if(!key) {
       key = e.type==='keydown' ? e.originalEvent.key : this.getAttribute('data-key');
     }
     else {
+      $body.removeClass('show-modal');
       e.preventDefault();
       e.stopImmediatePropagation();
-
     }
     switch(key) {
-      // case 'right': 
+      case 'right': 
       case 'ArrowLeft':
         PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($active)===0 ? PRTNRS.elems.$buttons.last() : $active.prev());
         break;
-      // case 'left':
+      case 'left':
       case 'ArrowRight':
         PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($active)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $active.next());
         break;
@@ -171,6 +157,8 @@ window.PRTNRS = {
 
   init: function() {
 
+    this.loadWork();
+
     $body
       .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
       .on('click', '[data-toggle="slide"]', this.toggleSlide)
@@ -182,7 +170,6 @@ window.PRTNRS = {
       .on('resize', this.onResize)
       .on('keydown', this.onKeyDown);
 
-    this.loadWork();
 
   }, // init
 

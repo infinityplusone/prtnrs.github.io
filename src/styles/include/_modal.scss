@@ -20,9 +20,8 @@
     position: relative;
     z-index: 1002;
     background: $white;
-    height: 99vh;
-    width: 98vw;
-    max-width: 940px;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
 
     &:after {
@@ -34,23 +33,33 @@
       background: linear-gradient(to bottom, fade-out($white, 0.5) 0%, $white 50%, $white 100%);
       height: 60px;
     }
+
+    .wrapper {
+      position: relative;
+      max-width: 940px;
+    }
   }
 
   .modal-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    position: relative;
     padding: $gutter-small calc(#{$gutter-small} * 2) $gutter-small $gutter-small;
     background: fade-out($slate-gray, 0.85);
     box-shadow: 0 0px 1px fade-out($slate-gray, 0.8);
 
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      height: 100%;
+
+    }
     .modal-close {
       display: block;
       position: absolute;
       line-height: 30px;
       width: 30px;
-      margin: 5px 5px 0;
+      margin: 12px 5px 0;
       padding: 0;
       text-decoration: none;
       top: 0;
@@ -96,17 +105,12 @@
   @media (min-width: 900px) {
     font-size: 20px;
 
-    .modal-content {
-      height: 90vh;
-      width: 90vw;
-    }
-
     .modal-header {
       height: 150px;
       padding: 15px $gutter-large;
 
       .modal-close {
-        margin: 20px $gutter-large 0;
+        margin: 50px $gutter-large 0;
       }
     }
 

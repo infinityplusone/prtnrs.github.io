@@ -29506,16 +29506,8 @@ window.PRTNRS = {
     PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
     PRTNRS.elems.$slides = $ourWork.find('.work-slide');
     PRTNRS.elems.$slides.swipe({
-      swipeLeft: function(e) {
-        console.log(e);
-        e.stopImmediatePropagation();
-        PRTNRS.onKeyDown(e, 'ArrowRight');
-      },
-      swipeRight: function(e) {
-        console.log(e);
-        e.stopImmediatePropagation();
-        PRTNRS.onKeyDown(e, 'ArrowLeft');
-      }
+      swipeLeft: PRTNRS.onKeyDown,
+      swipeRight: PRTNRS.onKeyDown
     });
 
     PRTNRS.startCarousel(PRTNRS.elems.$buttons.first());
@@ -29523,8 +29515,8 @@ window.PRTNRS = {
 
   startCarousel: function($slide) {
     clearTimeout(PRTNRS.autoScroll);
+    $body.removeClass('show-modal');
     if(window.innerWidth<769) {
-
       PRTNRS.moveSlide($slide);
     }
   }, // startCarousel
@@ -29554,7 +29546,6 @@ window.PRTNRS = {
   }, // closeModal
 
   toggleModal: function(e) {
-    console.log('toggleModal', e);
     clearTimeout(PRTNRS.autoScroll);
     e.preventDefault();
     var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')});
@@ -29571,14 +29562,11 @@ window.PRTNRS = {
     e.stopImmediatePropagation();
     clearTimeout(PRTNRS.autoScroll);
     var $button = $(this);
-
+    $body.removeClass('show-modal');
     $button.toggleClass('paused');
-
     if(!$button.hasClass('paused')) {
       PRTNRS.moveSlide(PRTNRS.elems.$buttons.filter('.active').first());
     }
-
-    console.log($button.hasClass('paused'));
   }, // togglePause
 
   toggleSlide: function(e) {
@@ -29602,27 +29590,25 @@ window.PRTNRS = {
     if(window.innerWidth<500) {
       $slides.css('margin-left', '-' + ($slides.find('.active').data('index') * window.innerWidth) + 'px');
     }
-
   }, // onResize
 
   onKeyDown: function(e, key) {
-    console.log('onKeyDown');
     var $active = PRTNRS.elems.$buttons.filter('.active').first();
 
     if(!key) {
       key = e.type==='keydown' ? e.originalEvent.key : this.getAttribute('data-key');
     }
     else {
+      $body.removeClass('show-modal');
       e.preventDefault();
       e.stopImmediatePropagation();
-
     }
     switch(key) {
-      // case 'right': 
+      case 'right': 
       case 'ArrowLeft':
         PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($active)===0 ? PRTNRS.elems.$buttons.last() : $active.prev());
         break;
-      // case 'left':
+      case 'left':
       case 'ArrowRight':
         PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($active)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $active.next());
         break;
@@ -29642,6 +29628,8 @@ window.PRTNRS = {
 
   init: function() {
 
+    this.loadWork();
+
     $body
       .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
       .on('click', '[data-toggle="slide"]', this.toggleSlide)
@@ -29653,7 +29641,6 @@ window.PRTNRS = {
       .on('resize', this.onResize)
       .on('keydown', this.onKeyDown);
 
-    this.loadWork();
 
   }, // init
 
@@ -29705,13 +29692,13 @@ module.exports = HandlebarsCompiler.template({"compiler":[8,">= 4.3.0"],"main":f
     + ((stack1 = ((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</div>\n    <div class=\"work-slide--project\">"
     + ((stack1 = ((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</div>\n  </div>\n  <a href=\"#modal-"
+    + "</div>\n  </div>\n  <div href=\"#modal-"
     + alias5((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
     + "\" class=\"work-slide-overlay\" data-partner=\""
     + alias5(((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper)))
     + "\" data-project=\""
     + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
-    + "\" data-toggle=\"modal\">\n    <div class=\"button button-primary button-black\">\n      Project Details\n    </div>\n  </a>\n</div>";
+    + "\" data-toggle=\"modal\">\n    <div class=\"button button-primary button-black\">\n      Project Details\n    </div>\n  </div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":19}],29:[function(require,module,exports){
@@ -29747,35 +29734,35 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
-    return "          <span class=\"work-tag\" data-toggle=\"tag\">"
+    return "            <span class=\"work-tag\" data-toggle=\"tag\">"
     + container.escapeExpression(container.lambda(depth0, depth0))
     + "</span>\n";
 },"3":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return ((stack1 = container.invokePartial(partials.list,depth0,{"name":"list","data":data,"indent":"              ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "");
+  return ((stack1 = container.invokePartial(partials.list,depth0,{"name":"list","data":data,"indent":"                ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "");
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=container.propertyIsEnumerable, alias2=depth0 != null ? depth0 : (container.nullContext || {}), alias3=container.hooks.helperMissing, alias4="function";
 
   return "  <div class=\"modal modal--work fade\" id=\"modal-"
     + container.escapeExpression((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
-    + "\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h3 class=\"work--partner\">"
+    + "\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <div class=\"wrapper\">\n          <h3 class=\"work--partner\">"
     + ((stack1 = ((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</h3>\n        <h2 class=\"work--project\">"
+    + "</h3>\n          <h2 class=\"work--project\">"
     + ((stack1 = ((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</h2>\n        <div class=\"work--tags\">\n"
+    + "</h2>\n          <div class=\"work--tags\">\n"
     + ((stack1 = helpers.each.call(alias2,(depth0 != null ? depth0.tags : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "        </div>\n        <a href=\"#\" class=\"modal-close\" data-close=\"modal\">&times;</a>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"work-detail\">\n          <div class=\"work--blurb\">\n            <p>"
+    + "          </div>\n        </div>\n        <a href=\"#\" class=\"modal-close\" data-close=\"modal\">&times;</a>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"wrapper\">\n          <div class=\"work-detail\">\n            <div class=\"work--blurb\">\n              <p>"
     + ((stack1 = ((helper = (helper = helpers.blurb || (depth0 != null ? depth0.blurb : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"blurb","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</p>\n          </div>\n          <div class=\"work--challenge\">\n"
+    + "</p>\n            </div>\n            <div class=\"work--challenge\">\n"
     + ((stack1 = helpers.each.call(alias2,(helpers.reformat||(depth0 && depth0.reformat)||alias3).call(alias2,(depth0 != null ? depth0.challenge : depth0),{"name":"reformat","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "          </div>\n          <div class=\"work--solution\">\n"
+    + "            </div>\n            <div class=\"work--solution\">\n"
     + ((stack1 = helpers.each.call(alias2,(helpers.reformat||(depth0 && depth0.reformat)||alias3).call(alias2,(depth0 != null ? depth0.solution : depth0),{"name":"reformat","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "          </div>\n          <div class=\"work--outcome\">\n"
+    + "            </div>\n            <div class=\"work--outcome\">\n"
     + ((stack1 = helpers.each.call(alias2,(helpers.reformat||(depth0 && depth0.reformat)||alias3).call(alias2,(depth0 != null ? depth0.outcome : depth0),{"name":"reformat","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "          </div>\n          <div class=\"work--tools\">\n"
+    + "            </div>\n            <div class=\"work--tools\">\n"
     + ((stack1 = helpers.each.call(alias2,(helpers.reformat||(depth0 && depth0.reformat)||alias3).call(alias2,(depth0 != null ? depth0.tools : depth0),{"name":"reformat","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "          </div>\n        </div>\n      </div>\n    </div>\n  </div>";
+    + "            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>";
 },"usePartial":true,"useData":true});
 
 },{"hbsfy/runtime":19}],31:[function(require,module,exports){
