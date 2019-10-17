@@ -29069,6 +29069,61 @@ module.exports=[{
   "id": 113
 }]
 },{}],23:[function(require,module,exports){
+let emailConfirmation = /[?&]emailsent/.test(location.search);
+if (emailConfirmation) {
+  document.getElementById("email-confirm").style.display = "block";
+  window.history.replaceState({}, document.title, "/");
+  setTimeout(function(){ document.getElementById("email-confirm").style.display = "none" }, 5000);
+}
+
+let contactForm = document.getElementById('email-form');
+contactForm.onsubmit = function(e) {
+  e.preventDefault();
+  contactForm.style.display = "none";
+  document.getElementById('form-inflight').style.display = "block";
+  ajaxPost(contactForm, function(res) {
+    if (res.currentTarget.status === 200) {
+      document.getElementById('form-inflight').style.display = "none";
+      document.getElementById('form-ok').style.display = "block";
+    } else {
+      document.getElementById('form-inflight').style.display = "none";
+      document.getElementById('form-notok').style.display = "block";
+    }
+  });
+  return false;
+};
+
+function ajaxPost (form, callback) {
+  var url = form.action,
+      xhr = new XMLHttpRequest();
+
+  //This is a bit tricky, [].fn.call(form.elements, ...) allows us to call .fn
+  //on the form's elements, even though it's not an array. Effectively
+  //Filtering all of the fields on the form
+  var params = [].filter.call(form.elements, function(el) {
+      //Allow only elements that don't have the 'checked' property
+      //Or those who have it, and it's checked for them.
+      return typeof(el.checked) === 'undefined' || el.checked || el.type !== 'checkbox' || el.type !== 'radio';
+      //Practically, filter out checkboxes/radios which aren't checekd.
+  })
+  .filter(function(el) { return !!el.name; }) //Nameless elements die.
+  .filter(function(el) { return !el.disabled; }) //Disabled elements die.
+  .map(function(el) {
+      //Map each field into a name=value string, make sure to properly escape!
+      return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value);
+  }).join('&'); //Then join all the strings by &
+
+  xhr.open("POST", url);
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  //.bind ensures that this inside of the function is the XHR object.
+  xhr.onload = callback.bind(xhr);
+
+  //All preperations are clear, send the request!
+  xhr.send(params);
+}
+
+},{}],24:[function(require,module,exports){
 /* jshint browser: true */
 /* global _, moment */
 'use strict';
@@ -29398,15 +29453,18 @@ handlebars.registerHelper({
 
 module.exports = handlebars;
 
-},{"hbsfy/runtime":19,"lodash":21}],24:[function(require,module,exports){
+},{"hbsfy/runtime":19,"lodash":21}],25:[function(require,module,exports){
 var $ = require('jquery'),
     _ = require('lodash'),
     handlebars = require('./lib/handlebars-helpers.js'),
     $body = $('body'),
     $window = $(window);
 
+require('./lib/email.js');
+
 handlebars.registerPartial('list', require('../templates/list.partial.hbs'));
 handlebars.registerPartial('work-slide', require('../templates/work-slide.partial.hbs'));
+handlebars.registerPartial('work-card', require('../templates/work-card.partial.hbs'));
 
 window.PRTNRS = {
 
@@ -29429,7 +29487,9 @@ window.PRTNRS = {
 
     PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
     PRTNRS.elems.$slides = $ourWork.find('.work-slide');
-    PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
+    if(window.innerWidth<500) {
+      PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
+    }
   }, // loadWork
 
   moveSlide: function($next) {
@@ -29473,11 +29533,13 @@ window.PRTNRS = {
 
     var $this = $(this),
         $slides = $this.closest('.work-carousel').find('.work-slides'),
-        slideWidth = PRTNRS.elems.$slides.first().width();
+        slideWidth = PRTNRS.elems.$slides.first().width(),
+        distance = window.innerWidth;
+        // distance = (slideWidth + 30);
     
     $this.addClass('active').siblings().removeClass('active');
 
-    $slides.css('margin-left', '-' + ($this.data('index') * (slideWidth + 30)) + 'px');
+    $slides.css('margin-left', '-' + ($this.data('index') * distance) + 'px');
     $($this.attr('href')).addClass('active').siblings().removeClass('active');
 
     $('.modal.in').removeClass('in');
@@ -29487,7 +29549,7 @@ window.PRTNRS = {
 
   onKeyDown: function(e) {
     clearTimeout(PRTNRS.autoScroll);
-    var key = e.originalEvent.key,
+    var key = e.type==='keydown' ? e.originalEvent.key : this.getAttribute('data-key'),
         $active = PRTNRS.elems.$buttons.filter('.active').first();
 
     switch(key) {
@@ -29503,6 +29565,9 @@ window.PRTNRS = {
       case 'Escape':
         PRTNRS.closeModal(e);
         break;
+      case 'S':
+        clearTimeout(PRTNRS.autoScroll);
+        break;
       default:
         break;
     }
@@ -29512,6 +29577,7 @@ window.PRTNRS = {
   init: function() {
 
     $body
+      .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
       .on('click', '[data-toggle="slide"]', this.toggleSlide)
       .on('click', '[data-toggle="modal"]', this.toggleModal)
       .on('click', '[data-close="modal"]', this.closeModal);
@@ -29525,7 +29591,7 @@ window.PRTNRS = {
 }; // PRTNRS
 
 PRTNRS.init();
-},{"../data/projects.json":22,"../templates/list.partial.hbs":25,"../templates/work-carousel.hbs":26,"../templates/work-modal.hbs":27,"../templates/work-slide.partial.hbs":28,"./lib/handlebars-helpers.js":23,"jquery":20,"lodash":21}],25:[function(require,module,exports){
+},{"../data/projects.json":22,"../templates/list.partial.hbs":26,"../templates/work-card.partial.hbs":27,"../templates/work-carousel.hbs":28,"../templates/work-modal.hbs":29,"../templates/work-slide.partial.hbs":30,"./lib/email.js":23,"./lib/handlebars-helpers.js":24,"jquery":20,"lodash":21}],26:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
@@ -29548,13 +29614,42 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
     + "\n";
 },"useData":true});
 
-},{"hbsfy/runtime":19}],26:[function(require,module,exports){
+},{"hbsfy/runtime":19}],27:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var HandlebarsCompiler = require('hbsfy/runtime');
+module.exports = HandlebarsCompiler.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=container.propertyIsEnumerable, alias2=depth0 != null ? depth0 : (container.nullContext || {}), alias3=container.hooks.helperMissing, alias4="function", alias5=container.escapeExpression;
+
+  return "<div class=\"work-slide flsip-card\" data-partner=\""
+    + alias5(((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper)))
+    + "\" data-project=\""
+    + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
+    + "\" id=\"slide-"
+    + alias5((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
+    + "\">\n  <img src=\"./images/work/work-"
+    + alias5(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"id","hash":{},"data":data}) : helper)))
+    + ".jpg\" alt=\""
+    + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
+    + "\" class=\"work-slide--image\" />\n  <div class=\"work-slide-cover\">\n    <div class=\"work-slide--partner\">"
+    + ((stack1 = ((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</div>\n    <div class=\"work-slide--project\">"
+    + ((stack1 = ((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</div>\n  </div>\n  <a href=\"#modal-"
+    + alias5((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
+    + "\" class=\"work-slide-overlay\" data-partner=\""
+    + alias5(((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper)))
+    + "\" data-project=\""
+    + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
+    + "\" data-toggle=\"modal\">\n    <div class=\"button button-primary button-black\">\n      Project Details\n    </div>\n  </a>\n</div>";
+},"useData":true});
+
+},{"hbsfy/runtime":19}],28:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return ((stack1 = container.invokePartial(partials["work-slide"],depth0,{"name":"work-slide","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "");
+  return ((stack1 = container.invokePartial(partials["work-card"],depth0,{"name":"work-card","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "");
 },"3":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=container.propertyIsEnumerable, alias2=depth0 != null ? depth0 : (container.nullContext || {}), alias3=container.hooks.helperMissing, alias4=container.escapeExpression;
 
@@ -29577,7 +29672,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
     + "  </div>\n</div>";
 },"usePartial":true,"useData":true});
 
-},{"hbsfy/runtime":19}],27:[function(require,module,exports){
+},{"hbsfy/runtime":19}],29:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
@@ -29612,7 +29707,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
     + "          </div>\n        </div>\n      </div>\n    </div>\n  </div>";
 },"usePartial":true,"useData":true});
 
-},{"hbsfy/runtime":19}],28:[function(require,module,exports){
+},{"hbsfy/runtime":19}],30:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -29635,4 +29730,4 @@ module.exports = HandlebarsCompiler.template({"compiler":[8,">= 4.3.0"],"main":f
     + "</div>\n  </a>\n";
 },"useData":true});
 
-},{"hbsfy/runtime":19}]},{},[24]);
+},{"hbsfy/runtime":19}]},{},[25]);

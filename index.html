@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>&amp;Partners</title>
-  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <!-- <meta content="width=device-width, initial-scale=1" name="viewport"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <link href="css/bundled.css" rel="stylesheet" type="text/css">
   <script src="https://use.typekit.net/moo8tkn.js" type="text/javascript"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -41,10 +42,15 @@
   </div>
 
   <div class="section-light">
-    <div class="container-margin w-container">
+    <div class="container-margin w-container work-container">
       <div class="body-text" id="our-work">
         <div class="work-carousel"></div>
       </div>
+    </div>
+  </div>
+
+  <div class="section-light">
+    <div class="container-margin w-container">
       <div class="body-text">
         <h2>There’s a lot more we’ve done, but we’d rather talk about what we can do next in partnership with you.</h2>
       </div>
@@ -87,7 +93,7 @@
           <input type="email" class="text-field w-input" maxlength="256" name="email" data-name="Email" id="email" required="">
           <label class="field-label">How can we help?</label>
           <textarea id="message" name="message" placeholder="Type your message here" maxlength="5000" required="" class="text-field w-input" required></textarea>
-          <input type="submit" value="Submit" data-wait="Please wait..." class="button-primary button-black w-button">
+          <input type="submit" value="Submit" data-wait="Please wait..." class="button-primary w-button">
         </form>
         <div id="form-inflight" class="sending-message">
           <div>Sending message...</div>
@@ -112,62 +118,7 @@
       <div class="footer-buttons w-hidden-main w-hidden-medium w-hidden-small w-hidden-tiny"><a href="#" class="button-primary button-footer w-button">Report a bug</a><a href="#" class="button-primary button-footer w-button">POLICIES</a></div>
     </div>
   </div>
-  <script>
-    let emailConfirmation = /[?&]emailsent/.test(location.search);
-    if (emailConfirmation) {
-      document.getElementById("email-confirm").style.display = "block";
-      window.history.replaceState({}, document.title, "/");
-      setTimeout(function(){ document.getElementById("email-confirm").style.display = "none" }, 5000);
-    }
-  </script>
-  <script>
-    let contactForm = document.getElementById('email-form');
-    contactForm.onsubmit = function(e) {
-      e.preventDefault();
-      contactForm.style.display = "none";
-      document.getElementById('form-inflight').style.display = "block";
-      ajaxPost(contactForm, function(res) {
-        if (res.currentTarget.status === 200) {
-          document.getElementById('form-inflight').style.display = "none";
-          document.getElementById('form-ok').style.display = "block";
-        } else {
-          document.getElementById('form-inflight').style.display = "none";
-          document.getElementById('form-notok').style.display = "block";
-        }
-      });
-      return false;
-    };
 
-    function ajaxPost (form, callback) {
-      var url = form.action,
-          xhr = new XMLHttpRequest();
-
-      //This is a bit tricky, [].fn.call(form.elements, ...) allows us to call .fn
-      //on the form's elements, even though it's not an array. Effectively
-      //Filtering all of the fields on the form
-      var params = [].filter.call(form.elements, function(el) {
-          //Allow only elements that don't have the 'checked' property
-          //Or those who have it, and it's checked for them.
-          return typeof(el.checked) === 'undefined' || el.checked || el.type !== 'checkbox' || el.type !== 'radio';
-          //Practically, filter out checkboxes/radios which aren't checekd.
-      })
-      .filter(function(el) { return !!el.name; }) //Nameless elements die.
-      .filter(function(el) { return !el.disabled; }) //Disabled elements die.
-      .map(function(el) {
-          //Map each field into a name=value string, make sure to properly escape!
-          return encodeURIComponent(el.name) + '=' + encodeURIComponent(el.value);
-      }).join('&'); //Then join all the strings by &
-
-      xhr.open("POST", url);
-      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-      //.bind ensures that this inside of the function is the XHR object.
-      xhr.onload = callback.bind(xhr);
-
-      //All preperations are clear, send the request!
-      xhr.send(params);
-    }
-  </script>
 <!--   <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="js/andpartners.js" type="text/javascript"></script>
  -->  <script src="js/bundled.js" type="text/javascript"></script>

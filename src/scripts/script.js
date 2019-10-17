@@ -4,8 +4,11 @@ var $ = require('jquery'),
     $body = $('body'),
     $window = $(window);
 
+require('./lib/email.js');
+
 handlebars.registerPartial('list', require('../templates/list.partial.hbs'));
 handlebars.registerPartial('work-slide', require('../templates/work-slide.partial.hbs'));
+handlebars.registerPartial('work-card', require('../templates/work-card.partial.hbs'));
 
 window.PRTNRS = {
 
@@ -28,7 +31,9 @@ window.PRTNRS = {
 
     PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
     PRTNRS.elems.$slides = $ourWork.find('.work-slide');
-    PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
+    if(window.innerWidth<500) {
+      PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
+    }
   }, // loadWork
 
   moveSlide: function($next) {
@@ -72,11 +77,13 @@ window.PRTNRS = {
 
     var $this = $(this),
         $slides = $this.closest('.work-carousel').find('.work-slides'),
-        slideWidth = PRTNRS.elems.$slides.first().width();
+        slideWidth = PRTNRS.elems.$slides.first().width(),
+        distance = window.innerWidth;
+        // distance = (slideWidth + 30);
     
     $this.addClass('active').siblings().removeClass('active');
 
-    $slides.css('margin-left', '-' + ($this.data('index') * (slideWidth + 30)) + 'px');
+    $slides.css('margin-left', '-' + ($this.data('index') * distance) + 'px');
     $($this.attr('href')).addClass('active').siblings().removeClass('active');
 
     $('.modal.in').removeClass('in');
@@ -86,7 +93,7 @@ window.PRTNRS = {
 
   onKeyDown: function(e) {
     clearTimeout(PRTNRS.autoScroll);
-    var key = e.originalEvent.key,
+    var key = e.type==='keydown' ? e.originalEvent.key : this.getAttribute('data-key'),
         $active = PRTNRS.elems.$buttons.filter('.active').first();
 
     switch(key) {
@@ -102,6 +109,9 @@ window.PRTNRS = {
       case 'Escape':
         PRTNRS.closeModal(e);
         break;
+      case 'S':
+        clearTimeout(PRTNRS.autoScroll);
+        break;
       default:
         break;
     }
@@ -111,6 +121,7 @@ window.PRTNRS = {
   init: function() {
 
     $body
+      .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
       .on('click', '[data-toggle="slide"]', this.toggleSlide)
       .on('click', '[data-toggle="modal"]', this.toggleModal)
       .on('click', '[data-close="modal"]', this.closeModal);

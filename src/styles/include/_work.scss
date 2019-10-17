@@ -1,24 +1,30 @@
 // WORK
 $slide-width: 85vw;
-$slide-width-large: 720px;
+$slide-width: 280px;
+$slide-width-large: calc(100vw - 60px);
+
+.work-container {
+  padding: 0;
+  max-width: 100%;
+  position: relative;
+} // .work-container
 
 .work-carousel {
   position: relative;
-  width: $slide-width;
-  min-height: 250px;
   overflow: hidden;
-  margin: 30px 0;
+  margin: 0 0 30px;
+  width: 100%;
   padding-bottom: 30px;
+  z-index: 2;
 
   .work-carousel--buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 30px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    position: relative;
+    margin: 0 auto;
+    width: $slide-width-large;
   }
 
   .carousel-button {
@@ -42,88 +48,148 @@ $slide-width-large: 720px;
     }
   }
 
+  .work-slides {
+    display: inline-flex;
+    position: relative;
+    // height: $slide-width;
+    height: $slide-width-large;
+    margin-bottom: 30px;
+    white-space: nowrap;
+    transition: margin-left 1s ease-in-out 0.1s;
+  } // .work-slides
+
+
   @media (min-width: 900px) {
-    min-height: 420px;
-    width: $slide-width-large;
-  }
+    overflow: hidden;
+    margin: 30px 0;    
+    // padding: 0 20px;
+
+    .work-slides {
+      display: grid;
+      grid-template-columns: repeat(3, calc(96% / 3));
+      grid-gap: 2%;
+      grid-auto-flow: columns;
+      white-space: normal;
+      width: auto;
+      height: auto;
+      margin-bottom: 0;
+    }
+
+    .work-carousel--buttons {
+      display: none;
+    }
+  } // media
 
 } // .work-carousel
 
-.work-slides {
-  display: inline-flex;
-  position: relative;
-  margin-left: 0;
-  margin-bottom: 0;
-  white-space: nowrap;
-  transition: margin-left 1s ease-in-out 0.1s;
-}
 
 .work-slide {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  text-decoration: none;
-  margin-right: 30px;
-  width: $slide-width;
+  display: flex;
+  position: relative;
+  justify-content: center;
   white-space: normal;
-  font-size: 16px;
+  width: 100vw;
+  font-size: 14px;
   font-weight: normal;
-  font-family: $font;
 
   .work-slide--image {
+    display: block;
+    position: absolute;
+    z-index: 1;
     background: $gray;
-    width: 100%;
-    min-height: 100px;
-    height: 100px;
-    margin-bottom: 20px;
+    width: $slide-width-large;
+    height: $slide-width-large;
+  }
+
+  .work-slide-cover {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: absolute;
+    width: $slide-width-large;
+    height: $slide-width-large;
+    padding: 15px 10px 15px 15px;
+    z-index: 2;
   }
 
   .work-slide--partner {
+    position: relative;
     width: 100%;
     font-size: 1em;
+    font-family: $font;
     line-height: 1.2;
-    text-align: center;
-    color: $medium-gray;
+    color: $white;
+    height: 34px;
   }
 
   .work-slide--project {
+    position: relative;
     width: 100%;
-    font-size: 1.25em;
+    font-family: $serif-font;
+    font-size: 1.5em;
     line-height: 1.25;
-    text-align: center;
-    margin: 15px 0;
-    color: $gray;
+    letter-spacing: 0.01em;
+    color: $white;
+    height: 52px;
   }
 
-  .work-slide--blurb {
-    display: none;
-    font-family: $serif-font;
-    font-size: 1em;
-    line-height: 1.5;
-    margin: 0 0 1.5rem;
-    text-align: justify;
-    color: $text;
-    max-width: 95%;
-  }
+  .work-slide-overlay {
+    display: flex;
+    position: absolute;
+    background: fade-out($white, 0.2);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 3;
+
+  } // .work-slide-overlay
 
   @media (min-width: 900px) {
-    font-size: 20px;
-    width: $slide-width-large;
+    width: $slide-width;
+    height: $slide-width;
+    margin-bottom: 20px;
 
-    .work-slide--image {
-      min-height: 200px;
-      height: 200px;
+    .work-slide--image, .work-slide-cover {
+      width: $slide-width;
+      height: $slide-width;
+    }
+    .work-slide-overlay {
+      transition: opacity 0.25s ease-in-out 0.1s;
+
+      &:hover {
+        opacity: 1.0;
+      }
+
+      .button {
+        margin: 0;
+        letter-spacing: 0.01em;
+
+        &:hover {
+          box-shadow: 2px 0 8px 0 rgba(49, 57, 67, 0.5);
+        }
+      }
     }
 
-    .work-slide--project {
-      line-height: 2;
-      margin: 0;
-    }
 
-    .work-slide--blurb {
-      display: block;
-    }
+    // .work-slide--image {
+    //   min-height: 400px;
+    //   height: 400px;
+    // }
+
+    // .work-slide--project {
+    //   line-height: 2;
+    //   margin: 0;
+    // }
+
+    // .work-slide--blurb {
+    //   display: block;
+    // }
   }
 
 
@@ -132,41 +198,41 @@ $slide-width-large: 720px;
 
 .modal--work {
 
-    .work--partner, .work--project {
-      margin: 0;
-      line-height: 1.5;
-    }
+  .work--partner, .work--project {
+    margin: 0;
+    line-height: 1.5;
+  }
 
-    .work--partner {
-      font-size: 1.1em;
-    }
+  .work--partner {
+    font-size: 1.1em;
+  }
 
-    .work--project {
-      font-size: 1.25em;
-    }
+  .work--project {
+    font-size: 1.25em;
+  }
 
-    .work--tags {
-      display: none;
-      margin: 25px 0 0;
+  .work--tags {
+    display: none;
+    margin: 25px 0 0;
 
-      .work-tag {
-        display: inline-block;
-        border-radius: 100px;
-        padding: 0 20px;
-        color: $white;
-        background: lighten($slate-gray, 25%);
-        font-size: 14px;
-        font-weight: normal;
-        font-family: $font;
-        line-height: 25px;
-        cursor: pointer;
-        transition: all 0.25s;
+    .work-tag {
+      display: inline-block;
+      border-radius: 100px;
+      padding: 0 20px;
+      color: $white;
+      background: lighten($slate-gray, 25%);
+      font-size: 14px;
+      font-weight: normal;
+      font-family: $font;
+      line-height: 25px;
+      cursor: pointer;
+      transition: all 0.25s;
 
-        &:hover {
-          background: lighten($slate-gray, 10%);
-        }
+      &:hover {
+        background: lighten($slate-gray, 10%);
       }
     }
+  }
 
   .work-detail {
     margin-bottom: 60px;
@@ -177,8 +243,5 @@ $slide-width-large: 720px;
     .work--tags {
       display: none;
     }
-
   }
-
-
-}
+} // .modal-work
