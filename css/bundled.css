@@ -1209,7 +1209,7 @@ body.show-modal {
     height: 30px;
     position: relative;
     margin: 0 auto;
-    width: calc(100vw - 10px);
+    width: 100vw;
     z-index: 3; }
   .work-carousel .button--pause {
     position: absolute;
@@ -1246,7 +1246,7 @@ body.show-modal {
   .work-carousel .work-slides {
     display: inline-flex;
     position: relative;
-    height: calc(100vw - 10px);
+    height: 100vw;
     margin-bottom: 30px;
     white-space: nowrap;
     transition: margin-left 1s ease-in-out 0.1s; }
@@ -1279,16 +1279,16 @@ body.show-modal {
     position: absolute;
     z-index: 1;
     background: #5f646e;
-    width: calc(100vw - 10px);
-    height: calc(100vw - 10px); }
+    width: 100vw;
+    height: 100vw; }
   .work-slide .work-slide-cover {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
     position: absolute;
-    width: calc(100vw - 10px);
-    height: calc(100vw - 10px);
+    width: 100vw;
+    height: 100vw;
     padding: 15px 10px 15px 15px;
     z-index: 2; }
   .work-slide .work-slide--partner {
