@@ -39,21 +39,8 @@ window.PRTNRS = {
       swipeRight: PRTNRS.onKeyDown
     });
 
-    // PRTNRS.startCarousel(PRTNRS.elems.$buttons.first());
-    if(window.innerWidth<769) {
-      PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
-    }
-
+    PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
   }, // loadWork
-
-
-  // startCarousel: function($slide) {
-  //   clearTimeout(PRTNRS.autoScroll);
-  //   $body.removeClass('show-modal');
-  //   if(window.innerWidth<769) {
-  //     PRTNRS.moveSlide($slide);
-  //   }
-  // }, // startCarousel
 
   moveSlide: function($next) {
     var $modal = $('.modal.in');
@@ -64,21 +51,17 @@ window.PRTNRS = {
         $('.work-slide.active').trigger('click');
       }
       else {
-        // clearTimeout(PRTNRS.autoScroll);
-        // PRTNRS.autoScroll = setTimeout(function() {
-          $body.removeClass('show-modal');
-          // clearTimeout(PRTNRS.autoScroll);
-          // PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($next)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $next.next());
-        // }, 7500);
+        $body.removeClass('show-modal');
       }
     }
   }, // moveSlide
 
   closeModal: function(e) {
-    e.preventDefault();
+    if(e) {
+      e.preventDefault();
+    }
     $('.modal').removeClass('in');
     $body.removeClass('show-modal');
-    // PRTNRS.startCarousel(PRTNRS.elems.$buttons.filter('.active').first());
     return false;
   }, // closeModal
 
@@ -94,20 +77,11 @@ window.PRTNRS = {
     return false;
   }, // toggleModal
 
-  // togglePause: function(e) {
-  //   e.preventDefault();
-  //   e.stopImmediatePropagation();
-  //   clearTimeout(PRTNRS.autoScroll);
-  //   var $button = $(this);
-  //   $body.removeClass('show-modal');
-  //   $button.toggleClass('paused');
-  //   if(!$button.hasClass('paused')) {
-  //     PRTNRS.moveSlide(PRTNRS.elems.$buttons.filter('.active').first());
-  //   }
-  // }, // togglePause
-
   toggleSlide: function(e) {
     e.preventDefault();
+    if(window.innerWidth>667) {
+      return false;
+    }
 
     var $this = $(this),
         $slides = $this.closest('.work-carousel').find('.work-slides');
@@ -117,14 +91,14 @@ window.PRTNRS = {
     $slides.css('margin-left', '-' + ($this.data('index') * window.innerWidth) + 'px');
     $($this.attr('href')).addClass('active').siblings().removeClass('active');
 
-    $('.modal.in').removeClass('in');
+    PRTNRS.closeModal();
     return false;
 
   }, // toggleSlide
 
   onResize: function(e) {
     var $slides = $('.work-carousel').find('.work-slides');
-    if(window.innerWidth<500) {
+    if(window.innerWidth<668) {
       $slides.css('margin-left', '-' + ($slides.find('.active').data('index') * window.innerWidth) + 'px');
     }
   }, // onResize
@@ -149,14 +123,9 @@ window.PRTNRS = {
       case 'ArrowRight':
         PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($active)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $active.next());
         break;
-      // case 'Enter':
-      //   PRTNRS.elems.$slides.filter('.active').trigger('click');
-      //   break;
       case 'Escape':
         PRTNRS.closeModal(e);
         break;
-      case 'S':
-        clearTimeout(PRTNRS.autoScroll);
         break;
       default:
         break;
@@ -170,14 +139,12 @@ window.PRTNRS = {
     $body
       .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
       .on('click', '[data-toggle="slide"]', this.toggleSlide)
-      // .on('click', '[data-toggle="pause"]', this.togglePause)
       .on('click', '[data-toggle="modal"]', this.toggleModal)
       .on('click', '[data-close="modal"]', this.closeModal);
 
     $window
       .on('resize', this.onResize)
       .on('keydown', this.onKeyDown);
-
 
   }, // init
 

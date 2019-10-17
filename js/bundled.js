@@ -28958,7 +28958,7 @@ module.exports=[{
   "spotlight": 5,
   "id": 104
 }, {
-  "partner": "Chan-Zuckerberg Initiative, and Immigration Action Network",
+  "partner": "Chan-Zuckerberg Initiative | Immigration Action Network",
   "project": "Visa Application Enhancement",
   "blurb": "We assisted the Immigration Action Network by extending research, performing a discovery sprint, analyzing the technical infrastructure, and deploying the next version of their cornerstone product, CitizenshipWorks (CW).",
   "challenge": "&amp;Partners was hired by the Chan-Zuckerberg Initiative to assist the Immigration Action Network (IAN) in improving their cornerstone product, CitizenshipWorks (CW), an application that enables lawful permanent residents to complete the application for naturalization online with legal support. We partnered with the IAN product team to reimagine what CW could be in the future. Our plan had to account for the design, technology, and product requirements of CitizenshipWorks and we had to work with their team to deliver results in a timely manner. Over the course of several weeks, we needed to perform generative research to enable us to develop a vision, design and develop prototypes, test prototypes with users, and use our findings to help IAN understand the recommendations and enable them to make decisions about the future of the tool.",
@@ -29510,21 +29510,8 @@ window.PRTNRS = {
       swipeRight: PRTNRS.onKeyDown
     });
 
-    // PRTNRS.startCarousel(PRTNRS.elems.$buttons.first());
-    if(window.innerWidth<769) {
-      PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
-    }
-
+    PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
   }, // loadWork
-
-
-  // startCarousel: function($slide) {
-  //   clearTimeout(PRTNRS.autoScroll);
-  //   $body.removeClass('show-modal');
-  //   if(window.innerWidth<769) {
-  //     PRTNRS.moveSlide($slide);
-  //   }
-  // }, // startCarousel
 
   moveSlide: function($next) {
     var $modal = $('.modal.in');
@@ -29535,21 +29522,17 @@ window.PRTNRS = {
         $('.work-slide.active').trigger('click');
       }
       else {
-        // clearTimeout(PRTNRS.autoScroll);
-        // PRTNRS.autoScroll = setTimeout(function() {
-          $body.removeClass('show-modal');
-          // clearTimeout(PRTNRS.autoScroll);
-          // PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($next)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $next.next());
-        // }, 7500);
+        $body.removeClass('show-modal');
       }
     }
   }, // moveSlide
 
   closeModal: function(e) {
-    e.preventDefault();
+    if(e) {
+      e.preventDefault();
+    }
     $('.modal').removeClass('in');
     $body.removeClass('show-modal');
-    // PRTNRS.startCarousel(PRTNRS.elems.$buttons.filter('.active').first());
     return false;
   }, // closeModal
 
@@ -29565,20 +29548,11 @@ window.PRTNRS = {
     return false;
   }, // toggleModal
 
-  // togglePause: function(e) {
-  //   e.preventDefault();
-  //   e.stopImmediatePropagation();
-  //   clearTimeout(PRTNRS.autoScroll);
-  //   var $button = $(this);
-  //   $body.removeClass('show-modal');
-  //   $button.toggleClass('paused');
-  //   if(!$button.hasClass('paused')) {
-  //     PRTNRS.moveSlide(PRTNRS.elems.$buttons.filter('.active').first());
-  //   }
-  // }, // togglePause
-
   toggleSlide: function(e) {
     e.preventDefault();
+    if(window.innerWidth>667) {
+      return false;
+    }
 
     var $this = $(this),
         $slides = $this.closest('.work-carousel').find('.work-slides');
@@ -29588,14 +29562,14 @@ window.PRTNRS = {
     $slides.css('margin-left', '-' + ($this.data('index') * window.innerWidth) + 'px');
     $($this.attr('href')).addClass('active').siblings().removeClass('active');
 
-    $('.modal.in').removeClass('in');
+    PRTNRS.closeModal();
     return false;
 
   }, // toggleSlide
 
   onResize: function(e) {
     var $slides = $('.work-carousel').find('.work-slides');
-    if(window.innerWidth<500) {
+    if(window.innerWidth<668) {
       $slides.css('margin-left', '-' + ($slides.find('.active').data('index') * window.innerWidth) + 'px');
     }
   }, // onResize
@@ -29620,14 +29594,9 @@ window.PRTNRS = {
       case 'ArrowRight':
         PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($active)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $active.next());
         break;
-      // case 'Enter':
-      //   PRTNRS.elems.$slides.filter('.active').trigger('click');
-      //   break;
       case 'Escape':
         PRTNRS.closeModal(e);
         break;
-      case 'S':
-        clearTimeout(PRTNRS.autoScroll);
         break;
       default:
         break;
@@ -29641,14 +29610,12 @@ window.PRTNRS = {
     $body
       .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
       .on('click', '[data-toggle="slide"]', this.toggleSlide)
-      // .on('click', '[data-toggle="pause"]', this.togglePause)
       .on('click', '[data-toggle="modal"]', this.toggleModal)
       .on('click', '[data-close="modal"]', this.closeModal);
 
     $window
       .on('resize', this.onResize)
       .on('keydown', this.onKeyDown);
-
 
   }, // init
 
@@ -29722,7 +29689,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
   return "      <a href=\"#slide-"
     + alias4((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
     + "\" class=\"carousel-button"
-    + ((stack1 = helpers["if"].call(alias2,(data && data.fisrst),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias2,(data && data.first),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\" data-toggle=\"slide\" data-index=\""
     + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias3),(typeof helper === "function" ? helper.call(alias2,{"name":"index","hash":{},"data":data}) : helper)))
     + "\"></a>\n";
@@ -29735,7 +29702,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
     + ((stack1 = helpers.each.call(alias2,(depth0 != null ? depth0.projects : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "  </div>\n  <div class=\"work-carousel--buttons\">\n"
     + ((stack1 = helpers.each.call(alias2,(depth0 != null ? depth0.projects : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "    <button class=\"button button--pause\" data-toggle=\"pause\">\n      <svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"far\" data-icon=\"pause-circle\" class=\"svg-inline--fa fa-pause-circle fa-w-16\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path fill=\"currentColor\" d=\"M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm96-280v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16zm-112 0v160c0 8.8-7.2 16-16 16h-48c-8.8 0-16-7.2-16-16V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16z\"></path></svg>\n      <svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"far\" data-icon=\"play-circle\" class=\"svg-inline--fa fa-play-circle fa-w-16\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path fill=\"currentColor\" d=\"M371.7 238l-176-107c-15.8-8.8-35.7 2.5-35.7 21v208c0 18.4 19.8 29.8 35.7 21l176-101c16.4-9.1 16.4-32.8 0-42zM504 256C504 119 393 8 256 8S8 119 8 256s111 248 248 248 248-111 248-248zm-448 0c0-110.5 89.5-200 200-200s200 89.5 200 200-89.5 200-200 200S56 366.5 56 256z\"></path></svg>\n    </button>\n  </div>\n</div>";
+    + "  </div>\n</div>";
 },"usePartial":true,"useData":true});
 
 },{"hbsfy/runtime":19}],30:[function(require,module,exports){
