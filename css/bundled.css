@@ -1207,7 +1207,26 @@ body.show-modal {
     height: 30px;
     position: relative;
     margin: 0 auto;
-    width: calc(100vw - 60px); }
+    width: calc(100vw - 10px);
+    z-index: 3; }
+  .work-carousel .button--pause {
+    position: absolute;
+    bottom: 70px;
+    background: transparent;
+    z-index: 5;
+    padding: 0;
+    height: 50px;
+    width: 50px;
+    outline: none;
+    right: 10px; }
+    .work-carousel .button--pause * {
+      fill: #fff; }
+    .work-carousel .button--pause .fa-play-circle {
+      display: none; }
+    .work-carousel .button--pause.paused .fa-pause-circle {
+      display: none; }
+    .work-carousel .button--pause.paused .fa-play-circle {
+      display: block; }
   .work-carousel .carousel-button {
     display: block;
     width: 1.25em;
@@ -1226,7 +1245,7 @@ body.show-modal {
   .work-carousel .work-slides {
     display: inline-flex;
     position: relative;
-    height: calc(100vw - 60px);
+    height: calc(100vw - 10px);
     margin-bottom: 30px;
     white-space: nowrap;
     transition: margin-left 1s ease-in-out 0.1s; }
@@ -1259,16 +1278,16 @@ body.show-modal {
     position: absolute;
     z-index: 1;
     background: #5f646e;
-    width: calc(100vw - 60px);
-    height: calc(100vw - 60px); }
+    width: calc(100vw - 10px);
+    height: calc(100vw - 10px); }
   .work-slide .work-slide-cover {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
     position: absolute;
-    width: calc(100vw - 60px);
-    height: calc(100vw - 60px);
+    width: calc(100vw - 10px);
+    height: calc(100vw - 10px);
     padding: 15px 10px 15px 15px;
     z-index: 2; }
   .work-slide .work-slide--partner {

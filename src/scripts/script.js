@@ -4,7 +4,10 @@ var $ = require('jquery'),
     $body = $('body'),
     $window = $(window);
 
+require('jquery-touchSwipe');
 require('./lib/email.js');
+
+window.$ = $;
 
 handlebars.registerPartial('list', require('../templates/list.partial.hbs'));
 handlebars.registerPartial('work-slide', require('../templates/work-slide.partial.hbs'));
@@ -31,10 +34,29 @@ window.PRTNRS = {
 
     PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
     PRTNRS.elems.$slides = $ourWork.find('.work-slide');
-    if(window.innerWidth<500) {
-      PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
-    }
+    PRTNRS.elems.$slides.swipe({
+      swipeLeft: function(e) {
+        console.log(e);
+        e.stopImmediatePropagation();
+        PRTNRS.onKeyDown(e, 'ArrowRight');
+      },
+      swipeRight: function(e) {
+        console.log(e);
+        e.stopImmediatePropagation();
+        PRTNRS.onKeyDown(e, 'ArrowLeft');
+      }
+    });
+
+    PRTNRS.startCarousel(PRTNRS.elems.$buttons.first());
   }, // loadWork
+
+  startCarousel: function($slide) {
+    clearTimeout(PRTNRS.autoScroll);
+    if(window.innerWidth<769) {
+
+      PRTNRS.moveSlide($slide);
+    }
+  }, // startCarousel
 
   moveSlide: function($next) {
     var $modal = $('.modal.in');
@@ -56,11 +78,12 @@ window.PRTNRS = {
     e.preventDefault();
     $('.modal').removeClass('in');
     $body.removeClass('show-modal');
-    PRTNRS.moveSlide(PRTNRS.elems.$buttons.filter('.active').first());
+    PRTNRS.startCarousel(PRTNRS.elems.$buttons.filter('.active').first());
     return false;
   }, // closeModal
 
   toggleModal: function(e) {
+    console.log('toggleModal', e);
     clearTimeout(PRTNRS.autoScroll);
     e.preventDefault();
     var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')});
@@ -72,18 +95,30 @@ window.PRTNRS = {
     return false;
   }, // toggleModal
 
+  togglePause: function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    clearTimeout(PRTNRS.autoScroll);
+    var $button = $(this);
+
+    $button.toggleClass('paused');
+
+    if(!$button.hasClass('paused')) {
+      PRTNRS.moveSlide(PRTNRS.elems.$buttons.filter('.active').first());
+    }
+
+    console.log($button.hasClass('paused'));
+  }, // togglePause
+
   toggleSlide: function(e) {
     e.preventDefault();
 
     var $this = $(this),
-        $slides = $this.closest('.work-carousel').find('.work-slides'),
-        slideWidth = PRTNRS.elems.$slides.first().width(),
-        distance = window.innerWidth;
-        // distance = (slideWidth + 30);
+        $slides = $this.closest('.work-carousel').find('.work-slides');
     
     $this.addClass('active').siblings().removeClass('active');
 
-    $slides.css('margin-left', '-' + ($this.data('index') * distance) + 'px');
+    $slides.css('margin-left', '-' + ($this.data('index') * window.innerWidth) + 'px');
     $($this.attr('href')).addClass('active').siblings().removeClass('active');
 
     $('.modal.in').removeClass('in');
@@ -91,21 +126,38 @@ window.PRTNRS = {
 
   }, // toggleSlide
 
-  onKeyDown: function(e) {
-    clearTimeout(PRTNRS.autoScroll);
-    var key = e.type==='keydown' ? e.originalEvent.key : this.getAttribute('data-key'),
-        $active = PRTNRS.elems.$buttons.filter('.active').first();
+  onResize: function(e) {
+    var $slides = $('.work-carousel').find('.work-slides');
+    if(window.innerWidth<500) {
+      $slides.css('margin-left', '-' + ($slides.find('.active').data('index') * window.innerWidth) + 'px');
+    }
 
+  }, // onResize
+
+  onKeyDown: function(e, key) {
+    console.log('onKeyDown');
+    var $active = PRTNRS.elems.$buttons.filter('.active').first();
+
+    if(!key) {
+      key = e.type==='keydown' ? e.originalEvent.key : this.getAttribute('data-key');
+    }
+    else {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+    }
     switch(key) {
+      // case 'right': 
       case 'ArrowLeft':
         PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($active)===0 ? PRTNRS.elems.$buttons.last() : $active.prev());
         break;
+      // case 'left':
       case 'ArrowRight':
         PRTNRS.moveSlide(PRTNRS.elems.$buttons.index($active)===PRTNRS.elems.$buttons.length-1 ? PRTNRS.elems.$buttons.first() : $active.next());
         break;
-      case 'Enter':
-        PRTNRS.elems.$slides.filter('.active').trigger('click');
-        break;
+      // case 'Enter':
+      //   PRTNRS.elems.$slides.filter('.active').trigger('click');
+      //   break;
       case 'Escape':
         PRTNRS.closeModal(e);
         break;
@@ -115,7 +167,6 @@ window.PRTNRS = {
       default:
         break;
     }
-
   }, // onKeyDown
 
   init: function() {
@@ -123,10 +174,13 @@ window.PRTNRS = {
     $body
       .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
       .on('click', '[data-toggle="slide"]', this.toggleSlide)
+      .on('click', '[data-toggle="pause"]', this.togglePause)
       .on('click', '[data-toggle="modal"]', this.toggleModal)
       .on('click', '[data-close="modal"]', this.closeModal);
 
-    $window.on('keydown', this.onKeyDown);
+    $window
+      .on('resize', this.onResize)
+      .on('keydown', this.onKeyDown);
 
     this.loadWork();
 
