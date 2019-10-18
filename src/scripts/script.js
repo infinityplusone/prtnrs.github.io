@@ -15,7 +15,7 @@ handlebars.registerPartial('work-card', require('../templates/work-card.partial.
 
 window.PRTNRS = {
 
-  autoScroll: null,
+  modalTimer: null,
 
   data: {
     projects: require('../data/projects.json')
@@ -50,6 +50,7 @@ window.PRTNRS = {
   }, // moveSlide
 
   closeModal: function(e) {
+    clearInterval(PRTNRS.modalTimer);
     if(e) {
       e.preventDefault();
     }
@@ -69,6 +70,10 @@ window.PRTNRS = {
     setTimeout(function() {
       $modal.addClass('in').siblings('.modal').remove();
     }, 250);
+
+    PRTNRS.modalTimer = setInterval(function() {
+      $modal.find('.modal-close').hide().show();
+    }, 500);
     return false;
   }, // toggleModal
 
@@ -132,14 +137,6 @@ window.PRTNRS = {
     this.loadWork();
 
     $body
-      .on('scroll', '.modal, .modal-content', function() {
-        console.log('hi');
-        $('.modal-close').css('position', 'static');
-        setTimeout(function() {
-          $('.modal-close').css('position', 'fixed');
-        }, 100);
-      })
-
       .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
       .on('click focus', '[data-toggle="slide"]', this.toggleSlide)
       .on('click', '[data-toggle="modal"]', this.toggleModal)
