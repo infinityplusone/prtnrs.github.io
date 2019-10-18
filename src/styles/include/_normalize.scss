@@ -175,6 +175,9 @@ html {
   font-family: $serif-font;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+
   input[type="button"] {
     -webkit-appearance: button;
     cursor: pointer;
