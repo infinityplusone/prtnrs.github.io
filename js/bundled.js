@@ -29536,7 +29536,7 @@ window.PRTNRS = {
     var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')});
     var $modal = $(PRTNRS.templates['work-modal'](project));
     $body.append($modal).addClass('show-modal');
-    $modal.find('a').first().focus();
+    $modal.find('a').first().prev().focus();
     setTimeout(function() {
       $modal.addClass('in').siblings('.modal').remove();
     }, 250);
@@ -29603,18 +29603,19 @@ window.PRTNRS = {
     this.loadWork();
 
     $body
-      .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
-      .on('click focus', '[data-toggle="slide"]', this.toggleSlide)
-      .on('click', '[data-toggle="modal"]', this.toggleModal)
-      .on('click', '[data-close="modal"]', this.closeModal);
-
-    $window
-      .on('scroll', function() {
+      .on('scroll', '.modal, .modal-content', function() {
+        console.log('hi');
         $('.modal-close').css('position', 'static');
         setTimeout(function() {
           $('.modal-close').css('position', 'fixed');
         }, 100);
       })
+
+      .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
+      .on('click focus', '[data-toggle="slide"]', this.toggleSlide)
+      .on('click', '[data-toggle="modal"]', this.toggleModal)
+      .on('click', '[data-close="modal"]', this.closeModal);
+    $window
       .on('resize', this.onResize)
       .on('keydown', this.onKeyDown);
 

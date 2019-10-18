@@ -31,10 +31,12 @@
     position: relative;
     z-index: 1002;
     margin: 0 auto;
-    height: 100vh;
-    overflow: auto;
+    min-height: 100vh;
+    height: 100%;
     max-width: 940px;
     padding: 5vw;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 
   .modal-close {
