@@ -15,6 +15,7 @@ handlebars.registerPartial('work-card', require('../templates/work-card.partial.
 
 window.PRTNRS = {
   modalTimer: null,
+  scrollTimer: null,
 
   data: {
     projects: require('../data/projects.json')
@@ -60,29 +61,38 @@ window.PRTNRS = {
     }
     if(PRTNRS.elems.$modal) {
       PRTNRS.elems.$modal.removeClass('in');
-      PRTNRS.elems.$modal = false;
       $body.removeClass('show-modal');
       $body.find('.work-slide-overlay').blur();
+      PRTNRS.elems.$modal.data('$elem').focus();
+      setTimeout(function() {
+        $('.modal').remove();
+        // PRTNRS.elems.$modal.remove();
+        PRTNRS.elems.$modal = false;
+      }, 250);
     }
     document.getElementById('our-work').scrollIntoView();
     return false;
   }, // closeModal
 
   toggleModal: function(e) {
-    clearTimeout(PRTNRS.autoScroll);
     e.preventDefault();
-    var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')});
-    var $modal = $(PRTNRS.templates['work-modal'](project));
-    $body.append($modal);
+    var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')}),
+        $modal = $(PRTNRS.templates['work-modal'](project)),
+        $elem = $(this);
+
+    $elem.after($modal);
+    $modal.data('$elem', $elem);
     $modal.on('scroll', function() {
+      clearTimeout(PRTNRS.scrollTimer);
       var $thisModal = $(this),
           $close = $thisModal.find('.modal-close');
       $close.css('opacity', 0);
-      setTimeout(function() {
+      PRTNRS.scrollTimer = setTimeout(function() {
+        clearTimeout(PRTNRS.scrollTimer);
         $close.css('opacity', '').css('top', $thisModal.scrollTop());
-      }, 10);
+      }, 250);
     });
-    $modal.find('a').first().prev().focus();
+    // $modal.find('a').first().prev().focus();
     setTimeout(function() {
       $modal.addClass('in').siblings('.modal').remove();
       $body.addClass('show-modal');
@@ -115,6 +125,9 @@ window.PRTNRS = {
     var $slides = $('.work-carousel').find('.work-slides');
     if(window.innerWidth<668) {
       $slides.css('margin-left', '-' + ($slides.find('.active').data('index') * window.innerWidth) + 'px');
+    }
+    else {
+      $slides.css('margin-left', '');
     }
   }, // onResize
 
@@ -156,6 +169,7 @@ window.PRTNRS = {
       .on('click focus', '[data-toggle="slide"]', this.toggleSlide)
       .on('click', '[data-toggle="modal"]', this.toggleModal)
       .on('click', '[data-close="modal"]', this.closeModal);
+
     $window
       .on('resize', this.onResize)
       .on('keydown', this.onKeyDown);

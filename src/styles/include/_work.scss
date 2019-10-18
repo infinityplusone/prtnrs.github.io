@@ -155,15 +155,27 @@ $slide-width-large: 100vw;
     z-index: 3;
     cursor: pointer;
 
-    .button {
-
-    }
-
     &:focus {
       opacity: 1.0;
       box-shadow: 0 0 5px inset $orange;
+
+      // + .work-slide-cover {
+      //   * {
+      //     position: relative;
+      //     z-index: 4;
+      //     color: $slate-gray;
+      //   }
+      // }
+
     }
   } // .work-slide-overlay
+
+  &.active {
+    .work-slide-overlay {
+      // opacity: 0.3;
+      box-shadow: 0 0 5px inset $orange;
+    }
+  }
 
   @media (min-width: $medium) {
     width: 100%;

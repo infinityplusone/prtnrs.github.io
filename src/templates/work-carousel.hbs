@@ -1,7 +1,7 @@
 <div class="work-carousel">
   <div class="work-carousel--buttons">
     {{#each projects}}
-      <div href="#slide-{{hyphenize project}}" class="carousel-button{{#if @first}} active{{/if}}" data-toggle="slide" data-index="{{@index}}"></div>
+      <div href="#slide-{{hyphenize project}}" class="carousel-button{{#if @first}} active{{/if}}" data-toggle="slide" data-index="{{@index}}" tabindex="-1"></div>
     {{/each}}
   </div>
   <div class="work-slides">

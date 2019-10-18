@@ -29486,6 +29486,7 @@ handlebars.registerPartial('work-card', require('../templates/work-card.partial.
 
 window.PRTNRS = {
   modalTimer: null,
+  scrollTimer: null,
 
   data: {
     projects: require('../data/projects.json')
@@ -29531,29 +29532,38 @@ window.PRTNRS = {
     }
     if(PRTNRS.elems.$modal) {
       PRTNRS.elems.$modal.removeClass('in');
-      PRTNRS.elems.$modal = false;
       $body.removeClass('show-modal');
       $body.find('.work-slide-overlay').blur();
+      PRTNRS.elems.$modal.data('$elem').focus();
+      setTimeout(function() {
+        $('.modal').remove();
+        // PRTNRS.elems.$modal.remove();
+        PRTNRS.elems.$modal = false;
+      }, 250);
     }
     document.getElementById('our-work').scrollIntoView();
     return false;
   }, // closeModal
 
   toggleModal: function(e) {
-    clearTimeout(PRTNRS.autoScroll);
     e.preventDefault();
-    var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')});
-    var $modal = $(PRTNRS.templates['work-modal'](project));
-    $body.append($modal);
+    var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')}),
+        $modal = $(PRTNRS.templates['work-modal'](project)),
+        $elem = $(this);
+
+    $elem.after($modal);
+    $modal.data('$elem', $elem);
     $modal.on('scroll', function() {
+      clearTimeout(PRTNRS.scrollTimer);
       var $thisModal = $(this),
           $close = $thisModal.find('.modal-close');
       $close.css('opacity', 0);
-      setTimeout(function() {
+      PRTNRS.scrollTimer = setTimeout(function() {
+        clearTimeout(PRTNRS.scrollTimer);
         $close.css('opacity', '').css('top', $thisModal.scrollTop());
-      }, 10);
+      }, 250);
     });
-    $modal.find('a').first().prev().focus();
+    // $modal.find('a').first().prev().focus();
     setTimeout(function() {
       $modal.addClass('in').siblings('.modal').remove();
       $body.addClass('show-modal');
@@ -29586,6 +29596,9 @@ window.PRTNRS = {
     var $slides = $('.work-carousel').find('.work-slides');
     if(window.innerWidth<668) {
       $slides.css('margin-left', '-' + ($slides.find('.active').data('index') * window.innerWidth) + 'px');
+    }
+    else {
+      $slides.css('margin-left', '');
     }
   }, // onResize
 
@@ -29627,6 +29640,7 @@ window.PRTNRS = {
       .on('click focus', '[data-toggle="slide"]', this.toggleSlide)
       .on('click', '[data-toggle="modal"]', this.toggleModal)
       .on('click', '[data-close="modal"]', this.closeModal);
+
     $window
       .on('resize', this.onResize)
       .on('keydown', this.onKeyDown);
@@ -29677,17 +29691,21 @@ module.exports = HandlebarsCompiler.template({"compiler":[8,">= 4.3.0"],"main":f
     + alias5(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"id","hash":{},"data":data}) : helper)))
     + ".jpg\" alt=\""
     + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
-    + "\" class=\"work-slide--image\" />\n  <div class=\"work-slide-cover\">\n    <div class=\"work-slide--partner\">"
-    + ((stack1 = ((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</div>\n    <div class=\"work-slide--project\">"
-    + ((stack1 = ((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</div>\n  </div>\n  <a href=\"#modal-"
+    + "\" class=\"work-slide--image\" />\n  <a href=\"#modal-"
     + alias5((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
     + "\" class=\"work-slide-overlay\" data-partner=\""
     + alias5(((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper)))
     + "\" data-project=\""
     + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
-    + "\" data-toggle=\"modal\" tabindex=\"0\">\n    <div class=\"button button-primary button-black\">\n      Project Details\n    </div>\n  </a>\n</div>";
+    + "\" data-toggle=\"modal\" title=\""
+    + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
+    + " with "
+    + alias5(((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper)))
+    + "\" tabindex=\"0\">\n    <div class=\"button button-primary button-black\">\n      Project Details\n    </div>\n  </a>\n  <div class=\"work-slide-cover\">\n    <div class=\"work-slide--partner\">"
+    + ((stack1 = ((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</div>\n    <div class=\"work-slide--project\">"
+    + ((stack1 = ((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</div>\n  </div>\n</div>";
 },"useData":true});
 
 },{"hbsfy/runtime":19}],29:[function(require,module,exports){
@@ -29702,7 +29720,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
     + ((stack1 = helpers["if"].call(alias2,(data && data.first),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\" data-toggle=\"slide\" data-index=\""
     + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias3),(typeof helper === "function" ? helper.call(alias2,{"name":"index","hash":{},"data":data}) : helper)))
-    + "\"></div>\n";
+    + "\" tabindex=\"-1\"></div>\n";
 },"2":function(container,depth0,helpers,partials,data) {
     return " active";
 },"4":function(container,depth0,helpers,partials,data) {
@@ -29753,7 +29771,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
     + ((stack1 = helpers.each.call(alias2,(helpers.reformat||(depth0 && depth0.reformat)||alias3).call(alias2,(depth0 != null ? depth0.outcome : depth0),{"name":"reformat","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "          </div>\n          <div class=\"work--tools\">\n"
     + ((stack1 = helpers.each.call(alias2,(helpers.reformat||(depth0 && depth0.reformat)||alias3).call(alias2,(depth0 != null ? depth0.tools : depth0),{"name":"reformat","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "          </div>\n        </div>\n      </div>\n    </div>\n      <div class=\"modal-close\">\n        <a href=\"#\" data-close=\"modal\" tabindex=\"100\"></a>\n      </div>\n  </div>";
+    + "          </div>\n        </div>\n      </div>\n    </div>\n      <div class=\"modal-close\">\n        <a href=\"#\" data-close=\"modal\" tabindex=\"0\"></a>\n      </div>\n  </div>";
 },"usePartial":true,"useData":true});
 
 },{"hbsfy/runtime":19}],31:[function(require,module,exports){
