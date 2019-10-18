@@ -138,6 +138,12 @@ window.PRTNRS = {
       .on('click', '[data-close="modal"]', this.closeModal);
 
     $window
+      .on('scroll', function() {
+        $('.modal-close').css('position', 'static');
+        setTimeout(function() {
+          $('.modal-close').css('position', 'fixed');
+        }, 100);
+      })
       .on('resize', this.onResize)
       .on('keydown', this.onKeyDown);
 
