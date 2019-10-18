@@ -29485,14 +29485,15 @@ handlebars.registerPartial('work-slide', require('../templates/work-slide.partia
 handlebars.registerPartial('work-card', require('../templates/work-card.partial.hbs'));
 
 window.PRTNRS = {
-
   modalTimer: null,
 
   data: {
     projects: require('../data/projects.json')
   },
 
-  elems: {},
+  elems: {
+    $modal: false,
+  },
   templates: {
     'work-carousel': require('../templates/work-carousel.hbs'),
     'work-modal': require('../templates/work-modal.hbs'),
@@ -29500,7 +29501,7 @@ window.PRTNRS = {
 
   loadWork: function() {
     var partnerData = _.sortBy(_.filter(PRTNRS.data.projects, 'spotlight'), ['spotlight']);
-    var $ourWork = $('#our-work');
+    var $ourWork = $('#work-carousel');
     $ourWork.html(PRTNRS.templates['work-carousel']({projects: partnerData}));
 
     PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
@@ -29510,13 +29511,16 @@ window.PRTNRS = {
       swipeRight: PRTNRS.onKeyDown
     });
 
-    PRTNRS.moveSlide(PRTNRS.elems.$buttons.first());
+    PRTNRS.moveSlide(PRTNRS.elems.$buttons.first(), true);
   }, // loadWork
 
-  moveSlide: function($next) {
-    if($next) {
+  moveSlide: function($next, first) {
+    if($next && !PRTNRS.elems.$modal) {
       $next.trigger('click').find('a').focus();
       $body.removeClass('show-modal');
+    }
+    if(!first) {
+      $('html').animate({scrollTop: $('#our-work').offset().top + 'px'});
     }
   }, // moveSlide
 
@@ -29525,9 +29529,13 @@ window.PRTNRS = {
     if(e) {
       e.preventDefault();
     }
-    $('.modal').removeClass('in');
-    $body.find('.work-slide.active a').focus();
-    $body.removeClass('show-modal');
+    if(PRTNRS.elems.$modal) {
+      PRTNRS.elems.$modal.removeClass('in');
+      PRTNRS.elems.$modal = false;
+      $body.removeClass('show-modal');
+      $body.find('.work-slide-overlay').blur();
+    }
+    document.getElementById('our-work').scrollIntoView();
     return false;
   }, // closeModal
 
@@ -29536,7 +29544,7 @@ window.PRTNRS = {
     e.preventDefault();
     var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')});
     var $modal = $(PRTNRS.templates['work-modal'](project));
-    $body.append($modal).addClass('show-modal');
+    $body.append($modal);
     $modal.on('scroll', function() {
       var $thisModal = $(this),
           $close = $thisModal.find('.modal-close');
@@ -29548,6 +29556,8 @@ window.PRTNRS = {
     $modal.find('a').first().prev().focus();
     setTimeout(function() {
       $modal.addClass('in').siblings('.modal').remove();
+      $body.addClass('show-modal');
+      PRTNRS.elems.$modal = $modal;
     }, 250);
 
     return false;

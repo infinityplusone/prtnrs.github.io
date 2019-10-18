@@ -107,7 +107,8 @@ a {
   position: relative;
   z-index: 1;
   padding-bottom: 30px;
-  margin: 100px auto 10px;
+  padding-top: 20px;
+  margin: 80px auto 10px;
 
   &:after {
     content: " ";
@@ -125,7 +126,7 @@ a {
   @media (min-width: $wide) {
     padding-bottom: 60px;
     max-width: 940px;
-    margin-top: 150px;
+    margin-top: 130px;
 
     &:after {
       height: 120px;
