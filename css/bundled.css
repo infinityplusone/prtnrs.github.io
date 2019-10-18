@@ -820,6 +820,8 @@ h4 {
 a {
   color: #0071bb;
   text-decoration: underline; }
+  a:focus {
+    outline-color: #e59700; }
 
 .section {
   color: #333;
@@ -1086,84 +1088,100 @@ a {
   .footer-buttons {
     float: none; } }
 .modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: fixed;
-  z-index: 1000;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   padding: 0;
   font-size: 16px;
+  background: #fff;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
   transform: scale(0, 0);
   transition: transform 0.25s ease-in-out; }
   .modal .modal-content {
     display: block;
     position: relative;
     z-index: 1002;
-    background: #fff;
+    margin: 0 auto;
     height: 100vh;
-    width: 100vw;
-    overflow-y: auto; }
+    overflow: auto;
+    max-width: 940px;
+    padding: 5vw; }
     .modal .modal-content:after {
-      position: absolute;
+      position: fixed;
       content: " ";
       bottom: 0;
       left: 0;
       right: 0;
       background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, #fff 50%, #fff 100%);
-      height: 60px; }
-    .modal .modal-content .wrapper {
-      position: relative;
-      max-width: 940px; }
-  .modal .modal-header {
-    height: 120px;
+      height: 5vh; }
+  .modal .modal-close {
     position: fixed;
+    width: 100%;
+    max-width: 940px;
+    height: 0;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1;
-    padding: 15px calc(15px * 2) 15px 15px;
-    background: #f1f1f1;
-    box-shadow: 0 0px 1px rgba(50, 58, 68, 0.2); }
-    .modal .modal-header .wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-between;
-      height: 100%; }
-    .modal .modal-header .modal-close {
+    margin: 0 auto;
+    z-index: 1004; }
+    .modal .modal-close a {
       display: block;
       position: absolute;
-      line-height: 30px;
-      width: 30px;
-      margin: 12px 5px 0;
+      margin: 0;
       padding: 0;
-      text-decoration: none;
       top: 0;
       right: 0;
-      font-size: 30px;
-      font-weight: 400;
-      text-align: center;
-      color: #0071bb;
-      opacity: 0.25;
-      transition: all 0.25s; }
-      .modal .modal-header .modal-close:hover {
-        color: #0071bb;
-        opacity: 0.75;
-        font-weight: 800; }
+      font-size: 0;
+      line-height: 0;
+      width: 10vw;
+      height: 10vw;
+      max-width: 10vh;
+      max-height: 10vh;
+      z-index: 1005;
+      border: 5px solid transparent;
+      box-shadow: -2px 2px 5px rgba(255, 255, 255, 0.25);
+      background: #323a44;
+      transition: all 0.25s;
+      text-decoration: none; }
+      .modal .modal-close a:before, .modal .modal-close a:after {
+        content: " ";
+        position: absolute;
+        top: 45%;
+        height: 2px;
+        width: 7.5vw;
+        max-width: 7.5vh;
+        left: 0;
+        background: #fff; }
+      .modal .modal-close a:before {
+        transform: rotate(-45deg); }
+      .modal .modal-close a:after {
+        transform: rotate(45deg); }
+      .modal .modal-close a:hover, .modal .modal-close a:focus {
+        background: #0097A7; }
+    @media (min-width: 960px) {
+      .modal .modal-close a {
+        width: 60px;
+        height: 60px;
+        border: 10px solid transparent; }
+        .modal .modal-close a:before, .modal .modal-close a:after {
+          top: 17.5px;
+          width: 40px; } }
+  .modal .modal-header {
+    padding: 0 10px 0 0; }
   .modal .modal-body {
-    position: relative;
-    margin: 0 0 0 15px;
-    padding: 15px calc(15px * 2) 30px 0;
-    top: 120px; }
+    position: relative; }
+    .modal .modal-body .modal-body-text {
+      padding: 0 10px 60px 0; }
     .modal .modal-body p, .modal .modal-body li {
       font-size: 1em;
       font-family: ff-tisa-web-pro, sans-serif;
       line-height: 1.5;
-      font-weight: 400; }
+      font-weight: 400;
+      max-width: none; }
     .modal .modal-body p {
       margin: 0 0 1em; }
     .modal .modal-body li {
@@ -1171,14 +1189,10 @@ a {
   @media (min-width: 960px) {
     .modal {
       font-size: 20px; }
-      .modal .modal-header {
-        height: 150px;
-        padding: 15px 60px; }
-        .modal .modal-header .modal-close {
-          margin-right: 30px; }
-      .modal .modal-body {
-        top: 150px;
-        margin: 0 10px 0 60px; } }
+      .modal .modal-content {
+        padding: 45px 0 0; }
+      .modal .modal-header, .modal .modal-body-text {
+        padding-right: 50px; } }
   .modal.in {
     transform: scale(1, 1); }
 
@@ -1203,23 +1217,23 @@ body.show-modal {
   position: relative;
   overflow: hidden;
   width: 100%;
+  margin-top: -40px;
+  padding-top: 40px;
   z-index: 2; }
   .work-carousel .work-carousel--buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     position: absolute;
     left: 0;
     right: 0;
-    top: calc(100vw - 30px);
-    margin: 0 0 0 15px;
-    width: calc(100vw - 30px);
+    top: 5px;
     z-index: 3; }
   .work-carousel .carousel-button {
     display: block;
-    width: 1em;
-    height: 1em;
-    margin: 0;
+    width: 10px;
+    height: 10px;
+    margin: 0 10px 0 0;
     border-radius: 50%;
     background: #d6d7d9;
     text-decoration: none;
@@ -1237,7 +1251,7 @@ body.show-modal {
   @media (min-width: 667px) {
     .work-carousel {
       padding: 0 20px 30px;
-      overflow: hidden; }
+      margin-top: 0; }
       .work-carousel .work-slides {
         display: grid;
         grid-template-columns: repeat(3, calc((94vw - 40px) / 3));
@@ -1251,7 +1265,8 @@ body.show-modal {
   @media (min-width: 960px) {
     .work-carousel {
       margin: 30px 0;
-      padding: 0; }
+      padding: 0;
+      overflow: visible; }
       .work-carousel .work-slides {
         grid-template-columns: repeat(3, calc(100% / 3));
         grid-gap: 0; } }
@@ -1279,7 +1294,7 @@ body.show-modal {
     position: absolute;
     width: 100vw;
     height: 100vw;
-    padding: 15px 10px 45px 15px;
+    padding: 15px 10px 15px 15px;
     z-index: 2; }
   .work-slide .work-slide--partner {
     position: relative;
@@ -1312,6 +1327,9 @@ body.show-modal {
     opacity: 0;
     z-index: 3;
     cursor: pointer; }
+    .work-slide .work-slide-overlay:focus {
+      opacity: 1.0;
+      box-shadow: 0 0 5px inset #e59700; }
   @media (min-width: 667px) {
     .work-slide {
       width: 100%;
@@ -1330,8 +1348,10 @@ body.show-modal {
           max-height: 60px; }
       .work-slide .work-slide-overlay {
         transition: opacity 0.25s ease-in-out 0.1s; }
-        .work-slide .work-slide-overlay:hover {
+        .work-slide .work-slide-overlay:hover, .work-slide .work-slide-overlay:focus {
           opacity: 1.0; }
+        .work-slide .work-slide-overlay:focus {
+          box-shadow: none; }
         .work-slide .work-slide-overlay .button {
           margin: 0;
           letter-spacing: 0.01em; }
@@ -1347,14 +1367,17 @@ body.show-modal {
         max-height: 52px;
         height: 52px; } }
 
+.modal--work .work--image {
+  margin: 1em 0;
+  width: 100%; }
 .modal--work .work--partner, .modal--work .work--project {
+  max-width: 100%;
   margin: 0;
-  line-height: 1.5; }
+  line-height: 1.25; }
 .modal--work .work--partner {
-  font-size: 1.1em;
-  padding-right: 10px; }
+  font-size: 1.1em; }
 .modal--work .work--project {
-  font-size: 1.25em;
+  font-size: 2em;
   letter-spacing: -0.01em; }
 .modal--work .work--tags {
   display: none;
@@ -1362,23 +1385,21 @@ body.show-modal {
   .modal--work .work--tags .work-tag {
     display: inline-block;
     border-radius: 100px;
-    padding: 0 20px;
+    padding: 4px 20px;
     color: #fff;
     background: #68798d;
     font-size: 14px;
     font-weight: normal;
     font-family: akagi-pro, sans-serif;
-    line-height: 25px;
-    cursor: pointer;
+    line-height: 1;
     transition: all 0.25s; }
-    .modal--work .work--tags .work-tag:hover {
-      background: #485361; }
-.modal--work .work-detail {
-  margin-bottom: 60px; }
 @media (min-width: 667px) {
+  .modal--work .work--image {
+    width: 100%;
+    height: 480px; }
   .modal--work .work--project {
     letter-spacing: normal; }
   .modal--work .work--tags {
-    display: none; } }
+    display: block; } }
 
 /*# sourceMappingURL=bundled.css.map */

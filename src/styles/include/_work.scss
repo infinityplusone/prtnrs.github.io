@@ -15,71 +15,35 @@ $slide-width-large: 100vw;
   position: relative;
   overflow: hidden;
   width: 100%;
+  margin-top: -40px;
+  padding-top: 40px;
   z-index: 2;
 
   .work-carousel--buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    // height: 30px;
     position: absolute;
     left: 0;
     right: 0;
-    top: calc(100vw - 30px);
-    // margin: 0 auto;
-    margin: 0 0 0 15px;
-    width: calc(100vw - 30px);
+    top: 5px;
+    // top: calc(100vw - 30px);
+    // margin: 0 0 0 15px;
+    // width: calc(100vw - 30px);
     z-index: 3;
-
   }
-
-  // .button--pause {
-  //   position: absolute;
-  //   bottom: 70px;
-  //   background: transparent;
-  //   z-index: 5;
-  //   padding: 0;
-  //   height: 50px;
-  //   width: 50px;
-  //   outline: none;
-  //   right: 10px;
-  //   display: none;
-
-  //   * {
-  //     fill: $white;
-  //   }
-
-  //   .fa-pause-circle {
-
-  //   }
-
-  //   .fa-play-circle {
-  //     display: none;
-  //   }
-    
-  //   &.paused {
-  //     .fa-pause-circle {
-  //        display: none;
-  //     }
-
-  //     .fa-play-circle {
-  //       display: block;
-  //     }
-  //   }
-  // }
 
   .carousel-button {
     display: block;
-    width: 1em;
-    height: 1em;
-    margin: 0;
+    width: 10px;
+    height: 10px;
+    margin: 0 10px 0 0;
     border-radius: 50%;
     background: $light-gray;
     text-decoration: none;
     transition: background 0.15s ease-in-out;
 
     &.active {
-      // background: $gray;
       background: $light-blue;
       box-shadow: 0 0 5px fade-out($white,0.5) inset, 0 0 2px fade-out($white, 0.25);
     }
@@ -94,10 +58,9 @@ $slide-width-large: 100vw;
     transition: margin-left 1s ease-in-out 0.1s;
   } // .work-slides
 
-
   @media (min-width: $medium) {
     padding: 0 20px 30px;
-    overflow: hidden;
+    margin-top: 0;
 
     .work-slides {
       display: grid;
@@ -117,6 +80,7 @@ $slide-width-large: 100vw;
   @media (min-width: $wide) {
     margin: 30px 0;
     padding: 0;
+    overflow: visible;
 
     .work-slides {
       grid-template-columns: repeat(3, calc(100% / 3));
@@ -153,7 +117,8 @@ $slide-width-large: 100vw;
     position: absolute;
     width: $slide-width-large;
     height: $slide-width-large;
-    padding: 15px 10px 45px 15px;
+    // padding: 15px 10px 45px 15px;
+    padding: 15px 10px 15px 15px;
     z-index: 2;
   }
 
@@ -193,6 +158,10 @@ $slide-width-large: 100vw;
     z-index: 3;
     cursor: pointer;
 
+    &:focus {
+      opacity: 1.0;
+      box-shadow: 0 0 5px inset $orange;
+    }
   } // .work-slide-overlay
 
   @media (min-width: $medium) {
@@ -220,8 +189,12 @@ $slide-width-large: 100vw;
     .work-slide-overlay {
       transition: opacity 0.25s ease-in-out 0.1s;
 
-      &:hover {
+      &:hover, &:focus {
         opacity: 1.0;
+      }
+
+      &:focus {
+        box-shadow: none;
       }
 
       .button {
@@ -256,18 +229,23 @@ $slide-width-large: 100vw;
 
 .modal--work {
 
+  .work--image {
+    margin: 1em 0;
+    width: 100%;
+  }
+
   .work--partner, .work--project {
+    max-width: 100%;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.25;
   }
 
   .work--partner {
     font-size: 1.1em;
-    padding-right: 10px;
   }
 
   .work--project {
-    font-size: 1.25em;
+    font-size: 2em;
     letter-spacing: -0.01em;
   }
 
@@ -278,34 +256,37 @@ $slide-width-large: 100vw;
     .work-tag {
       display: inline-block;
       border-radius: 100px;
-      padding: 0 20px;
+      padding: 4px 20px;
       color: $white;
       background: lighten($slate-gray, 25%);
       font-size: 14px;
       font-weight: normal;
       font-family: $font;
-      line-height: 25px;
-      cursor: pointer;
+      line-height: 1;
+      // cursor: pointer;
       transition: all 0.25s;
 
-      &:hover {
-        background: lighten($slate-gray, 10%);
-      }
+      // &:hover {
+      //   background: lighten($slate-gray, 10%);
+      // }
     }
-  }
-
-  .work-detail {
-    margin-bottom: 60px;
-  }
+  } // .work--tags
 
   @media (min-width: $medium) {
+
+    .work--image {
+      width: 100%;
+      height: 480px;
+    }
 
     .work--project {
       letter-spacing: normal;
     }
 
     .work--tags {
-      display: none;
+      display: block;
     }
+
+
   }
 } // .modal-work

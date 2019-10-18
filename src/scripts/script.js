@@ -43,16 +43,9 @@ window.PRTNRS = {
   }, // loadWork
 
   moveSlide: function($next) {
-    var $modal = $('.modal.in');
-
     if($next) {
-      $next.trigger('click');
-      if($modal.length) {
-        $('.work-slide.active').trigger('click');
-      }
-      else {
-        $body.removeClass('show-modal');
-      }
+      $next.trigger('click').find('a').focus();
+      $body.removeClass('show-modal');
     }
   }, // moveSlide
 
@@ -61,6 +54,7 @@ window.PRTNRS = {
       e.preventDefault();
     }
     $('.modal').removeClass('in');
+    $body.find('.work-slide.active a').focus();
     $body.removeClass('show-modal');
     return false;
   }, // closeModal
@@ -71,6 +65,7 @@ window.PRTNRS = {
     var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')});
     var $modal = $(PRTNRS.templates['work-modal'](project));
     $body.append($modal).addClass('show-modal');
+    $modal.find('a').first().focus();
     setTimeout(function() {
       $modal.addClass('in').siblings('.modal').remove();
     }, 250);
@@ -89,7 +84,7 @@ window.PRTNRS = {
     $this.addClass('active').siblings().removeClass('active');
 
     $slides.css('margin-left', '-' + ($this.data('index') * window.innerWidth) + 'px');
-    $($this.attr('href')).addClass('active').siblings().removeClass('active');
+    $($this.attr('href')).addClass('active').focus().siblings().removeClass('active');
 
     PRTNRS.closeModal();
     return false;
@@ -138,7 +133,7 @@ window.PRTNRS = {
 
     $body
       .on('click', '[data-toggle="slide"][data-key]', this.onKeyDown)
-      .on('click', '[data-toggle="slide"]', this.toggleSlide)
+      .on('click focus', '[data-toggle="slide"]', this.toggleSlide)
       .on('click', '[data-toggle="modal"]', this.toggleModal)
       .on('click', '[data-close="modal"]', this.closeModal);
 
