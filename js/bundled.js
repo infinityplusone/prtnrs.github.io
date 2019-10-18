@@ -29542,9 +29542,6 @@ window.PRTNRS = {
       $modal.addClass('in').siblings('.modal').remove();
     }, 250);
 
-    PRTNRS.modalTimer = setInterval(function() {
-      $modal.find('.modal-close').hide().show();
-    }, 500);
     return false;
   }, // toggleModal
 
@@ -29738,7 +29735,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
     + ((stack1 = helpers.each.call(alias2,(helpers.reformat||(depth0 && depth0.reformat)||alias3).call(alias2,(depth0 != null ? depth0.outcome : depth0),{"name":"reformat","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "          </div>\n          <div class=\"work--tools\">\n"
     + ((stack1 = helpers.each.call(alias2,(helpers.reformat||(depth0 && depth0.reformat)||alias3).call(alias2,(depth0 != null ? depth0.tools : depth0),{"name":"reformat","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "          </div>\n        </div>\n      </div>\n      <div class=\"modal-close\">\n        <a href=\"#\" data-close=\"modal\"></a>\n      </div>\n    </div>\n  </div>";
+    + "          </div>\n        </div>\n      </div>\n      <div class=\"modal-close\">\n        <a href=\"#\" data-close=\"modal\" tabindex=\"100\"></a>\n      </div>\n    </div>\n  </div>";
 },"usePartial":true,"useData":true});
 
 },{"hbsfy/runtime":19}],31:[function(require,module,exports){

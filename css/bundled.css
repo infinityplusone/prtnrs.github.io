@@ -183,7 +183,6 @@ html {
 
 body {
   margin: 0;
-  min-height: 100%;
   background-color: #fff;
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -1100,7 +1099,9 @@ a {
   background: #fff;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
   z-index: 1000;
+  -webkit-overflow-scrolling: touch;
   transform: scale(0, 0);
   transition: transform 0.25s ease-in-out; }
   .modal:after {
@@ -1117,12 +1118,8 @@ a {
     position: relative;
     z-index: 1002;
     margin: 0 auto;
-    min-height: 100vh;
-    height: 100%;
     max-width: 940px;
-    padding: 5vw;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch; }
+    padding: 5vw; }
   .modal .modal-close {
     position: fixed;
     width: 100%;
@@ -1199,7 +1196,12 @@ a {
       .modal .modal-header, .modal .modal-body-text {
         padding-right: 50px; } }
   .modal.in {
-    transform: scale(1, 1); }
+    transform: scale(1, 1);
+    overflow-x: hidden;
+    overflow-y: scroll; }
+
+.show-modal {
+  overflow: hidden; }
 
 .work-container {
   padding: 0;

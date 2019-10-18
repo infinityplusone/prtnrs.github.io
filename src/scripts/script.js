@@ -71,9 +71,6 @@ window.PRTNRS = {
       $modal.addClass('in').siblings('.modal').remove();
     }, 250);
 
-    PRTNRS.modalTimer = setInterval(function() {
-      $modal.find('.modal-close').hide().show();
-    }, 500);
     return false;
   }, // toggleModal
 
