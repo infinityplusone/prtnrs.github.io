@@ -34,8 +34,6 @@
     position: relative;
     z-index: 1002;
     margin: 0 auto;
-    // min-height: 100vh;
-    // height: 100%;
     max-width: 940px;
     padding: 5vw;
   }
@@ -49,6 +47,7 @@
     left: 0;
     right: 0;
     margin: 0 auto;
+    transition: top 0.25s;
     z-index: 1004;
 
     a {
@@ -157,5 +156,6 @@
 } // .modal
 
 .show-modal {
+  height: 100vh;
   overflow: hidden;
 }

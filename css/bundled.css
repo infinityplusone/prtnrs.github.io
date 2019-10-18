@@ -1129,6 +1129,7 @@ a {
     left: 0;
     right: 0;
     margin: 0 auto;
+    transition: top 0.25s;
     z-index: 1004; }
     .modal .modal-close a {
       display: block;
@@ -1201,6 +1202,7 @@ a {
     overflow-y: scroll; }
 
 .show-modal {
+  height: 100vh;
   overflow: hidden; }
 
 .work-container {

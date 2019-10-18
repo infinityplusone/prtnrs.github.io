@@ -29537,6 +29537,12 @@ window.PRTNRS = {
     var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')});
     var $modal = $(PRTNRS.templates['work-modal'](project));
     $body.append($modal).addClass('show-modal');
+    $modal.on('scroll', function() {
+      var $thisModal = $(this);
+      setTimeout(function() {
+        $thisModal.find('.modal-close').css('top', $thisModal.scrollTop());
+      }, 300);
+    });
     $modal.find('a').first().prev().focus();
     setTimeout(function() {
       $modal.addClass('in').siblings('.modal').remove();
