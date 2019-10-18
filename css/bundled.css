@@ -920,7 +920,9 @@ a {
   padding: 12px 25px 10px;
   border-radius: 100px;
   letter-spacing: 1px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px; }
 
 .button-primary.button-black {
   margin-top: 10px;
@@ -1137,7 +1139,6 @@ a {
       max-height: 10vh;
       z-index: 1005;
       border: 5px solid transparent;
-      box-shadow: -2px 2px 5px rgba(255, 255, 255, 0.25);
       background: #323a44;
       transition: all 0.25s;
       text-decoration: none; }
@@ -1186,7 +1187,8 @@ a {
       .modal .modal-content {
         padding: 45px 0 0; }
       .modal .modal-header, .modal .modal-body-text {
-        padding-right: 50px; } }
+        padding-right: 0;
+        max-width: 720px; } }
   .modal.in {
     transform: scale(1, 1);
     overflow-x: hidden;
@@ -1349,10 +1351,7 @@ a {
         .work-slide .work-slide-overlay:focus {
           box-shadow: none; }
         .work-slide .work-slide-overlay .button {
-          margin: 0;
-          letter-spacing: 0.01em; }
-          .work-slide .work-slide-overlay .button:hover {
-            box-shadow: 2px 0 8px 0 rgba(49, 57, 67, 0.5); } }
+          margin: 0; } }
   @media (min-width: 960px) {
     .work-slide {
       width: 280px;
@@ -1389,10 +1388,10 @@ a {
     font-family: akagi-pro, sans-serif;
     line-height: 1;
     transition: all 0.25s; }
-@media (min-width: 667px) {
+@media (min-width: 960px) {
   .modal--work .work--image {
-    width: 100%;
-    height: 480px; }
+    width: 800px;
+    height: 400px; }
   .modal--work .work--project {
     letter-spacing: normal; }
   .modal--work .work--tags {

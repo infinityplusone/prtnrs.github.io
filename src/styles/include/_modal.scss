@@ -14,7 +14,6 @@
   overflow: hidden;
   z-index: 1000;
   -webkit-overflow-scrolling: touch;
-
   transform: scale(0, 0);
   transition: transform 0.25s ease-in-out;
 
@@ -54,7 +53,6 @@
       max-height: 10vh;
       z-index: 1005;
       border: 5px solid transparent;
-      box-shadow: -2px 2px 5px fade-out($white, 0.75);
       background: $slate-gray;
       transition: all 0.25s;
       text-decoration: none;
@@ -132,7 +130,8 @@
       padding: 45px 0 0;
     }
     .modal-header, .modal-body-text {
-      padding-right: 50px;
+      padding-right: 0;
+      max-width: 720px;
     }
   }
 
