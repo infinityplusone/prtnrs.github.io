@@ -67,9 +67,11 @@ window.PRTNRS = {
     var $modal = $(PRTNRS.templates['work-modal'](project));
     $body.append($modal).addClass('show-modal');
     $modal.on('scroll', function() {
-      var $thisModal = $(this);
+      var $thisModal = $(this),
+          $close = $thisModal.find('.modal-close');
+      $close.css('opacity', 0);
       setTimeout(function() {
-        $thisModal.find('.modal-close').css('top', $thisModal.scrollTop());
+        $close.css('opacity', '').css('top', $thisModal.scrollTop());
       }, 10);
     });
     $modal.find('a').first().prev().focus();
