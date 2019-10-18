@@ -29716,7 +29716,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
 
   return "  <div class=\"modal modal--work fade\" id=\"modal-"
     + alias4((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
-    + "\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h3 class=\"work--partner\">"
+    + "\">\n\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h3 class=\"work--partner\">"
     + ((stack1 = ((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias5 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</h3>\n        <h2 class=\"work--project\">"
     + ((stack1 = ((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias5 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper))) != null ? stack1 : "")

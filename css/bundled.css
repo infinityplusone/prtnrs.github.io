@@ -1196,18 +1196,6 @@ a {
   .modal.in {
     transform: scale(1, 1); }
 
-body.show-modal {
-  overflow: hidden; }
-  body.show-modal:before {
-    content: " ";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(50, 58, 68, 0.5);
-    z-index: 999; }
-
 .work-container {
   padding: 0;
   max-width: 100%;

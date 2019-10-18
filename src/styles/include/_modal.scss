@@ -149,19 +149,3 @@
   }
 
 } // .modal
-
-body {
-  &.show-modal {
-    overflow: hidden;
-    &:before {
-      content: " ";
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: fade-out($slate-gray, 0.5);
-      z-index: 999;
-    }
-  }
-}
