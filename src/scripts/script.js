@@ -70,7 +70,7 @@ window.PRTNRS = {
       var $thisModal = $(this);
       setTimeout(function() {
         $thisModal.find('.modal-close').css('top', $thisModal.scrollTop());
-      }, 300);
+      }, 10);
     });
     $modal.find('a').first().prev().focus();
     setTimeout(function() {

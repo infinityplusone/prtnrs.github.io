@@ -1202,7 +1202,6 @@ a {
     overflow-y: scroll; }
 
 .show-modal {
-  height: 100vh;
   overflow: hidden; }
 
 .work-container {
