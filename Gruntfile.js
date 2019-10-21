@@ -15,17 +15,6 @@ module.exports = function(grunt) {
       }
     }, // meta
 
-    // autoprefixer: {
-    //   options: {
-    //     browsers: 'last 6 versions'
-    //   },
-    //   dist:{
-    //     files:{
-    //       '<%=meta.dir.assets%>/styles/prototype.css':'<%=meta.dir.assets%>/styles/prototype.css'
-    //     }
-    //   }
-    // }, // autoprefixer
-
     browserify: {
       './js/bundled.js': ['<%=meta.dir.scripts%>/script.js'],
       options: {
@@ -40,39 +29,6 @@ module.exports = function(grunt) {
         ]
       }
     }, // browserify
-
-    // clean: {
-    //   all: [ './assets'] 
-    // }, // clean
-
-    // copy: {
-    //   assets: {
-    //     files: [{
-    //       expand: true,
-    //       flatten: false,
-    //       filter: 'isFile',
-    //       cwd: 'src/',
-    //       src: [
-    //         '{styles,fonts,images,data}/**',
-    //         'templates/*.hbs',
-    //         '!**/*.scss'
-    //       ],
-    //       dest: './assets'
-    //     }]
-    //   },
-    //   fonts: {
-    //     files: [{
-    //       expand: true,
-    //       flatten: true,
-    //       filter: 'isFile',
-    //       cwd: 'node_modules/font-awesome/fonts/',
-    //       src: [
-    //         '*.*'
-    //       ],
-    //       dest: './assets/fonts'
-    //     }]
-    //   }
-    // }, // copy
 
     sass: {                              // Task
       dist: {                            // Target
@@ -89,12 +45,12 @@ module.exports = function(grunt) {
       options: {
         spawn: false
       },
-      // assets: {
-      //   files: [
-      //     './src/{fonts,images,templates}/*'
-      //   ],
-      //   tasks: ['copy']
-      // },
+      markup: {
+        files: [
+          './src/**/*',
+        ],
+        tasks: ['markup'],
+      },
       scripts: {
         files: [
           './src/templates/*.hbs',
@@ -113,14 +69,11 @@ module.exports = function(grunt) {
     } // watch
   });
 
-  // grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-browserify');
-  // grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  // grunt.loadNpmTasks('grunt-contrib-uglify');
   // grunt.loadNpmTasks('grunt-postcss');
 
   grunt.registerTask('bump', 'Bumps a project\'s version number up across relevant files.', function(version) {
@@ -167,6 +120,18 @@ module.exports = function(grunt) {
 
   grunt.registerTask('version', function() {
     grunt.file.write('VERSION', pkg.version);
+  });
+
+  grunt.registerTask('markup', function() {
+    var d = new Date();
+
+    grunt.file.copy('src/templates/index.template', './index.html', {
+      process: function(html) {
+        return html
+          .replace(/\{\{PUBDATE\}\}/gm, d.toISOString())
+          .replace(/\{\{TIMESTAMP\}\}/gm, d.getTime());
+      }
+    });
   });
 
   var defaultTasks = grunt.option('bump') ? ['bump:patch', 'collect', 'watch'] : ['collect', 'watch'];
