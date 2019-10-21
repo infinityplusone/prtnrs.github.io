@@ -153,6 +153,7 @@ window.PRTNRS = {
         break;
       case 'Escape':
         PRTNRS.closeModal(e);
+        $body.focus();
         break;
         break;
       default:

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<!--  Last Published: Thu Oct 18 2018 02:57:57 GMT+0000 (UTC)  -->
 <html data-wf-page="5bc751a846f6354850f4caf7" data-wf-site="5bc751a846f6350944f4caf6">
 <head>
   <meta charset="utf-8">
   <title>&amp;Partners</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="description" content="&Partners builds ethical technology products that disrupt the status quo through human-centered design and research.">
-  <meta name="keywords" content="ethical, design, research, government, human-centered, technology, innovation, partners, collaboration">
+  <meta name="keywords" content="ethical, design, research, government, human-centered, technology, innovation, partners, collaboration, human centered design process, civic tech, human centered design principles, user design, user research, user experience, human centered service design, responsible technology">
   <meta property="og:title" content="Ethical Technology Product Firm | &Partners">
   <meta property="og:description" content="&Partners builds ethical technology products that disrupt the status quo through human-centered design and research.">
   <meta property="og:image" content="https://andpartners.io/images/andpartners_webclip.png">
@@ -59,7 +58,9 @@
   <div class="section-light">
     <div class="container-margin w-container work-container">
       <div class="body-text">
-        <div class="work-carousel" id="work-carousel"></div>
+        <div class="work-carousel" id="work-carousel">
+
+        </div>
       </div>
     </div>
   </div>
