@@ -143,6 +143,7 @@ module.exports = function(grunt) {
         },
         template = Handlebars.compile(grunt.file.read('src/templates/index.hbs'));
 
+    data.metadata['og:pubdate'] = data.PUBDATE;
 
     grunt.file.expand([
       'src/templates/partials/*.hbs'
