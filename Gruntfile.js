@@ -8,8 +8,10 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: pkg,
+    timestamp: new Date().getTime(),
 
     meta: {
+
       dir: {
         assets: './assets',
         sass: './src/styles',
@@ -17,7 +19,12 @@ module.exports = function(grunt) {
       }
     }, // meta
 
+    clean: {
+      stamped: [ '{css,js}/bundled.*'] 
+    },
+
     browserify: {
+      // './js/bundled.<%=timestamp%>.js': ['<%=meta.dir.scripts%>/script.js'],
       './js/bundled.js': ['<%=meta.dir.scripts%>/script.js'],
       options: {
         transform: [
@@ -38,6 +45,7 @@ module.exports = function(grunt) {
           loadPath: 'node_modules/'
         },
         files: {
+          // './css/bundled.<%=timestamp%>.css': './src/styles/styles.scss'
           './css/bundled.css': './src/styles/styles.scss'
         }
       }
@@ -51,23 +59,23 @@ module.exports = function(grunt) {
         files: [
           './src/**/*',
         ],
-        tasks: ['generate'],
+        tasks: ['generate', 'browserify', 'sass']
       },
-      scripts: {
-        files: [
-          './src/templates/*.hbs',
-          './src/data/*.json',
-          './src/scripts/lib/*.js',
-          './src/scripts/*.js',
-        ],
-        tasks: ['browserify']
-      },
-      styles: {
-        files: [
-          '<%=meta.dir.sass%>/**/*.scss'
-        ],
-        tasks: ['sass']
-      },
+      // scripts: {
+      //   files: [
+      //     './src/templates/*.hbs',
+      //     './src/data/*.json',
+      //     './src/scripts/lib/*.js',
+      //     './src/scripts/*.js',
+      //   ],
+      //   tasks: ['browserify']
+      // },
+      // styles: {
+      //   files: [
+      //     '<%=meta.dir.sass%>/**/*.scss'
+      //   ],
+      //   tasks: ['sass']
+      // },
     } // watch
   });
 
@@ -143,6 +151,8 @@ module.exports = function(grunt) {
         },
         template = Handlebars.compile(grunt.file.read('src/templates/index.hbs'));
 
+    grunt.config.set('timestamp', d.getTime());
+
     data.metadata['og:pubdate'] = data.PUBDATE;
 
     grunt.file.expand([
@@ -161,7 +171,7 @@ module.exports = function(grunt) {
 
   // Register Default task(s)
   // grunt.registerTask('collect', ['clean', 'sass', 'copy', 'merge-templates', 'browserify']);
-  grunt.registerTask('collect', ['sass', 'browserify', 'generate']);
+  grunt.registerTask('collect', ['generate', 'sass', 'browserify']);
   grunt.registerTask('build', ['collect', 'version']);
   grunt.registerTask('default', defaultTasks);
   console.log('\n');
