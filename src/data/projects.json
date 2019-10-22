@@ -1,182 +1,319 @@
-[{
-  "partner": "RGV Endocrine",
-  "project": "Brand development",
-  "blurb": "We branded a small endocrine clinic that wanted to provide care to an underserved area on the border of Texas and Mexico.",
-  "challenge": "RGV Endocrine Center is devoted to caring for patients with hormone disorders, providing excellence in the clinical practice of endocrinology with empathy and quality. They hired us to design branding that would help them provide care to an underserved area on the border of Texas and Mexico.",
-  "solution": "We designed a logo that reflected the company’s core values. We also created a brand identity and marketing collateral that helped position them as a trusted, empathetic partner in endocrine health in target areas along the US-Mexico border.",
-  "outcome": "RGV’s branding is straightforward, consistent, designed with human-centered principles, and reflects their core values.",
-  "tags": ["Branding", "Design"],
-  "metadata": "&amp;Partners provided branding for RGV Endocrine, a small clinic provides care to an underserved area on the border of Texas and Mexico.",
-  "slides": "https",
-  "lead": ["Andrew?", "Eduardo?"],
-  "testimonial": "TBD",
-  "spotlight": false,
-  "id": 101
-}, {
-  "partner": "Intelligence Agency",
-  "project": "Cross-collaboration using open source technology",
-  "blurb": "We helped an intelligence agency leverage open source technology to foster cross-portfolio collaboration and speed up the rate of finished analysis.",
-  "challenge": "A government agency wanted to leverage open source technology to foster cross-portfolio collaboration and speed up the rate of finished analysis at the end of the immigration process interview stage. They wanted to be able to show the final form on a table browser, collect an e-signature, and give the adjudicator the power to e-file the signed form into the immigration system with one click.",
-  "solution": "We created an MVP prototype to test the capabilities of our small, internal, four-person team. We found that the prototype worked well and was delivered quickly, so we built a custom solution rather than buying a product out-of-the-box. The final cost was comparable to a third party solution, but the functionality was more flexible to change and fit our need exactly.",
-  "outcome": null,
-  "tags": ["Design", "Tech"],
-  "metadata": null,
-  "slides": null,
-  "lead": ["Andrew"],
-  "testimonial": "TBD",
-  "spotlight": false,
-  "id": 102
-}, {
-  "partner": "Private citizens",
-  "project": "FEMA Procurement Response System",
-  "blurb": "We created a system that enabled small businesses in Puerto Rico to respond to FEMA procurements more easily after Hurricane Maria.",
-  "challenge": "FEMA issued a major Request for Information (RFI) in November 2017 for all shipping, transportation, logistics, and delivery for disaster aid in response to Hurricane Maria. FEMA intended to entrust a single vendor with all responsibility for managing the distribution of life-sustaining resources for Puerto Rico and the US Virgin Islands. The award would have been be a mega-contract whose total value exceeded $100 million, making a single vendor the critical link in the delivery of $1 billion in disaster aid. We believed that FEMA ought to be compelled to pursue a community-driven model in its RFI and contract awards to ensure that life sustaining resources reach people in need, achieve line-of-sight into the flow/quality of recovery aid through the principles of open data, retain jobs and economic value in PR, support local businesses and economic sustainability, build the foundation for sustainable, local based, long term Federal recovery investment in Puerto Rico, and provide the best value to US taxpayers.",
-  "solution": "We researched, designed, developed and deployed a secure data entry system that enabled small businesses in Puerto Rico to respond to FEMA procurements more easily after Hurricane Maria.",
-  "outcome": "We built a system that allowed small businesses to easily respond to their RFP, performing all of the complex application processes server-side and reducing average response time by over three weeks. As a result of our collaborative efforts, FEMA was forced to pull the contract action from the marketplace.",
-  "tags": ["Design", "Tech"],
-  "metadata": "&amp;Partners helped small businesses in Puerto Rico gain the opportunity to respond to FEMA procurements more rapidly after Hurricane Maria.",
-  "slides": "see slide 16 of Ferriswheel pitch deck",
-  "lead": ["Eduardo"],
-  "testimonial": "TBD",
-  "spotlight": 3,
-  "id": 103
-}, {
-  "partner": "USCIS Electronic Immigration System",
-  "project": "Automation of a Manual Process",
-  "blurb": "We automated a manual process at a government agency that saved tens of thousands of person-hours using software, scanners, and QR codes.",
-  "challenge": "We were tapped to develop core components of the USCIS Electronic Immigration System (ELIS) system and create the first incident management process within USCIS. We needed to eliminate confusion in the application process, and cut down on the internal labor required to process applications.",
-  "solution": "We mentored and led six contract teams&#8211;approximately 200 engineers&#8211;across various projects, including processing N-400 naturalization applications and improving the I-90 permanent resident card renewal process. We built a user-facing wizard, cutting out unnecessary steps in the application which led to lost time and confusion. Upon submission, in addition to generating the legacy PDF form, we bolstered the application process by instantly transforming all data into the necessary schemas and sending that data to all relevant departments, for real-time data sharing.",
-  "outcome": "The core components of the ELIS system we created saved tens of thousands of manual person hours. USCIS now has its first incident management process. It’s efficient, modern, agile, and user-friendly.",
-  "tags": ["Design", "Tech"],
-  "metadata": "&amp;Partners automated core components of the Electronic Immigration System (ELIS) at USCIS.",
-  "source": "Slide 5, &amp;PartnersWork_CTDigGov",
-  "lead": ["Victor"],
-  "testimonial": "TBD",
-  "spotlight": 5,
-  "id": 104
-}, {
-  "partner": "Chan-Zuckerberg Initiative | Immigration Action Network",
-  "project": "Visa Application Enhancement",
-  "blurb": "We assisted the Immigration Action Network by extending research, performing a discovery sprint, analyzing the technical infrastructure, and deploying the next version of their cornerstone product, CitizenshipWorks (CW).",
-  "challenge": "&amp;Partners was hired by the Chan-Zuckerberg Initiative to assist the Immigration Action Network (IAN) in improving their cornerstone product, CitizenshipWorks (CW), an application that enables lawful permanent residents to complete the application for naturalization online with legal support. We partnered with the IAN product team to reimagine what CW could be in the future. Our plan had to account for the design, technology, and product requirements of CitizenshipWorks and we had to work with their team to deliver results in a timely manner. Over the course of several weeks, we needed to perform generative research to enable us to develop a vision, design and develop prototypes, test prototypes with users, and use our findings to help IAN understand the recommendations and enable them to make decisions about the future of the tool.",
-  "solution": "We conducted field research, design studios, one-on-one interviews, sketching sessions, code design sessions, and a series of product definition workshops. This gave us a solid understanding of not only the needs of the users, but also created a very clear landscape of who the users were according to the business, and what their needs were, helping the business understand where disconnects may exist and how to mitigate those disconnects.\nPrimarily, our team adhered to a lean methodology, which allowed designers to integrate within an engineering-heavy environment and obtain results without affecting the speed with which the team continued daily development of the current CitizenshipWorks tool.\nTo perform the technology audit, we collected data in real-time and analyzed records and logs of transactions within the system. We inspected every major component of the system to understand how it worked, what its dependencies were, and what, if any, vulnerabilities could exist or existed.",
-  "outcome": "Our team delivered a complete design and technology audit report along with a fully developed design system ready for implementation, laying down the foundation of what was to be Citizenshipworks 2.0.",
-  "tools": "To execute this work, we used a number of methods, practices, and tools, including",
-  "tags": ["Design", "Tech"],
-  "lead": ["Andrew"],
-  "slides": "https",
-  "testimonial": "TBD",
-  "spotlight": 4,
-  "id": 105
-}, {
-  "partner": "Vera Institute of Justice | New America",
-  "project": "Immigrant Connection Project",
-  "blurb": null,
-  "challenge": "During the child separation human rights crisis at the US-Mexico border, lawyers and social workers had no way of connecting with families who needed their help. We wanted to provide a simple solution using open source technology.",
-  "solution": "We researched, designed, and developed a customer relationship manager (CRM) called Project Quetzal using internal resources; our focus was to hit the ground and leverage our skills to provide a solution that was being asked for by those on the front lines. To ensure success, we partnered with New America and the Vera Network, and Project Quetzal was renamed Immigrant Connection Project (ICON). ICON, with the Vera Network as the unifier of providers in the Southwest border, enabled them to stand up a war room and a clearing house for these cases and provided those at the border to focus on providing services and allowing technology to work for them. Our team led a group of volunteer engineers, security specialists, designers, lawyers, and product managers through the challenges faced at the Southwest border in order to define the problem, develop a roadmap, design the technical architecture of the application, and deliver a working product.",
-  "outcome": "Our proof of concept was built and launched within three days of kickoff, and the full launch followed just two weeks later. Today, ICON serves as a resource for parents who have been separated from their children due to the administration’s zero tolerance policy&#8211;as well as for the attorneys for these parents&#8211;to locate and connect with the legal service providers (LSPs) working with their children. ICON seeks to ensure due process for these separated children and their families. Although the federal government is the only entity that can physically reunite children and families, ICON provides a route to connect parents and their legal representatives with a legal service provider that is working directly with their children.",
-  "tools": "To execute this work, we used a number of methods, practices, and tools, including:\n *Industry standard Scrum framework for agile delivery;\n *HTML5, PHP, CSS3, SCSS, ERB, JavaScript, and jQuery for front-end development;\n *REST-based and SOAP-based APIs for system interoperability;\n *Apache web server running on the cloud;\n *MariaDB for relational database system management;\n *Elasticsearch to power the search capabilities;\n *Cucumber, RSpec, Capybara, Watir, and MiniTest for automated testing;\n *Google Cloud for cloud hosting;\n *Google App Engine to deploy the application;\n *GitHub for source-code management; and\n *Object-oriented design patterns, database design patterns, and data modeling.",
-  "tags": ["Design", "Tech"],
-  "metadata": "&amp;Partners helped build and launch the Immigrant Connection Project. ICON helps lawyers connect parents and their legal representatives with a legal service provider to aid in the family separation crisis.",
-  "lead": ["Eduardo"],
-  "source": "Ferriswheel slide 18, CT Dig Gov slide 55",
-  "testimonial": "TBD",
-  "spotlight": 2,
-  "id": 106
-}, {
-  "partner": "California Health Services",
-  "project": "Human-Centered Design Workshop",
-  "blurb": "We taught a team in the California state government how to incorporate human-centered design and design thinking to deliver better solutions to their constituents.",
-  "challenge": "We were asked to design and deliver a three-day training to 15+ Product Managers at the Sacramento Health and Human Services Office of Innovation. &amp;Partners was contracted by the California Health and Human Services Department of Innovation to design and conduct a three-day training for over fifteen newly-minted Product Managers who did not have a design or technical background.",
-  "solution": "We worked closely with the California HHS to understand what challenges were faced by their new staff. In coordination with the primary stakeholder, the HHS team used that understanding to create a list of relatable challenges based on staff backgrounds that would serve as the learning lens through which these new concepts were delivered. Using stakeholder input, our team created a series of workshops, activities, lectures, and exercises in order to impart new knowledge, provide practice in new methodologies, provide critique, test retention, and test mastery of the content.",
-  "outcome": "The training provided the new California HHS Product Managers with robust skills for conducting human-centered user research, as well as ideating and conducting design workshops within their own teams. After completing the training, Product Managers were able to use their new skills and tools to identify their stakeholders, effectively engaging with them regardless of how difficult conversations may be, and influence people in an effective, goal-oriented manner.",
-  "tags": ["Education", "Design"],
-  "metadata": "&amp;Partners conducted a human-centered design and design thinking training to help Product Managers at the California Health &amp; Human Services department deliver better solutions to their constituents.",
-  "lead": ["Eduardo", "Arden"],
-  "source": "https",
-  "testimonial": "TBD",
-  "spotlight": 6,
-  "id": 107
-}, {
-  "partner": "J&#246;nk&#246;ping University",
-  "project": "Information Architecture Workshop",
-  "challenge": "We were invited to teach a week-long workshop on Information Architecture at the International Business School at J&#246;nk&#246;ping University in Sweden.",
-  "solution": "We provided students with knowledge of the human-centered design (HCD) approach and various methodologies for implementing that approach. Through a mixture of lectures, guided conversations, workshops, and student presentations, students learned key skills to",
-  "outcome": "Students demonstrated their understanding of the methodologies we taught them by solving real problems in real time. Student projects were presented on Demo Day, which concluded our workshop, and included engaging student feedback earlier in the curriculum development process, improving the mechanisms by which students book study rooms to use those resources better, reducing the amount of waste generated at caf&#233;s around campus, and improving communication in group work among students with varying communication styles.",
-  "tags": ["Education", "Design"],
-  "metadata": "&amp;Partners was invited to teach a week-long workshop on Information Architecture at the International Business School at J&#246;nk&#246;ping University in Sweden. Our workshop focused on methodologies for implementing human-centered design.",
-  "lead": ["Arden"],
-  "source": "https",
-  "testimonial": "TBD",
-  "spotlight": false,
-  "id": 108
-}, {
-  "partner": "USCIS",
-  "project": "Digital Evidence Viewer (DEV)",
-  "blurb": "On the ELIS project, we built the Digital Evidence Viewer to give adjudicators a quick, efficient way of flipping through hundreds of pages of encrypted digital evidence files with the ability to save individual pages as evidence.",
-  "challenge": "Adjudicators at USCIS needed to be able to view hundreds of scanned and emailed PDF, JPEG, PNG, and .docx files quickly. They also wanted to be able to save individual pages to reference in evidence.",
-  "solution": "We built the DEV to give adjudicators an efficient way of flipping through encrypted digital evidence files by hitting the left/right arrows on their keyboard, quickly page through a bunch of digital evidence.",
-  "outcome": "In the past, USCIS adjudicators created a huge binder for each case and filled it with sticky notes to mark important pages. With digital capabilities, adjudicators began using PDF viewers, but these proved to be extremely cumbersome and not secure. Now, with our custom Digital Evidence Viewer, adjudicators easily flip through encrypted digital evidence files by hitting the left/right arrows on their keyboard to quickly page through a bunch of digital evidence. Another quick keystroke allows them to save individual pages.",
-  "tags": ["Design", "Tech"],
-  "metadata": "&amp;Partners built the Digital Evidence Viewer to give USCIS adjudicators a quick, efficient way of flipping through hundreds of pages of encrypted digital evidence files with the ability to save individual pages as evidence.",
-  "lead": ["Eduardo"],
-  "source": "Slide 6 &amp;PartnersWork_CTDigGov, https",
-  "testimonial": "TBD",
-  "spotlight": 9,
-  "id": 109
-}, {
-  "partner": "Department of Defense Digital Services",
-  "project": "Army Cyber Curriculum Development and Infrastructure Architecture",
-  "blurb": "&amp;Partners helped the Department of Defense Digital Services retool their Army Cyber course by designing complex contemporary curriculum, creating challenging hands-on exercises, and building the infrastructure and environments on virtual machines needed to learn the curriculum content.",
-  "challenge": "US Digital Services needed assistance redesigning curriculum and building the architecture for today’s Army Cyber program.",
-  "solution": "&amp;Partners provided three key staff to support course development. We staffed a curriculum engineer with specialized experience in cyber security and digital forensics to create original, cutting-edge content for the Army Cyber school. We provided an instructional designer to provide guidance on curriculum development, create supplemental curriculum artifacts, and audit the course materials skills, knowledge, and assessment areas required for certification. We also provided a cloud engineer to build simulated cyber environments and design technical infrastructure for over 20 Army Cyber course modules that operated on virtual machines.",
-  "outcome": "Army Cyber delivered course material to soldiers that met all criteria for successful completion of the program.",
-  "tags": ["Design", "Education"],
-  "metadata": "&amp;Partners designed complex curriculum, created challenging hands-on exercises, and built the infrastructure students needed for the Department of Defense Digital Services to retool their Army Cyber course.",
-  "lead": ["Angela"],
-  "source": "None",
-  "testimonials": "N/A",
-  "spotlight": false,
-  "id": 110
-}, {
-  "partner": "Health and Human Services | Indian Health Service",
-  "project": "Legacy Health IT Assessment",
-  "blurb": "We identified, assessed, and evaluated key drivers to determine whether the legacy Indian Health Service (IHS) Resource and Patient Management System (RPMS) could be modernized, and if so, how.",
-  "challenge": "We were tasked with identifying, assessing, and evaluating key drivers to determine whether the legacy Indian Health Service (IHS) Resource and Patient Management System (RPMS) could be modernized, and if so, how.",
-  "solution": "We used a Human-Centered Design (HCD) and design thinking approach to drive research and assessment activities that focused on what matters to the people who use RPMS (service providers, clinicians, doctors, etc.) and the people serviced by the IHS, Alaskan Native and American Indians. This included:\n *Defining RPMS modernization for use by the Legacy Assessment Team and other stakeholders;\n *Identifying critical applications within RPMS and a thorough review of MUMPS and Caché technologies, and the functionality of each;\n *Identifying specific functions that are unique and/or essential to care delivery within the IHS, Tribal, and Urban (I/T/U) facilities that are using RPMS;\n *Developing a custom evaluation framework to enable a people, process, and technology review of legacy technology systems;\n *Providing guidance and direction about the current state of RPMS to the Technical Advisory Commission (TAC);\n *Reviewing system documentation to identify best practices, opportunities, and challenges;\n *Evaluating supporting infrastructure, system architecture, functional capabilities, and usage of MUMPS, Caché, and FileMan within RPMS;\n *Summarizing potential opportunities for modernization within RPMS, along with the implications and requirements for development and/or acquisition, deployment, and operation of each.",
-  "outcome": "The IHS stakeholders were able to comprehend diverse drivers and current state of RPMS from a people, process, and technology perspective. They were presented with three viable paths forward, including encapsulation, replatforming, and replacing the current system. In turn, this assessment will enable them to make critical, human-centered decisions about the future of the IHS’s health care technology with patient health impact at the forefront.",
-  "tags": ["Design", "Tech"],
-  "metadata": "&amp;Partners used a human-centered design and design-thinking approach to evaluate whether the legacy Indiana Health Service (IHS) Resource and Patient Management System (RPMS) could be modernized, and if so, how.",
-  "lead": ["Eduardo", "Victor"],
-  "testimonial": "TBD",
-  "tools": "To execute this work, we used a number of methods, practices, and tools, including:\n *Industry standard Scrum framework for agile delivery;\n *Bespoke legacy technology evaluation framework;\n *Docker for the management and deployment of containers;\n *Asana for project and task management;\n *ViViaN-R (Visualization of RPMS Code Structure);\n *RPMS Server and Client Code;\n *Google Cloud for cloud hosting;\n *Google App Engine to run the RPMS suite of applications;\n *Microsoft Azure for source-code management; and\n *HCD workshops to enable the development of actionable items",
-  "spotlight": 1,
-  "id": 111
-}, {
-  "partner": "Health and Human Services",
-  "project": "Human-Centered Design Modernization Phase II",
-  "blurb": "Use a Human-Centered Design approach to provide insights into the technology needs and goals of American Indian and Alaska Native healthcare facilities to inform future investments in infrastructure and software.",
-  "challenge": "The goal of the HHS IHS HIT Modernization Project is to use a Human-Centered Design approach to provide insights into the technology needs and goals of American Indian and Alaska Native healthcare facilities to inform future investments in infrastructure and software.",
-  "solution": "The Human-Centered Design team, run by &amp;Partners, conducted in-person and remote interviews and workshops with almost 150 staff members, patients, subject matter experts and other key players to get a deeper, more comprehensive understanding of the IHS facility staff and patient's needs for HIT from end to end. Our goals were to\n *Contextualize the unique functional needs of Health IT for the I/T/U environment\n *Help government and congress understand our needs and challenges\n *Create a rubric by which to evaluate bidders",
-  "outcome": "Artifacts we created included Service Blueprints and Journey Maps based on typical patient situations showing all actors involved in providing healthcare, from providers to admin to healthcare outside clinics and hospitals. They focused on highlighting the unique needs of American Indian and Alaska Native healthcare facilities\n *Archetypes of the different system actors, including administrative staff, healthcare providers, community support staff, and a diverse set of patients and family members.\n *Profiles of the different American Indian and Alaska Native healthcare facilities demonstrating the health IT ecosystem and an illustration of where opportunities exist for growth through modernization.\nBased on our findings and team engagement, we outlined use cases to inform requirements for the next generation of Health IT at IHS.",
-  "tags": ["Discovery", "Research", "Strategy"],
-  "metadata": null,
-  "lead": ["Sabrina"],
-  "testimonial": "TBD",
-  "spotlight": 9,
-  "id": 112
-}, {
-  "partner": "CivicActions",
-  "project": "Digital IT Acquisitions Program Training at USCIS",
-  "blurb": "We partnered with CivicActions to deliver the Digital IT Acquisitions Program to the USCIS contracting officers in Burlington, Vermont.",
-  "challenge": "CivicActions needed help with the ideation, planning, design, and development of the US Digital Service-sanctioned DITAP course for the United States Citizenship and Immigration Services. Over the course of several weeks leading up to November 2018, the date of the first in-person classroom session, our team was first challenged to understand all of the content that existed in the pilot, comprehend the mission division of the DITAP course, and create a visual map that revealed where those components fell short of one another. Then, from November 2018 through May 2019, &amp;Partners was tasked with delivering, facilitating, and managing the online and in-person classroom content at USCIS in partnership with CivicActions and their education services team.",
-  "solution": "Our team utilized an Agile process to achieve all of the activities detailed in the challenge. Every Monday, our team met to understand the week’s tasks and asses what assignments needed to be completed. Each Thursday, we met for a retrospective to assess what was working and what needed to change. Every Friday, we uploaded our content into the online learning management system. To execute these tasks, we used edX as a learning management system, Trello as a task management and project management tool, G Suite, as a complete command and control suite of products, and Slack as the main communications channel. In additional to the technical aspects of delivering the course, we brought on an experienced curriculum designer to improve the quality of the content delivery, tapped industry leaders to help teach portions of the course, and integrated trainee feedback in an iterative manner to continually improve the course.",
-  "outcome": "Our joint team iterated, developed new material, taught required material, maintained the professionalism required, exceeded expectations for the DITAP course module development and execution, and fully delivered the course with 100% of students achieving mastery and becoming certified as FAC-C-DS on May 17, 2019.",
-  "tags": ["Education", "Design"],
-  "metadata": "We partnered with CivicActions to deliver the Digital IT Acquisitions Program (DITAP) to the USCIS contracting officers in Burlington, Vermont.",
-  "lead": ["Eduardo", "Angela"],
-  "source": null,
-  "testimonial": "TBD",
-  "spotlight": 7,
-  "id": 113
-}]
+[
+  {
+    "id": 101,
+    "spotlight": null,
+    "partner": "RGV Endocrine",
+    "project": "Inclusive Brand Development",
+    "blurb": "We branded a small endocrine clinic that wanted to provide care to an underserved area on the border of Texas and Mexico.",
+    "challenge": "RGV Endocrine Center is devoted to caring for patients with hormone disorders, providing excellence in the clinical practice of endocrinology with empathy and quality. They hired us to design branding that would help them provide care to an underserved area on the border of Texas and Mexico.",
+    "solution": "We designed a logo that reflected the company’s core values. We also created a brand identity and marketing collateral that helped position them as a trusted, empathetic partner in endocrine health in target areas along the US-Mexico border.",
+    "outcome": "RGV’s branding is straightforward, consistent, designed with human-centered principles, and reflects their core values.",
+    "tags": [
+      "Branding",
+      "Design"
+    ],
+    "metadata": "&amp;Partners provided branding for RGV Endocrine, a small clinic provides care to an underserved area on the border of Texas and Mexico.",
+    "slides": "https",
+    "leads": [
+      "Andrew",
+      "Eduardo"
+    ],
+    "image": null,
+    "testimonial": "TBD",
+    "source": null,
+    "tools": null,
+    "testimonials": null
+  },
+  {
+    "id": 102,
+    "spotlight": null,
+    "partner": "Intelligence Agency",
+    "project": "Cross-collaboration Using Open Source Technology",
+    "blurb": "We helped an intelligence agency leverage open source technology to foster cross-portfolio collaboration and speed up the rate of finished analysis.",
+    "challenge": "A government agency wanted to leverage open source technology to foster cross-portfolio collaboration and speed up the rate of finished analysis at the end of the immigration process interview stage. They wanted to be able to show the final form on a table browser, collect an e-signature, and give the adjudicator the power to e-file the signed form into the immigration system with one click.",
+    "solution": "We created an MVP prototype to test the capabilities of our small, internal, four-person team. We found that the prototype worked well and was delivered quickly, so we built a custom solution rather than buying a product out-of-the-box. The final cost was comparable to a third party solution, but the functionality was more flexible to change and fit our need exactly.",
+    "outcome": null,
+    "tags": [
+      "Design",
+      "Tech"
+    ],
+    "metadata": null,
+    "slides": null,
+    "leads": [
+      "Andrew"
+    ],
+    "image": null,
+    "testimonial": "TBD",
+    "source": null,
+    "tools": null,
+    "testimonials": null
+  },
+  {
+    "id": 103,
+    "spotlight": 3,
+    "partner": null,
+    "project": "Facilitating Local Procurement Responses",
+    "blurb": "We created a system that enabled small businesses in Puerto Rico to respond to FEMA procurements more easily after Hurricane Maria.",
+    "challenge": "FEMA issued a major Request for Information (RFI) in November 2017 for all shipping, transportation, logistics, and delivery for disaster aid in response to Hurricane Maria. FEMA intended to entrust a single vendor with all responsibility for managing the distribution of life-sustaining resources for Puerto Rico and the US Virgin Islands. The award would have been be a mega-contract whose total value exceeded $100 million, making a single vendor the critical link in the delivery of $1 billion in disaster aid. We believed that FEMA ought to be compelled to pursue a community-driven model in its RFI and contract awards to ensure that life sustaining resources reach people in need, achieve line-of-sight into the flow/quality of recovery aid through the principles of open data, retain jobs and economic value in Puerto Rico, support local businesses and economic sustainability, build the foundation for sustainable, local based, long term Federal recovery investment in Puerto Rico, and provide the best value to US taxpayers.",
+    "solution": "We researched, designed, developed and deployed a secure data entry system that enabled small businesses in Puerto Rico to respond to FEMA procurements more easily after Hurricane Maria.",
+    "outcome": "We built a system that allowed small businesses to easily respond to their RFP, performing all of the complex application processes server-side and reducing average response time by over three weeks. As a result of our collaborative efforts, FEMA was forced to pull the contract action from the marketplace.",
+    "tags": [
+      "Design",
+      "Tech"
+    ],
+    "metadata": "&amp;Partners helped small businesses in Puerto Rico gain the opportunity to respond to FEMA procurements more rapidly after Hurricane Maria.",
+    "slides": "see slide 16 of Ferriswheel pitch deck",
+    "leads": [
+      "Eduardo"
+    ],
+    "image": "Hurricane-Maria-FEMA",
+    "testimonial": "TBD",
+    "source": null,
+    "tools": null,
+    "testimonials": null
+  },
+  {
+    "id": 104,
+    "spotlight": 5,
+    "partner": "United States Citizenship and Immigration Services (USCIS)",
+    "project": "Automating Processes in the Immigration System",
+    "blurb": "We automated a manual process at a government agency that saved tens of thousands of person-hours using software, scanners, and QR codes.",
+    "challenge": "We were tapped to develop core components of the USCIS Electronic Immigration System (ELIS) system and create the first incident management process within USCIS. We needed to eliminate confusion in the application process, and cut down on the internal labor required to process applications.",
+    "solution": "We mentored and led six contract teams&#8211;approximately 200 engineers&#8211;across various projects, including processing N-400 naturalization applications and improving the I-90 permanent resident card renewal process. We built a user-facing wizard, cutting out unnecessary steps in the application which led to lost time and confusion. Upon submission, in addition to generating the legacy PDF form, we bolstered the application process by instantly transforming all data into the necessary schemas and sending that data to all relevant departments, for real-time data sharing.",
+    "outcome": "The core components of the ELIS system we created saved tens of thousands of manual person hours. USCIS now has its first incident management process. It’s efficient, modern, agile, and user-friendly.",
+    "tags": [
+      "Design",
+      "Tech"
+    ],
+    "metadata": "&amp;Partners automated core components of the Electronic Immigration System (ELIS) at USCIS.",
+    "slides": null,
+    "leads": [
+      "Victor"
+    ],
+    "image": "USCIS-electronic-immigration-system",
+    "testimonial": "TBD",
+    "source": "Slide 5, &amp;PartnersWork_CTDigGov",
+    "tools": null,
+    "testimonials": null
+  },
+  {
+    "id": 105,
+    "spotlight": 4,
+    "partner": "Chan-Zuckerberg Initiative | Immigration Action Network",
+    "project": "Improving the Pathway to Citizenship",
+    "blurb": "We assisted the Immigration Action Network by extending research, performing a discovery sprint, analyzing the technical infrastructure, and deploying the next version of their cornerstone product, CitizenshipWorks (CW).",
+    "challenge": "&amp;Partners was hired by the Chan-Zuckerberg Initiative to assist the Immigration Action Network (IAN) in improving their cornerstone product, CitizenshipWorks (CW), an application that enables lawful permanent residents to complete the application for naturalization online with legal support. We partnered with the IAN product team to reimagine what CW could be in the future. Our plan had to account for the design, technology, and product requirements of CitizenshipWorks and we had to work with their team to deliver results in a timely manner. Over the course of several weeks, we needed to perform generative research to enable us to develop a vision, design and develop prototypes, test prototypes with users, and use our findings to help IAN understand the recommendations and enable them to make decisions about the future of the tool.",
+    "solution": "We conducted field research, design studios, one-on-one interviews, sketching sessions, code design sessions, and a series of product definition workshops. This gave us a solid understanding of not only the needs of the users, but also created a very clear landscape of who the users were according to the business, and what their needs were, helping the business understand where disconnects may exist and how to mitigate those disconnects.\nPrimarily, our team adhered to a lean methodology, which allowed designers to integrate within an engineering-heavy environment and obtain results without affecting the speed with which the team continued daily development of the current CitizenshipWorks tool.\nTo perform the technology audit, we collected data in real-time and analyzed records and logs of transactions within the system. We inspected every major component of the system to understand how it worked, what its dependencies were, and what, if any, vulnerabilities could exist or existed.",
+    "outcome": "Our team delivered a complete design and technology audit report along with a fully developed design system ready for implementation, laying down the foundation of what was to be Citizenshipworks 2.0.",
+    "tags": [
+      "Design",
+      "Tech"
+    ],
+    "metadata": null,
+    "slides": "https",
+    "leads": [
+      "Andrew"
+    ],
+    "image": "woman-online-immigrant-action",
+    "testimonial": "TBD",
+    "source": null,
+    "tools": null,
+    "testimonials": null
+  },
+  {
+    "id": 106,
+    "spotlight": 2,
+    "partner": "Vera Institute of Justice and New America",
+    "project": "Connecting Advocates with Families at the Border ",
+    "blurb": null,
+    "challenge": "During the child separation human rights crisis at the US-Mexico border, lawyers and social workers had no way of connecting with families who needed their help. We wanted to provide a simple solution using open source technology.",
+    "solution": "We researched, designed, and developed a customer relationship manager (CRM) called Project Quetzal using internal resources; our focus was to hit the ground and leverage our skills to provide a solution that was being asked for by those on the front lines. To ensure success, we partnered with New America and the Vera Network, and Project Quetzal was renamed Immigrant Connection Project (ICON). ICON, with the Vera Network as the unifier of providers in the Southwest border, enabled them to stand up a war room and a clearing house for these cases and provided those at the border to focus on providing services and allowing technology to work for them. Our team led a group of volunteer engineers, security specialists, designers, lawyers, and product managers through the challenges faced at the Southwest border in order to define the problem, develop a roadmap, design the technical architecture of the application, and deliver a working product.",
+    "outcome": "Our proof of concept was built and launched within three days of kickoff, and the full launch followed just two weeks later. Today, ICON serves as a resource for parents who have been separated from their children due to the administration’s zero tolerance policy&#8211;as well as for the attorneys for these parents&#8211;to locate and connect with the legal service providers (LSPs) working with their children. ICON seeks to ensure due process for these separated children and their families. Although the federal government is the only entity that can physically reunite children and families, ICON provides a route to connect parents and their legal representatives with a legal service provider that is working directly with their children.",
+    "tags": [
+      "Design",
+      "Tech"
+    ],
+    "metadata": "&amp;Partners helped build and launch the Immigrant Connection Project. ICON helps lawyers connect parents and their legal representatives with a legal service provider to aid in the family separation crisis.",
+    "slides": null,
+    "leads": [
+      "Eduardo"
+    ],
+    "image": "man-with-daughter-immigrant-connection",
+    "testimonial": "TBD",
+    "source": "Ferriswheel slide 18, CT Dig Gov slide 55",
+    "tools": "To execute this work, we used a number of methods, practices, and tools, including:\n *Industry standard Scrum framework for agile delivery;\n *HTML5, PHP, CSS3, SCSS, ERB, JavaScript, and jQuery for front-end development;\n *REST-based and SOAP-based APIs for system interoperability;\n *Apache web server running on the cloud;\n *MariaDB for relational database system management;\n *Elasticsearch to power the search capabilities;\n *Cucumber, RSpec, Capybara, Watir, and MiniTest for automated testing;\n *Google Cloud for cloud hosting;\n *Google App Engine to deploy the application;\n *GitHub for source-code management; and\n *Object-oriented design patterns, database design patterns, and data modeling.",
+    "testimonials": null
+  },
+  {
+    "id": 107,
+    "spotlight": 6,
+    "partner": "California Health Services",
+    "project": "Bringing Human-Centered Design to the State",
+    "blurb": "We taught a team in the California state government how to incorporate human-centered design and design thinking to deliver better solutions to their constituents.",
+    "challenge": "We were asked to design and deliver a three-day training to 15+ Product Managers at the Sacramento-based California Health and Human Services Office of Innovation. &amp;Partners was contracted by the Department of Innovation to design and conduct a three-day training for over fifteen newly-minted Product Managers who did not have a design or technical background.",
+    "solution": "We worked closely with the California HHS to understand what challenges were faced by their new staff. In coordination with the primary stakeholder, the HHS team used that understanding to create a list of relatable challenges based on staff backgrounds that would serve as the learning lens through which these new concepts were delivered. Using stakeholder input, our team created a series of workshops, activities, lectures, and exercises in order to impart new knowledge, provide practice in new methodologies, provide critique, test retention, and test mastery of the content.",
+    "outcome": "The training provided the new California HHS Product Managers with robust skills for conducting human-centered user research, as well as ideating and conducting design workshops within their own teams. After completing the training, Product Managers were able to use their new skills and tools to identify their stakeholders, effectively engaging with them regardless of how difficult conversations may be, and influence people in an effective, goal-oriented manner.",
+    "tags": [
+      "Education",
+      "Design"
+    ],
+    "metadata": "&amp;Partners conducted a human-centered design and design thinking training to help Product Managers at the California Health &amp; Human Services department deliver better solutions to their constituents.",
+    "slides": null,
+    "leads": [
+      "Eduardo",
+      "Arden"
+    ],
+    "image": "CHHS-HCD-Workshop",
+    "testimonial": "TBD",
+    "source": "https",
+    "tools": null,
+    "testimonials": null
+  },
+  {
+    "id": 108,
+    "spotlight": null,
+    "partner": "J&#246;nk&#246;ping University",
+    "project": "Bringing Design Insights to Business Students ",
+    "blurb": null,
+    "challenge": "We were invited to teach a week-long workshop on Information Architecture at the International Business School at J&#246;nk&#246;ping University in Sweden.",
+    "solution": "We provided students with knowledge of the human-centered design (HCD) approach and various methodologies for implementing that approach. Through a mixture of lectures, guided conversations, workshops, and student presentations, students learned key skills to",
+    "outcome": "Students demonstrated their understanding of the methodologies we taught them by solving real problems in real time. Student projects were presented on Demo Day, which concluded our workshop, and included engaging student feedback earlier in the curriculum development process, improving the mechanisms by which students book study rooms to use those resources better, reducing the amount of waste generated at caf&#233;s around campus, and improving communication in group work among students with varying communication styles.",
+    "tags": [
+      "Education",
+      "Design"
+    ],
+    "metadata": "&amp;Partners was invited to teach a week-long workshop on Information Architecture at the International Business School at J&#246;nk&#246;ping University in Sweden. Our workshop focused on methodologies for implementing human-centered design.",
+    "slides": null,
+    "leads": [
+      "Arden"
+    ],
+    "image": null,
+    "testimonial": "TBD",
+    "source": "https",
+    "tools": null,
+    "testimonials": null
+  },
+  {
+    "id": 109,
+    "spotlight": 8,
+    "partner": "United States Citizenship and Immigration Services (USCIS)",
+    "project": "Optimizing Adjudicator Access to Digital Evidence",
+    "blurb": "On the ELIS project, we built the Digital Evidence Viewer to give adjudicators a quick, efficient way of flipping through hundreds of pages of encrypted digital evidence files with the ability to save individual pages as evidence.",
+    "challenge": "Adjudicators at USCIS needed to be able to view hundreds of scanned and emailed PDF, JPEG, PNG, and .docx files quickly. They also wanted to be able to save individual pages to reference in evidence.",
+    "solution": "We built the Digital Evidence Viewer (DEV) to give adjudicators an efficient way of flipping through encrypted digital evidence files by hitting the left/right arrows on their keyboard, quickly page through a bunch of digital evidence.",
+    "outcome": "In the past, USCIS adjudicators created a huge binder for each case and filled it with sticky notes to mark important pages. With digital capabilities, adjudicators began using PDF viewers, but these proved to be extremely cumbersome and not secure. Now, with our custom Digital Evidence Viewer, adjudicators easily flip through encrypted digital evidence files by hitting the left/right arrows on their keyboard to quickly page through a bunch of digital evidence. Another quick keystroke allows them to save individual pages.",
+    "tags": [
+      "Design",
+      "Tech"
+    ],
+    "metadata": "&amp;Partners built the Digital Evidence Viewer to give USCIS adjudicators a quick, efficient way of flipping through hundreds of pages of encrypted digital evidence files with the ability to save individual pages as evidence.",
+    "slides": null,
+    "leads": [
+      "Eduardo"
+    ],
+    "image": "USCIS-digital-evidence",
+    "testimonial": "TBD",
+    "source": "Slide 6 &amp;PartnersWork_CTDigGov, https",
+    "tools": null,
+    "testimonials": null
+  },
+  {
+    "id": 110,
+    "spotlight": null,
+    "partner": "Department of Defense | Defense Digital Services",
+    "project": "Army Cyber Curriculum Development and Infrastructure Architecture",
+    "blurb": "&amp;Partners helped the Department of Defense Digital Services retool their Army Cyber course by designing complex contemporary curriculum, creating challenging hands-on exercises, and building the infrastructure and environments on virtual machines needed to learn the curriculum content.",
+    "challenge": "US Digital Services needed assistance redesigning curriculum and building the architecture for today’s Army Cyber program.",
+    "solution": "&amp;Partners provided three key staff to support course development. We staffed a curriculum engineer with specialized experience in cyber security and digital forensics to create original, cutting-edge content for the Army Cyber school. We provided an instructional designer to provide guidance on curriculum development, create supplemental curriculum artifacts, and audit the course materials skills, knowledge, and assessment areas required for certification. We also provided a cloud engineer to build simulated cyber environments and design technical infrastructure for over 20 Army Cyber course modules that operated on virtual machines.",
+    "outcome": "Army Cyber delivered course material to soldiers that met all criteria for successful completion of the program.",
+    "tags": [
+      "Education",
+      "Design"
+    ],
+    "metadata": "&amp;Partners designed complex curriculum, created challenging hands-on exercises, and built the infrastructure students needed for the Department of Defense Digital Services to retool their Army Cyber course.",
+    "slides": null,
+    "leads": [
+      "Angela"
+    ],
+    "image": null,
+    "testimonial": null,
+    "source": "None",
+    "tools": null,
+    "testimonials": "N/A"
+  },
+  {
+    "id": 111,
+    "spotlight": 1,
+    "partner": "Health and Human Services | Indian Health Service",
+    "project": "Modernizing Health IT in Government",
+    "blurb": "We identified, assessed, and evaluated key drivers to determine whether the legacy Resource and Patient Management System (RPMS) of the Indian Health Service (IHS) could be modernized, and if so, how.",
+    "challenge": "We were tasked with identifying, assessing, and evaluating key drivers to determine whether the legacy Indian Health Service (IHS) Resource and Patient Management System (RPMS) could be modernized, and if so, how.",
+    "solution": "We used a Human-Centered Design (HCD) and design thinking approach to drive research and assessment activities that focused on what matters to the people who use RPMS (service providers, clinicians, doctors, etc.) and the people serviced by the IHS, Alaskan Native and American Indians. This included:\n *Defining RPMS modernization for use by the Legacy Assessment Team and other stakeholders;\n *Identifying critical applications within RPMS and a thorough review of MUMPS and Caché technologies, and the functionality of each;\n *Identifying specific functions that are unique and/or essential to care delivery within the IHS, Tribal, and Urban (I/T/U) facilities that are using RPMS;\n *Developing a custom evaluation framework to enable a people, process, and technology review of legacy technology systems;\n *Providing guidance and direction about the current state of RPMS to the Technical Advisory Commission (TAC);\n *Reviewing system documentation to identify best practices, opportunities, and challenges;\n *Evaluating supporting infrastructure, system architecture, functional capabilities, and usage of MUMPS, Caché, and FileMan within RPMS;\n *Summarizing potential opportunities for modernization within RPMS, along with the implications and requirements for development and/or acquisition, deployment, and operation of each.",
+    "outcome": "The IHS stakeholders were able to comprehend diverse drivers and current state of RPMS from a people, process, and technology perspective. They were presented with three viable paths forward, including encapsulation, replatforming, and replacing the current system. In turn, this assessment will enable them to make critical, human-centered decisions about the future of the IHS’s health care technology with patient health impact at the forefront.",
+    "tags": [
+      "Design",
+      "Tech"
+    ],
+    "metadata": "&amp;Partners used a human-centered design and design-thinking approach to evaluate whether the legacy Indiana Health Service (IHS) Resource and Patient Management System (RPMS) could be modernized, and if so, how.",
+    "slides": null,
+    "leads": [
+      "Eduardo",
+      "Victor"
+    ],
+    "image": "paper-files-indian-health-service",
+    "testimonial": "TBD",
+    "source": null,
+    "tools": "To execute this work, we used a number of methods, practices, and tools, including:\n *Industry standard Scrum framework for agile delivery;\n *Bespoke legacy technology evaluation framework;\n *Docker for the management and deployment of containers;\n *Asana for project and task management;\n *ViViaN-R (Visualization of RPMS Code Structure);\n *RPMS Server and Client Code;\n *Google Cloud for cloud hosting;\n *Google App Engine to run the RPMS suite of applications;\n *Microsoft Azure for source-code management; and\n *HCD workshops to enable the development of actionable items",
+    "testimonials": null
+  },
+  {
+    "id": 112,
+    "spotlight": 9,
+    "partner": "Health and Human Services",
+    "project": "Design Thinking for Modern Health IT",
+    "blurb": "Use a Human-Centered Design approach to provide insights into the technology needs and goals of American Indian and Alaska Native healthcare facilities to inform future investments in infrastructure and software.",
+    "challenge": "The goal of the Health and Human Services / Indian Health Service Health IT (HHS HIT) Modernization Project is to use a Human-Centered Design approach to provide insights into the technology needs and goals of American Indian and Alaska Native healthcare facilities to inform future investments in infrastructure and software.",
+    "solution": "The Human-Centered Design team, run by &amp;Partners, conducted in-person and remote interviews and workshops with almost 150 staff members, patients, subject matter experts and other key players to get a deeper, more comprehensive understanding of the IHS facility staff and patient's needs for HIT from end to end. Our goals were to\n *Contextualize the unique functional needs of Health IT for the I/T/U environment\n *Help government and congress understand our needs and challenges\n *Create a rubric by which to evaluate bidders",
+    "outcome": "Artifacts we created included Service Blueprints and Journey Maps based on typical patient situations showing all actors involved in providing healthcare, from providers to admin to healthcare outside clinics and hospitals. They focused on highlighting the unique needs of American Indian and Alaska Native healthcare facilities\n *Archetypes of the different system actors, including administrative staff, healthcare providers, community support staff, and a diverse set of patients and family members.\n *Profiles of the different American Indian and Alaska Native healthcare facilities demonstrating the health IT ecosystem and an illustration of where opportunities exist for growth through modernization.\nBased on our findings and team engagement, we outlined use cases to inform requirements for the next generation of Health IT at IHS.",
+    "tags": [
+      "Discovery",
+      "Research",
+      "Strategy"
+    ],
+    "metadata": null,
+    "slides": null,
+    "leads": [
+      "Sabrina"
+    ],
+    "image": "modernization-indian-health-service",
+    "testimonial": "TBD",
+    "source": null,
+    "tools": null,
+    "testimonials": null
+  },
+  {
+    "id": 113,
+    "spotlight": 7,
+    "partner": "CivicActions | United States Citizenship and Immigration Services (USCIS)",
+    "project": "Training for Digital IT Acquisitions (DITAP)",
+    "blurb": "We partnered with CivicActions to deliver the Digital IT Acquisitions Program to the USCIS contracting officers in Burlington, Vermont.",
+    "challenge": "Partnered with CivicActions we helped with the ideation, planning, design, and development of the US Digital Service-sanctioned DITAP course for the United States Citizenship and Immigration Services. Over the course of several weeks leading up to November 2018, the date of the first in-person classroom session, our team was first challenged to understand all of the content that existed in the pilot, comprehend the mission division of the DITAP course, and create a visual map that revealed where those components fell short of one another. Then, from November 2018 through May 2019, &amp;Partners was tasked with delivering, facilitating, and managing the online and in-person classroom content at USCIS in partnership with CivicActions and their education services team.",
+    "solution": "Our team utilized an Agile process to achieve all of the activities detailed in the challenge. Every Monday, our team met to understand the week’s tasks and asses what assignments needed to be completed. Each Thursday, we met for a retrospective to assess what was working and what needed to change. Every Friday, we uploaded our content into the online learning management system. To execute these tasks, we used edX as a learning management system, Trello as a task management and project management tool, G Suite, as a complete command and control suite of products, and Slack as the main communications channel. In additional to the technical aspects of delivering the course, we brought on an experienced curriculum designer to improve the quality of the content delivery, tapped industry leaders to help teach portions of the course, and integrated trainee feedback in an iterative manner to continually improve the course.",
+    "outcome": "Our joint team iterated, developed new material, taught required material, maintained the professionalism required, exceeded expectations for the DITAP course module development and execution, and fully delivered the course with 100% of students achieving mastery and becoming certified as FAC-C-DS on May 17, 2019.",
+    "tags": [
+      "Education",
+      "Design"
+    ],
+    "metadata": "We partnered with CivicActions to deliver the Digital IT Acquisitions Program (DITAP) to the USCIS contracting officers in Burlington, Vermont.",
+    "slides": null,
+    "leads": [
+      "Eduardo",
+      "Angela"
+    ],
+    "image": "CivicActions-digital-acquisition",
+    "testimonial": "TBD",
+    "source": null,
+    "tools": null,
+    "testimonials": null
+  }
+]
