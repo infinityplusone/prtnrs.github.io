@@ -1,6 +1,8 @@
 module.exports = function(grunt) {
 
   var colors = require('colors'),
+      Handlebars = require('Handlebars'),
+      _ = require('lodash'),
       pkg = grunt.file.readJSON('package.json'),
       basePath = '/';
 
@@ -49,7 +51,7 @@ module.exports = function(grunt) {
         files: [
           './src/**/*',
         ],
-        tasks: ['markup'],
+        tasks: ['generate'],
       },
       scripts: {
         files: [
@@ -122,23 +124,44 @@ module.exports = function(grunt) {
     grunt.file.write('VERSION', pkg.version);
   });
 
-  grunt.registerTask('markup', function() {
-    var d = new Date();
+  grunt.registerTask('generate', function(production) {
+    Handlebars.registerHelper({
+      hyphenize: function(str) {
+        return _.kebabCase(str);
+      }, // hyphenize
+      lowercase: function(str) {
+        return _.toLower(str);
+      }, // lowercase
+    });    
 
-    grunt.file.copy('src/templates/index.template', './index.html', {
-      process: function(html) {
-        return html
-          .replace(/\{\{PUBDATE\}\}/gm, d.toISOString())
-          .replace(/\{\{TIMESTAMP\}\}/gm, d.getTime());
-      }
+    var d = new Date(),
+        data = {
+          PRODUCTION: production ? true : false,
+          PUBDATE: d.toISOString(),
+          TIMESTAMP: d.getTime(),
+          metadata: require('./src/data/metadata.json'),
+          projects: _.sortBy(_.filter(require('./src/data/projects.json'), 'spotlight'), ['spotlight']),
+        },
+        template = Handlebars.compile(grunt.file.read('src/templates/index.hbs'));
+
+
+    grunt.file.expand([
+      'src/templates/partials/*.hbs'
+    ]).forEach(function(f) {
+      var name = f.replace(/.*\/(.*)\.hbs$/, "$1");
+      Handlebars.registerPartial(name, grunt.file.read(f));
     });
+
+    grunt.file.write('index.html', template(data));
+
   });
+
 
   var defaultTasks = grunt.option('bump') ? ['bump:patch', 'collect', 'watch'] : ['collect', 'watch'];
 
   // Register Default task(s)
   // grunt.registerTask('collect', ['clean', 'sass', 'copy', 'merge-templates', 'browserify']);
-  grunt.registerTask('collect', ['sass', 'browserify']);
+  grunt.registerTask('collect', ['sass', 'browserify', 'generate']);
   grunt.registerTask('build', ['collect', 'version']);
   grunt.registerTask('default', defaultTasks);
   console.log('\n');

@@ -29481,29 +29481,29 @@ require('./lib/email.js');
 window.$ = $;
 
 handlebars.registerPartial('list', require('../templates/list.partial.hbs'));
-handlebars.registerPartial('work-slide', require('../templates/work-slide.partial.hbs'));
-handlebars.registerPartial('work-card', require('../templates/work-card.partial.hbs'));
+// handlebars.registerPartial('work-slide', require('../templates/work-slide.partial.hbs'));
+// handlebars.registerPartial('work-card', require('../templates/work-card.partial.hbs'));
 
 window.PRTNRS = {
   modalTimer: null,
   scrollTimer: null,
 
   data: {
-    projects: require('../data/projects.json')
+    projects: require('../data/projects.json'),
   },
 
   elems: {
     $modal: false,
   },
+
   templates: {
-    'work-carousel': require('../templates/work-carousel.hbs'),
     'work-modal': require('../templates/work-modal.hbs'),
   },
 
   loadWork: function() {
-    var partnerData = _.sortBy(_.filter(PRTNRS.data.projects, 'spotlight'), ['spotlight']);
+    // var partnerData = _.sortBy(_.filter(PRTNRS.data.projects, 'spotlight'), ['spotlight']);
     var $ourWork = $('#work-carousel');
-    $ourWork.html(PRTNRS.templates['work-carousel']({projects: partnerData}));
+    // $ourWork.html(PRTNRS.templates['work-carousel']({projects: partnerData}));
 
     PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
     PRTNRS.elems.$slides = $ourWork.find('.work-slide');
@@ -29651,7 +29651,7 @@ window.PRTNRS = {
 }; // PRTNRS
 
 PRTNRS.init();
-},{"../data/projects.json":23,"../templates/list.partial.hbs":27,"../templates/work-card.partial.hbs":28,"../templates/work-carousel.hbs":29,"../templates/work-modal.hbs":30,"../templates/work-slide.partial.hbs":31,"./lib/email.js":24,"./lib/handlebars-helpers.js":25,"jquery":21,"jquery-touchSwipe":20,"lodash":22}],27:[function(require,module,exports){
+},{"../data/projects.json":23,"../templates/list.partial.hbs":27,"../templates/work-modal.hbs":28,"./lib/email.js":24,"./lib/handlebars-helpers.js":25,"jquery":21,"jquery-touchSwipe":20,"lodash":22}],27:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
@@ -29677,70 +29677,6 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
 },{"hbsfy/runtime":19}],28:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
-module.exports = HandlebarsCompiler.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=container.propertyIsEnumerable, alias2=depth0 != null ? depth0 : (container.nullContext || {}), alias3=container.hooks.helperMissing, alias4="function", alias5=container.escapeExpression;
-
-  return "<div class=\"work-slide\" data-partner=\""
-    + alias5(((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper)))
-    + "\" data-project=\""
-    + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
-    + "\" id=\"slide-"
-    + alias5((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
-    + "\" data-index=\""
-    + alias5(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"index","hash":{},"data":data}) : helper)))
-    + "\">\n  <img src=\"./images/work/work-"
-    + alias5(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"id","hash":{},"data":data}) : helper)))
-    + ".jpg\" alt=\""
-    + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
-    + "\" class=\"work-slide--image\" />\n  <a href=\"#modal-"
-    + alias5((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
-    + "\" class=\"work-slide-overlay\" data-partner=\""
-    + alias5(((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper)))
-    + "\" data-project=\""
-    + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
-    + "\" data-toggle=\"modal\" title=\""
-    + alias5(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
-    + " with "
-    + alias5(((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper)))
-    + "\" tabindex=\"0\">\n    <div class=\"button button-primary button-black\">\n      Project Details\n    </div>\n  </a>\n  <div class=\"work-slide-cover\">\n    <div class=\"work-slide--partner\">"
-    + ((stack1 = ((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</div>\n    <div class=\"work-slide--project\">"
-    + ((stack1 = ((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias4 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</div>\n  </div>\n</div>";
-},"useData":true});
-
-},{"hbsfy/runtime":19}],29:[function(require,module,exports){
-// hbsfy compiled Handlebars template
-var HandlebarsCompiler = require('hbsfy/runtime');
-module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=container.propertyIsEnumerable, alias2=depth0 != null ? depth0 : (container.nullContext || {}), alias3=container.hooks.helperMissing, alias4=container.escapeExpression;
-
-  return "      <div href=\"#slide-"
-    + alias4((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
-    + "\" class=\"carousel-button"
-    + ((stack1 = helpers["if"].call(alias2,(data && data.first),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\" data-toggle=\"slide\" data-index=\""
-    + alias4(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias3),(typeof helper === "function" ? helper.call(alias2,{"name":"index","hash":{},"data":data}) : helper)))
-    + "\" tabindex=\"-1\"></div>\n";
-},"2":function(container,depth0,helpers,partials,data) {
-    return " active";
-},"4":function(container,depth0,helpers,partials,data) {
-    var stack1;
-
-  return ((stack1 = container.invokePartial(partials["work-card"],depth0,{"name":"work-card","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "");
-},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=container.propertyIsEnumerable, alias2=depth0 != null ? depth0 : (container.nullContext || {});
-
-  return "<div class=\"work-carousel\">\n  <div class=\"work-carousel--buttons\">\n"
-    + ((stack1 = helpers.each.call(alias2,(depth0 != null ? depth0.projects : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "  </div>\n  <div class=\"work-slides\">\n"
-    + ((stack1 = helpers.each.call(alias2,(depth0 != null ? depth0.projects : depth0),{"name":"each","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "  </div>\n</div>";
-},"usePartial":true,"useData":true});
-
-},{"hbsfy/runtime":19}],30:[function(require,module,exports){
-// hbsfy compiled Handlebars template
-var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
     return "          <span class=\"work-tag\" data-toggle=\"tag\">"
     + container.escapeExpression(container.lambda(depth0, depth0))
@@ -29754,7 +29690,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
 
   return "  <div class=\"modal modal--work fade\" id=\"modal-"
     + alias4((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
-    + "\">\n\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h3 class=\"work--partner\">"
+    + "\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h3 class=\"work--partner\">"
     + ((stack1 = ((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias5 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</h3>\n        <h2 class=\"work--project\">"
     + ((stack1 = ((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias5 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper))) != null ? stack1 : "")
@@ -29774,28 +29710,5 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
     + ((stack1 = helpers.each.call(alias2,(helpers.reformat||(depth0 && depth0.reformat)||alias3).call(alias2,(depth0 != null ? depth0.tools : depth0),{"name":"reformat","hash":{},"data":data}),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "          </div>\n        </div>\n      </div>\n    </div>\n      <div class=\"modal-close\">\n        <a href=\"#\" data-close=\"modal\" tabindex=\"0\"></a>\n      </div>\n  </div>";
 },"usePartial":true,"useData":true});
-
-},{"hbsfy/runtime":19}],31:[function(require,module,exports){
-// hbsfy compiled Handlebars template
-var HandlebarsCompiler = require('hbsfy/runtime');
-module.exports = HandlebarsCompiler.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=container.propertyIsEnumerable, alias2=depth0 != null ? depth0 : (container.nullContext || {}), alias3=container.hooks.helperMissing, alias4=container.escapeExpression, alias5="function";
-
-  return "  <a href=\"#modal-"
-    + alias4((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
-    + "\" class=\"work-slide\" data-partner=\""
-    + alias4(((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias5 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper)))
-    + "\" data-project=\""
-    + alias4(((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias5 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper)))
-    + "\" id=\"slide-"
-    + alias4((helpers.hyphenize||(depth0 && depth0.hyphenize)||alias3).call(alias2,(depth0 != null ? depth0.project : depth0),{"name":"hyphenize","hash":{},"data":data}))
-    + "\" data-toggle=\"modal\">\n    <div class=\"work-slide--image\"></div>\n    <div class=\"work-slide--partner\">"
-    + ((stack1 = ((helper = (helper = helpers.partner || (depth0 != null ? depth0.partner : depth0)) != null ? helper : alias3),(typeof helper === alias5 ? helper.call(alias2,{"name":"partner","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</div>\n    <div class=\"work-slide--project\">"
-    + ((stack1 = ((helper = (helper = helpers.project || (depth0 != null ? depth0.project : depth0)) != null ? helper : alias3),(typeof helper === alias5 ? helper.call(alias2,{"name":"project","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</div>\n    <div class=\"work-slide--blurb\">"
-    + ((stack1 = ((helper = (helper = helpers.blurb || (depth0 != null ? depth0.blurb : depth0)) != null ? helper : alias3),(typeof helper === alias5 ? helper.call(alias2,{"name":"blurb","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</div>\n  </a>\n";
-},"useData":true});
 
 },{"hbsfy/runtime":19}]},{},[26]);

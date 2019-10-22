@@ -10,29 +10,29 @@ require('./lib/email.js');
 window.$ = $;
 
 handlebars.registerPartial('list', require('../templates/list.partial.hbs'));
-handlebars.registerPartial('work-slide', require('../templates/work-slide.partial.hbs'));
-handlebars.registerPartial('work-card', require('../templates/work-card.partial.hbs'));
+// handlebars.registerPartial('work-slide', require('../templates/work-slide.partial.hbs'));
+// handlebars.registerPartial('work-card', require('../templates/work-card.partial.hbs'));
 
 window.PRTNRS = {
   modalTimer: null,
   scrollTimer: null,
 
   data: {
-    projects: require('../data/projects.json')
+    projects: require('../data/projects.json'),
   },
 
   elems: {
     $modal: false,
   },
+
   templates: {
-    'work-carousel': require('../templates/work-carousel.hbs'),
     'work-modal': require('../templates/work-modal.hbs'),
   },
 
   loadWork: function() {
-    var partnerData = _.sortBy(_.filter(PRTNRS.data.projects, 'spotlight'), ['spotlight']);
+    // var partnerData = _.sortBy(_.filter(PRTNRS.data.projects, 'spotlight'), ['spotlight']);
     var $ourWork = $('#work-carousel');
-    $ourWork.html(PRTNRS.templates['work-carousel']({projects: partnerData}));
+    // $ourWork.html(PRTNRS.templates['work-carousel']({projects: partnerData}));
 
     PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
     PRTNRS.elems.$slides = $ourWork.find('.work-slide');
