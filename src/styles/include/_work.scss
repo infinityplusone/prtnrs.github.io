@@ -15,8 +15,8 @@ $slide-width-large: 100vw;
   position: relative;
   overflow: hidden;
   width: 100%;
-  margin-top: -40px;
   padding-top: 40px;
+  margin-top: -20px;
   z-index: 2;
 
   .work-carousel--buttons {
@@ -56,8 +56,8 @@ $slide-width-large: 100vw;
   } // .work-slides
 
   @media (min-width: $medium) {
+    margin-top: -20px;
     padding: 0 20px 30px;
-    margin-top: 0;
 
     .work-slides {
       display: grid;

@@ -33,26 +33,75 @@ a {
     outline-color: $orange;
   }
 }
+
 .section {
+  padding-bottom: 160px;
+
+  &#contact-us {
+    padding-bottom: 20px;
+  }
+
+  @media (min-width: $wide) {
+    padding-bottom: 240px;
+  }
+}
+
+.section-header {
+  color: $white;
+  position: relative;
+  z-index: 1;
+  padding: 0 20px 20px;
+  margin: 0 auto;
+  top: -60px;
+
+  &:after {
+    content: " ";
+    height: 60px;
+    margin-left: 40px;
+    border-color: $gray;
+    border-left-style: solid;
+    border-left-width: 1px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    filter: invert(0.5);
+  }
+
+  @media (min-width: $wide) {
+    max-width: 940px;
+    // padding: 30px 0 10px; 
+    padding: 20px 0; 
+    top: -120px;
+
+    &:after {
+      height: 120px;
+      top: 60px;
+      margin-left: 20px;
+    }
+  }
+}
+
+.section-hero {
   color: $dark-gray;
   background-image: -webkit-linear-gradient(0deg, $black, transparent), url('../images/jorge-alcala-325378-unsplash.jpg');
   background-image: linear-gradient(90deg, $black, transparent), url('../images/jorge-alcala-325378-unsplash.jpg');
   background-position: 0px 0px, 50% 50%;
   background-size: auto, cover;
+
+  +.section-dark {
+    .section-header {
+      color: $white;
+    }
+  }
 }
 
 .section-light {
-  padding-top: 60px;
   color: $dark-gray;
 
-  .vertical-rule {
-    border-color: $slate-gray;
-  }
-
   .section-header {
-    color: $slate-gray;
+    color: $white;
     &:after {
-      border-color: $slate-gray;
+      border-color: $gray;
     }
   }
 
@@ -66,74 +115,25 @@ a {
 }
 
 .section-dark {
-  padding-top: 60px;
-  background-image: -webkit-linear-gradient(270deg, $slate-gray, $slate-gray);
-  background-image: linear-gradient(180deg, $slate-gray, $slate-gray);
+  background: $slate-gray;
   color: $white;
   
   a {
-    // color: #509fd3;
     color: $light-blue;
     text-decoration: underline;
   }
   
-  .vertical-rule {
-    border-color: $gray;
-  }
-
   .section-header {
-    color: $white;
+    color: $dark-gray;
 
     &:after {
-      border-color: $gray;
+      border-color: $slate-gray;
     }
   }
-}
-.vertical-rule {
-  display: none;
-  height: 60px;
-  margin-left: 20px;
-  border-color: $gray;
-  border-left-style: solid;
-  border-left-width: 1px;
+
 }
 
-.vertical-rule.black-rule {
-  border-color: $slate-gray;
-}
 
-.section-header {
-  color: $white;
-  position: relative;
-  z-index: 1;
-  padding-bottom: 30px;
-  padding-top: 20px;
-  margin: 80px auto 10px;
-
-  &:after {
-    content: " ";
-    height: 60px;
-    margin-left: 20px;
-    border-color: $gray;
-    border-left-style: solid;
-    border-left-width: 1px;
-    position: absolute;
-    top: calc(100% - 20px);
-    left: 0;
-    filter: invert(0.5);
-  }
-
-  @media (min-width: $wide) {
-    padding-bottom: 60px;
-    max-width: 940px;
-    margin-top: 130px;
-
-    &:after {
-      height: 120px;
-      top: calc(100% - 50px);
-    }
-  }
-}
 
 .body-text {
   margin: 0 auto;

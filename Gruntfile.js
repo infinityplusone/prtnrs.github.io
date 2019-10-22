@@ -76,7 +76,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  // grunt.loadNpmTasks('grunt-postcss');
 
   grunt.registerTask('bump', 'Bumps a project\'s version number up across relevant files.', function(version) {
 
@@ -139,8 +138,8 @@ module.exports = function(grunt) {
           PRODUCTION: production ? true : false,
           PUBDATE: d.toISOString(),
           TIMESTAMP: d.getTime(),
-          metadata: require('./src/data/metadata.json'),
-          projects: _.sortBy(_.filter(require('./src/data/projects.json'), 'spotlight'), ['spotlight']),
+          metadata: grunt.file.readJSON('./src/data/metadata.json'),
+          projects: _.sortBy(_.filter(grunt.file.readJSON('./src/data/projects.json'), 'spotlight'), ['spotlight']),
         },
         template = Handlebars.compile(grunt.file.read('src/templates/index.hbs'));
 

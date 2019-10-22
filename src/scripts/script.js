@@ -50,7 +50,7 @@ window.PRTNRS = {
       $body.removeClass('show-modal');
     }
     if(!first) {
-      $('html').animate({scrollTop: $('#our-work').offset().top + 'px'});
+      $('html').animate({scrollTop: ($('#our-work').offset().top - 120) + 'px'});
     }
   }, // moveSlide
 
@@ -70,7 +70,7 @@ window.PRTNRS = {
         PRTNRS.elems.$modal = false;
       }, 250);
     }
-    document.getElementById('our-work').scrollIntoView();
+    window.scrollTo(0, document.getElementById('our-work').offsetTop - 120);
     return false;
   }, // closeModal
 
