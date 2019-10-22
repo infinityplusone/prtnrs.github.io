@@ -1304,6 +1304,7 @@ a {
     position: absolute;
     width: 100vw;
     height: 100vw;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.13) 20.54%, rgba(50, 58, 68, 0.7) 86.25%);
     padding: 15px 10px 15px 15px;
     z-index: 2; }
   .work-slide .work-slide--partner {
