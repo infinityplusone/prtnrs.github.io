@@ -29688,7 +29688,7 @@ window.PRTNRS = {
         $modal = $(PRTNRS.templates['work-modal'](project)),
         $elem = $(this);
 
-    $elem.after($modal);
+    $body.append($modal);
     $modal.data('$elem', $elem);
     $modal.on('scroll', function() {
       clearTimeout(PRTNRS.scrollTimer);
