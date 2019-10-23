@@ -8,13 +8,28 @@ module.exports = function(grunt) {
   const Handlebars = require('Handlebars');
   const Entities = require('html-entities').AllHtmlEntities;
   const entities = new Entities();
+  const md = require('markdown-it')({
+    html: true,
+    linkify: true
+  });
+  const mila = require('markdown-it-link-attributes');
+
+  md.use(mila, {
+    attrs: {
+      target: '_blank',
+      tabindex: '0',
+    },
+  });
 
   Handlebars.registerHelper({
     check: function(x) {
       console.log('Check:', x);
     }, // check
     encode: function(str) {
-      return entities.encode(str)
+      return md.renderInline(entities.encode(str));
+    }, // encode
+    encodeParagraph: function(str) {
+      return md.render(entities.encode(str));
     }, // encode
     hyphenize: function(str) {
       return _.kebabCase(str);
@@ -172,6 +187,7 @@ module.exports = function(grunt) {
     grunt.file.write('VERSION', pkg.version);
   });
 
+
   grunt.registerTask('generate', function(production) {
 
     var d = new Date(),
@@ -179,13 +195,15 @@ module.exports = function(grunt) {
           PRODUCTION: production ? true : false,
           PUBDATE: d.toISOString(),
           TIMESTAMP: d.getTime(),
-          metadata: grunt.file.readJSON('./src/data/metadata.json'),
+          metadata: _.fromPairs(grunt.file.readJSON('./src/data/metadata.json').map(function(x) { return [x.property, x.content]; })),
           projects: _.sortBy(_.filter(grunt.file.readJSON('./src/data/projects.json'), 'spotlight'), ['spotlight']),
           sections: grunt.file.readJSON('./src/data/sections.json'),
         },
         template = Handlebars.compile(grunt.file.read('src/templates/index.hbs'));
 
     grunt.config.set('timestamp', d.getTime());
+
+
 
     data.metadata['og:pubdate'] = data.PUBDATE;
 
@@ -197,14 +215,6 @@ module.exports = function(grunt) {
     });
 
     grunt.file.write('index.html', template(data));
-
-  });
-
-  grunt.registerTask('yoni', function() {
-    var text = 'We were invited to teach a week-long workshop on Information Architecture at the International Business School at Jönköping University in Sweden.';
-    const Entities = require('html-entities').AllHtmlEntities;
-    const entities = new Entities();
-    console.log(entities.encode('Jönköping'));
 
   });
 
