@@ -7,6 +7,9 @@ var _ = require('lodash'),
     // pluralize = require('pluralize'),
     handlebars = require('hbsfy/runtime');
 
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
+
 var DATE_FORMATS = {
   // for date and time format options, see: http://momentjs.com/docs/#/displaying/format/
   DATE: 'MMM D, YYYY',                        // Jan 1, 2015
@@ -27,44 +30,50 @@ handlebars.registerHelper('check', function(x) {
   console.log('Check:', x);
 });
 
-handlebars.registerHelper('reformat', function(data) {
-  if(!data) { return []; }
-  var lines = data.split(/\n/gim),
-      formatted = [],
-      list = false;
+handlebars.registerHelper({
 
-  lines.forEach(function(line, i) {
-    if(line.indexOf(' *')===0) {
+  encode: function(str) {
+    return entities.encode(str)
+  }, // encode
 
-      if(!list) {
-        list = true;
-        formatted.push({
-          tag: 'li',
-          text: line.substr(2),
-          openList: true
-        });
+  reformat: function(data) {
+    if(!data) { return []; }
+    var lines = data.split(/\n/gim),
+        formatted = [],
+        list = false;
+
+    lines.forEach(function(line, i) {
+      if(line.indexOf(' *')===0) {
+
+        if(!list) {
+          list = true;
+          formatted.push({
+            tag: 'li',
+            text: line.substr(2),
+            openList: true
+          });
+        }
+        else {
+          formatted.push({
+            tag: 'li',
+            text: line.substr(2)
+          });
+        }
       }
       else {
+        if(list) {
+          list = false;
+          formatted[formatted.length-1].closeList = true;
+        }
         formatted.push({
-          tag: 'li',
-          text: line.substr(2)
+          tag: 'p',
+          text: line
         });
       }
-    }
-    else {
-      if(list) {
-        list = false;
-        formatted[formatted.length-1].closeList = true;
-      }
-      formatted.push({
-        tag: 'p',
-        text: line
-      });
-    }
-  });
+    });
+    return formatted;
+  }, // reformat
 
-
-  return formatted;
 }); // reformat
 
 handlebars.registerHelper({

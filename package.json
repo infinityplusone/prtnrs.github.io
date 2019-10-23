@@ -1,6 +1,6 @@
 {
   "name": "prtnrs.github.io",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "&Partners Corporate Website",
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "handlebars": "^4.4.3",
     "hbsfy": "^2.8.1",
+    "html-entities": "^1.2.1",
     "jquery": "^3.3.1",
     "jquery-touchswipe": "^1.6.19",
     "lodash": "^4.17.11"

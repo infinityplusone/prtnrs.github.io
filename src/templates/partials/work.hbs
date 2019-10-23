@@ -14,14 +14,14 @@
 
           <div class="work-slides">
             {{#each projects}}
-            <div class="work-slide" data-partner="{{partner}}" data-project="{{project}}" id="slide-{{hyphenize project}}" data-index="{{@index}}">
+            <div class="work-slide" data-partner="{{encode partner}}" data-project="{{encode project}}" id="slide-{{hyphenize project}}" data-index="{{@index}}">
               <img src="./assets/images/work/{{image}}-2.jpg" alt="{{project}}" class="work-slide--image" />
-              <a href="#modal-{{hyphenize project}}" class="work-slide-overlay" data-partner="{{partner}}" data-project="{{project}}" data-toggle="modal" title="{{project}} with {{partner}}" tabindex="0">
+              <a href="#modal-{{hyphenize project}}" class="work-slide-overlay" data-partner="{{encode partner}}" data-project="{{encode project}}" data-toggle="modal" title="{{encode project}} with {{encode partner}}" tabindex="0">
                 <div class="button button-primary button-black">Project Details</div>
               </a>
               <div class="work-slide-cover">
-                <div class="work-slide--partner">{{{partner}}}</div>
-                <div class="work-slide--project">{{{project}}}</div>
+                <div class="work-slide--partner">{{{encode partner}}}</div>
+                <div class="work-slide--project">{{{encode project}}}</div>
               </div>
             </div>
             {{/each}}

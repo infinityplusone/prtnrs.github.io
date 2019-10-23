@@ -1,10 +1,25 @@
 module.exports = function(grunt) {
 
   var colors = require('colors'),
-      Handlebars = require('Handlebars'),
       _ = require('lodash'),
       pkg = grunt.file.readJSON('package.json'),
       basePath = '/';
+
+  const Handlebars = require('Handlebars');
+  const Entities = require('html-entities').AllHtmlEntities;
+  const entities = new Entities();
+
+  Handlebars.registerHelper({
+    encode: function(str) {
+      return entities.encode(str)
+    }, // encode
+    hyphenize: function(str) {
+      return _.kebabCase(str);
+    }, // hyphenize
+    lowercase: function(str) {
+      return _.toLower(str);
+    }, // lowercase
+  });
 
   grunt.initConfig({
     pkg: pkg,
@@ -152,14 +167,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('generate', function(production) {
-    Handlebars.registerHelper({
-      hyphenize: function(str) {
-        return _.kebabCase(str);
-      }, // hyphenize
-      lowercase: function(str) {
-        return _.toLower(str);
-      }, // lowercase
-    });    
 
     var d = new Date(),
         data = {
@@ -186,6 +193,13 @@ module.exports = function(grunt) {
 
   });
 
+  grunt.registerTask('yoni', function() {
+    var text = 'We were invited to teach a week-long workshop on Information Architecture at the International Business School at Jönköping University in Sweden.';
+    const Entities = require('html-entities').AllHtmlEntities;
+    const entities = new Entities();
+    console.log(entities.encode('Jönköping'));
+
+  });
 
   var defaultTasks = grunt.option('bump') ? ['bump:patch', 'collect', 'watch'] : ['collect', 'watch'];
 
