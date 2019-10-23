@@ -25,6 +25,9 @@ module.exports = function(grunt) {
     check: function(x) {
       console.log('Check:', x);
     }, // check
+    decode: function(str) {
+      return entities.decode(str);
+    }, // decode
     encode: function(str) {
       return md.renderInline(entities.encode(str));
     }, // encode
@@ -202,8 +205,6 @@ module.exports = function(grunt) {
         template = Handlebars.compile(grunt.file.read('src/templates/index.hbs'));
 
     grunt.config.set('timestamp', d.getTime());
-
-
 
     data.metadata['og:pubdate'] = data.PUBDATE;
 
