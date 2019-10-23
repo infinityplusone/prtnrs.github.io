@@ -10,6 +10,9 @@ module.exports = function(grunt) {
   const entities = new Entities();
 
   Handlebars.registerHelper({
+    check: function(x) {
+      console.log('Check:', x);
+    }, // check
     encode: function(str) {
       return entities.encode(str)
     }, // encode
@@ -19,6 +22,9 @@ module.exports = function(grunt) {
     lowercase: function(str) {
       return _.toLower(str);
     }, // lowercase
+    split: function(str) {
+      return str.split('\n\n');
+    }, // split
   });
 
   grunt.initConfig({
@@ -175,6 +181,7 @@ module.exports = function(grunt) {
           TIMESTAMP: d.getTime(),
           metadata: grunt.file.readJSON('./src/data/metadata.json'),
           projects: _.sortBy(_.filter(grunt.file.readJSON('./src/data/projects.json'), 'spotlight'), ['spotlight']),
+          sections: grunt.file.readJSON('./src/data/sections.json'),
         },
         template = Handlebars.compile(grunt.file.read('src/templates/index.hbs'));
 
