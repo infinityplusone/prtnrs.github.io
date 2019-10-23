@@ -169,6 +169,10 @@ window.PRTNRS = {
 
   init: function() {
 
+    if(/Windows NT.*rv:11/gim.test(navigator.userAgent)) { // IE hacking -- not sure exactly what I should be looking for, though
+      $body.addClass('ie11');
+    }
+
     this.loadWork();
 
     $body

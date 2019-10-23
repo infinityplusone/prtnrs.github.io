@@ -67,6 +67,10 @@ $slide-width-large: 100vw;
       width: auto;
       height: auto;
       margin-bottom: 0;
+
+      .ie11 & {
+        display: block;
+      }
     }
 
     .work-carousel--buttons {
@@ -100,6 +104,8 @@ $slide-width-large: 100vw;
   .work-slide--image {
     display: block;
     position: absolute;
+    left: 0;
+    top: 0;
     z-index: 1;
     background: $gray;
     width: $slide-width-large;
@@ -112,6 +118,8 @@ $slide-width-large: 100vw;
     align-items: flex-start;
     justify-content: flex-end;
     position: absolute;
+    left: 0;
+    top: 0;
     width: $slide-width-large;
     height: $slide-width-large;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.13) 20.54%, rgba(50, 58, 68, 0.7) 86.25%);
@@ -205,7 +213,20 @@ $slide-width-large: 100vw;
         margin: 0;
       }
     }
-  }
+
+    .ie11 & {
+      width: calc(90% / 3);
+      float: left;
+      margin-right: calc(10% / 3);
+      max-width: calc(90% / 3);
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+
+    }
+
+  }  // $medium
 
   @media (min-width: $wide) {
     width: $slide-width;

@@ -9,9 +9,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: pkg,
     timestamp: new Date().getTime(),
-
     meta: {
-
       dir: {
         assets: './assets',
         sass: './src/styles',
@@ -19,13 +17,26 @@ module.exports = function(grunt) {
       }
     }, // meta
 
-    clean: {
-      stamped: [ '{css,js}/bundled.*'] 
-    },
+    autoprefixer: {
+      dist:{
+        options: {
+          map: true,
+          grid: 'autoplace',
+          browserslist: [
+            'last 3 version',
+            'IE 11'
+          ],
+          browsers: 'last 6 versions'
+        },
+        files:{
+          './assets/bundled.<%=timestamp%>.min.css': './src/css/bundled.css'
+        }
+      }
+    }, // autoprefixer
 
     browserify: {
-      // './js/bundled.<%=timestamp%>.js': ['<%=meta.dir.scripts%>/script.js'],
-      './js/bundled.js': ['<%=meta.dir.scripts%>/script.js'],
+      './assets/bundled.<%=timestamp%>.js': ['<%=meta.dir.scripts%>/script.js'],
+      // './js/bundled.js': ['<%=meta.dir.scripts%>/script.js'],
       options: {
         transform: [
           [
@@ -39,14 +50,36 @@ module.exports = function(grunt) {
       }
     }, // browserify
 
+    clean: {
+      stamped: [ 'assets'] 
+    },
+
+    copy: {
+      assets: {
+        files: [{
+          expand: true,
+          flatten: false,
+          filter: 'isFile',
+          cwd: 'src/',
+          src: [
+            '{styles,fonts,images,data}/**',
+            'templates/*.hbs',
+            '!**/*.scss'
+          ],
+          dest: './assets'
+        }]
+      }
+    }, // copy
+
     sass: {                              // Task
       dist: {                            // Target
         options: {                       // Target options
-          loadPath: 'node_modules/'
+          // style: 'compressed',
+          loadPath: 'node_modules/',
         },
         files: {
           // './css/bundled.<%=timestamp%>.css': './src/styles/styles.scss'
-          './css/bundled.css': './src/styles/styles.scss'
+          './src/css/bundled.css': './src/styles/styles.scss'
         }
       }
     }, // sass
@@ -59,26 +92,13 @@ module.exports = function(grunt) {
         files: [
           './src/**/*',
         ],
-        tasks: ['generate', 'browserify', 'sass']
+        // tasks: ['generate', 'browserify', 'sass', 'autoprefixer']
+        tasks: ['collect']
       },
-      // scripts: {
-      //   files: [
-      //     './src/templates/*.hbs',
-      //     './src/data/*.json',
-      //     './src/scripts/lib/*.js',
-      //     './src/scripts/*.js',
-      //   ],
-      //   tasks: ['browserify']
-      // },
-      // styles: {
-      //   files: [
-      //     '<%=meta.dir.sass%>/**/*.scss'
-      //   ],
-      //   tasks: ['sass']
-      // },
     } // watch
   });
 
+  grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
@@ -170,8 +190,7 @@ module.exports = function(grunt) {
   var defaultTasks = grunt.option('bump') ? ['bump:patch', 'collect', 'watch'] : ['collect', 'watch'];
 
   // Register Default task(s)
-  // grunt.registerTask('collect', ['clean', 'sass', 'copy', 'merge-templates', 'browserify']);
-  grunt.registerTask('collect', ['generate', 'sass', 'browserify']);
+  grunt.registerTask('collect', ['clean', 'copy', 'generate', 'sass', 'autoprefixer', 'browserify']);
   grunt.registerTask('build', ['collect', 'version']);
   grunt.registerTask('default', defaultTasks);
   console.log('\n');

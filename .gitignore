@@ -12,6 +12,7 @@ node_modules
 
 # generated files
 /assets
+/src/css
 
 # misc
 logging-in.txt

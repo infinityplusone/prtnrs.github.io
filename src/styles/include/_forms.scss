@@ -1,8 +1,3 @@
-fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
 button {
   border: 0;
   cursor: pointer;
@@ -70,43 +65,7 @@ label {
     outline: 0;
   }
 }
-.w-select {
-  display: block;
-  width: 100%;
-  height: 38px;
-  padding: 8px 12px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: $dark-gray;
-  vertical-align: middle;
-  background-color: $white;
-  border: 1px solid $ccc;
-  background-image: -webkit-linear-gradient($white 0%, $lighter-gray 100%);
-  background-image: linear-gradient($white 0%, $lighter-gray 100%);
-  &:-moz-placeholder {
-    color: $nines;
-  }
-  &::-moz-placeholder {
-    color: $nines;
-    opacity: 1;
-  }
-  &:-ms-input-placeholder {
-    color: $nines;
-  }
-  &::-webkit-input-placeholder {
-    color: $nines;
-  }
-  &:focus {
-    border-color: $light-blue;
-    outline: 0;
-  }
-}
 .w-input[disabled] {
-  cursor: not-allowed;
-  background-color: $eee;
-}
-.w-select[disabled] {
   cursor: not-allowed;
   background-color: $eee;
 }
@@ -114,27 +73,10 @@ label {
   cursor: not-allowed;
   background-color: $eee;
 }
-.w-select[readonly] {
-  cursor: not-allowed;
-  background-color: $eee;
-}
-fieldset[disabled] {
-  .w-input {
-    cursor: not-allowed;
-    background-color: $eee;
-  }
-  .w-select {
-    cursor: not-allowed;
-    background-color: $eee;
-  }
-}
 textarea.w-input {
   height: auto;
 }
 textarea.w-select {
-  height: auto;
-}
-.w-select[multiple] {
   height: auto;
 }
 .w-form-label {
@@ -142,173 +84,6 @@ textarea.w-select {
   cursor: pointer;
   font-weight: normal;
   margin-bottom: 0px;
-}
-.w-checkbox {
-  display: block;
-  margin-bottom: 5px;
-  padding-left: 20px;
-  &:before {
-    content: " ";
-    display: table;
-    grid-column-start: 1;
-    grid-row-start: 1;
-    grid-column-end: 2;
-    grid-row-end: 2;
-  }
-  &:after {
-    content: " ";
-    display: table;
-    grid-column-start: 1;
-    grid-row-start: 1;
-    grid-column-end: 2;
-    grid-row-end: 2;
-    clear: both;
-  }
-}
-.w-radio {
-  display: block;
-  margin-bottom: 5px;
-  padding-left: 20px;
-  &:before {
-    content: " ";
-    display: table;
-    grid-column-start: 1;
-    grid-row-start: 1;
-    grid-column-end: 2;
-    grid-row-end: 2;
-  }
-  &:after {
-    content: " ";
-    display: table;
-    grid-column-start: 1;
-    grid-row-start: 1;
-    grid-column-end: 2;
-    grid-row-end: 2;
-    clear: both;
-  }
-}
-.w-checkbox-input {
-  margin: 4px 0 0;
-  margin-top: 1px \9;
-  line-height: normal;
-  float: left;
-  margin-left: -20px;
-}
-.w-radio-input {
-  margin: 4px 0 0;
-  margin-top: 1px \9;
-  line-height: normal;
-  float: left;
-  margin-left: -20px;
-  margin-top: 3px;
-}
-.w-file-upload {
-  display: block;
-  margin-bottom: 10px;
-}
-.w-file-upload-input {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -100;
-}
-.w-file-upload-default {
-  display: inline-block;
-  color: $dark-gray;
-}
-.w-file-upload-uploading {
-  display: inline-block;
-  color: $dark-gray;
-}
-.w-file-upload-success {
-  display: inline-block;
-  color: $dark-gray;
-}
-.w-file-upload-error {
-  display: block;
-  margin-top: 10px;
-}
-.w-file-upload-default.w-hidden {
-  display: none;
-}
-.w-file-upload-uploading.w-hidden {
-  display: none;
-}
-.w-file-upload-error.w-hidden {
-  display: none;
-}
-.w-file-upload-success.w-hidden {
-  display: none;
-}
-.w-file-upload-uploading-btn {
-  display: flex;
-  font-size: 14px;
-  font-weight: normal;
-  cursor: pointer;
-  margin: 0;
-  padding: 8px 12px;
-  border: 1px solid $ccc;
-  background-color: $lightest-gray;
-}
-.w-file-upload-file {
-  display: flex;
-  flex-grow: 1;
-  justify-content: space-between;
-  margin: 0;
-  padding: 8px 9px 8px 11px;
-  border: 1px solid $ccc;
-  background-color: $lightest-gray;
-}
-.w-file-upload-file-name {
-  font-size: 14px;
-  font-weight: normal;
-  display: block;
-}
-.w-file-remove-link {
-  margin-top: 3px;
-  margin-left: 10px;
-  width: auto;
-  height: auto;
-  padding: 3px;
-  display: block;
-  cursor: pointer;
-}
-.w-icon-file-upload-remove {
-  margin: auto;
-  font-size: 10px;
-}
-.w-file-upload-error-msg {
-  display: inline-block;
-  color: $red;
-  padding: 2px 0;
-}
-.w-file-upload-info {
-  display: inline-block;
-  line-height: 38px;
-  padding: 0 12px;
-}
-.w-file-upload-label {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: normal;
-  cursor: pointer;
-  margin: 0;
-  padding: 8px 12px;
-  border: 1px solid $ccc;
-  background-color: $lightest-gray;
-}
-.w-icon-file-upload-icon {
-  display: inline-block;
-  margin-right: 8px;
-  width: 20px;
-}
-.w-icon-file-upload-uploading {
-  display: inline-block;
-  margin-right: 8px;
-  width: 20px;
-  height: 20px;
 }
 .w-button {
   display: inline-block;
