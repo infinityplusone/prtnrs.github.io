@@ -75,7 +75,6 @@ module.exports = function(grunt) {
 
     browserify: {
       './assets/bundled.<%=timestamp%>.js': ['<%=meta.dir.scripts%>/script.js'],
-      // './js/bundled.js': ['<%=meta.dir.scripts%>/script.js'],
       options: {
         transform: [
           [
@@ -90,7 +89,7 @@ module.exports = function(grunt) {
     }, // browserify
 
     clean: {
-      stamped: [ 'assets'] 
+      stamped: ['assets'] 
     },
 
     copy: {
@@ -103,7 +102,9 @@ module.exports = function(grunt) {
           src: [
             '{styles,fonts,images,data}/**',
             'templates/*.hbs',
-            '!**/*.scss'
+            '!**/*.scss',
+            '!**/{sections,metadata}.json',
+            '!**/index.hbs'
           ],
           dest: './assets'
         }]
@@ -113,11 +114,10 @@ module.exports = function(grunt) {
     sass: {                              // Task
       dist: {                            // Target
         options: {                       // Target options
-          // style: 'compressed',
+          style: 'compressed',
           loadPath: 'node_modules/',
         },
         files: {
-          // './css/bundled.<%=timestamp%>.css': './src/styles/styles.scss'
           './src/css/bundled.css': './src/styles/styles.scss'
         }
       }
@@ -131,7 +131,6 @@ module.exports = function(grunt) {
         files: [
           './src/**/*',
         ],
-        // tasks: ['generate', 'browserify', 'sass', 'autoprefixer']
         tasks: ['collect']
       },
     } // watch
@@ -186,6 +185,7 @@ module.exports = function(grunt) {
     });
   }); // bump
 
+
   grunt.registerTask('version', function() {
     grunt.file.write('VERSION', pkg.version);
   });
@@ -218,6 +218,7 @@ module.exports = function(grunt) {
     grunt.file.write('index.html', template(data));
 
   });
+
 
   var defaultTasks = grunt.option('bump') ? ['bump:patch', 'collect', 'watch'] : ['collect', 'watch'];
 

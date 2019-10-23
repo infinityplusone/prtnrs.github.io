@@ -11,6 +11,7 @@ package-lock.json
 node_modules
 
 # generated files
+/index.html
 /assets
 /src/css
 

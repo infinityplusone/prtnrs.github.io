@@ -31,6 +31,7 @@ echo "Adding build file to latest branch and pushing to remote.\n"
 git rm -rf {scripts,src}
 git rm {.gitignore,.npmignore,Gruntfile.js,package.json,README.md}
 git add -f assets
+git add -f index.html
 git commit -am "v${version}"
 git push origin latest --force
 
