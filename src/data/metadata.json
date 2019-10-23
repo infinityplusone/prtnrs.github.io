@@ -21,7 +21,15 @@
   },
   {
     "property": "og:image",
-    "content": "https://andpartners.io/images/andpartners_webclip.png"
+    "content": "https://andpartners.io/assets/images/and-partners-logo-mixed-cityscape.jpg"
+  },
+  {
+    "property": "og:image:width",
+    "content": 1500
+  },
+  {
+    "property": "og:image:height",
+    "content": 786
   },
   {
     "property": "og:site_name",
@@ -49,7 +57,7 @@
   },
   {
     "property": "twitter:image",
-    "content": "https://andpartners.io/images/andpartners_webclip.png"
+    "content": "https://andpartners.io/assets/images/and-partners-logo-mixed-cityscape.jpg"
   },
   {
     "property": "twitter:card",
