@@ -22,19 +22,19 @@ grunt build
 version=$(cat VERSION)
 
 # checkout a branch for this version
-echo "Checking out ${cyan}master${nc} branch for ${cyan}v${version}${nc}.\n"
-git branch -D master
-git checkout -b master
+echo "Checking out ${cyan}latest${nc} branch for ${cyan}v${version}${nc}.\n"
+git branch -D latest
+git checkout -b latest
 
 # add the distribution file & push it
-echo "Adding build file to master branch and pushing to remote.\n"
+echo "Adding build file to latest branch and pushing to remote.\n"
 git rm -rf {scripts,src}
 git rm {.gitignore,.npmignore,Gruntfile.js,package.json,README.md}
 git add -f assets
 git commit -am "v${version}"
-git push origin master --force
+git push origin latest --force
 
-# remove "master" tag on the remote & create a new local one
+# remove "latest" tag on the remote & create a new local one
 echo "Creating new tag for ${cyan}v${version}${nc} and pushing to remote.\n"
 git tag -f v${version}
 
