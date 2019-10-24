@@ -12,6 +12,7 @@ node_modules
 
 # generated files
 /index.html
+/work/*.html
 /assets
 /src/css
 

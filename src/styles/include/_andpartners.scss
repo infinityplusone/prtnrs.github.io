@@ -340,3 +340,20 @@ a {
     float: none;
   }
 }
+
+.strip {
+  display: block;
+  background: $teal;
+  color: $white;
+  text-align: center;
+  line-height: 40px;
+  font-family: $font;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.1s;
+
+  &:hover {
+    background: #202020;
+  }
+} // .strip
+

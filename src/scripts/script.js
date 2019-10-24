@@ -7,11 +7,12 @@ var $ = require('jquery'),
 require('jquery-touchSwipe');
 require('./lib/email.js');
 
-window.$ = $;
+if(location.search.indexOf('debug')>=0) {
+  window.$ = $;
+  window._ = _;
+}
 
 handlebars.registerPartial('list', require('../templates/list.partial.hbs'));
-// handlebars.registerPartial('work-slide', require('../templates/work-slide.partial.hbs'));
-// handlebars.registerPartial('work-card', require('../templates/work-card.partial.hbs'));
 
 window.PRTNRS = {
   modalTimer: null,
@@ -30,17 +31,19 @@ window.PRTNRS = {
   },
 
   loadWork: function() {
-    // var partnerData = _.sortBy(_.filter(PRTNRS.data.projects, 'spotlight'), ['spotlight']);
     var $ourWork = $('#work-carousel');
-    // $ourWork.html(PRTNRS.templates['work-carousel']({projects: partnerData}));
 
     PRTNRS.elems.$buttons = $ourWork.find('.carousel-button');
     PRTNRS.elems.$slides = $ourWork.find('.work-slide');
-    PRTNRS.elems.$slides.swipe({
-      swipeLeft: PRTNRS.onKeyDown,
-      swipeRight: PRTNRS.onKeyDown
-    });
 
+    window.addEventListener('touchstart', function onFirstTouch() {
+      PRTNRS.elems.$slides.swipe({
+        swipeLeft: PRTNRS.onKeyDown,
+        swipeRight: PRTNRS.onKeyDown
+      });
+      window.removeEventListener('touchstart', onFirstTouch, false);
+    });
+    
     PRTNRS.moveSlide(PRTNRS.elems.$buttons.first(), true);
   }, // loadWork
 
@@ -66,7 +69,6 @@ window.PRTNRS = {
       PRTNRS.elems.$modal.data('$elem').focus();
       setTimeout(function() {
         $('.modal').remove();
-        // PRTNRS.elems.$modal.remove();
         PRTNRS.elems.$modal = false;
       }, 250);
     }
@@ -79,6 +81,8 @@ window.PRTNRS = {
     var project = _.find(PRTNRS.data.projects, {project: this.getAttribute('data-project')}),
         $modal = $(PRTNRS.templates['work-modal'](project)),
         $elem = $(this);
+
+    $modal.swipe('disable');
 
     if(window.innerWidth<667) {
       $body.append($modal);
@@ -124,7 +128,6 @@ window.PRTNRS = {
 
     PRTNRS.closeModal();
     return false;
-
   }, // toggleSlide
 
   onResize: function(e) {
