@@ -191,11 +191,11 @@ module.exports = function(grunt) {
   });
 
 
-  grunt.registerTask('generate', function(production) {
+  grunt.registerTask('generate', function() {
 
     var d = new Date(),
         data = {
-          PRODUCTION: production ? true : false,
+          PRODUCTION: grunt.option('production'),
           PUBDATE: d.toISOString(),
           TIMESTAMP: d.getTime(),
           metadata: _.fromPairs(grunt.file.readJSON('./src/data/metadata.json').map(function(x) { return [x.property, x.content]; })),
@@ -205,6 +205,14 @@ module.exports = function(grunt) {
         template = Handlebars.compile(grunt.file.read('src/templates/index.hbs'));
 
     grunt.config.set('timestamp', d.getTime());
+
+    Object.entries(data.sections).forEach(function(section) {
+      var k = section[0],
+          v = section[1];
+      if(v.widget) {
+        data.sections[k][v.widget] = true;
+      }
+    });
 
     data.metadata['og:pubdate'] = data.PUBDATE;
 
@@ -223,7 +231,7 @@ module.exports = function(grunt) {
   var defaultTasks = grunt.option('bump') ? ['bump:patch', 'collect', 'watch'] : ['collect', 'watch'];
 
   // Register Default task(s)
-  grunt.registerTask('collect', ['clean', 'copy', 'generate', 'sass', 'autoprefixer', 'browserify']);
+    grunt.registerTask('collect', ['clean', 'copy', 'generate', 'sass', 'autoprefixer', 'browserify']);
   grunt.registerTask('build', ['collect', 'version']);
   grunt.registerTask('default', defaultTasks);
   console.log('\n');

@@ -17,15 +17,13 @@
 	{{/if}}
 </head>
 <body class="body">
-
 	<div class="email-confirm" id="email-confirm" style="display: none">Message successfuly sent</div>
-{{>hero}}
-{{>section sections.about-us}}
-{{>section sections.our-work}}
-{{>section sections.our-team}}
-{{>section sections.our-approach}}
-{{>contact}}
-{{>footer}}
+
+{{#each sections}}
+	{{#if layout}}
+		{{>(lookup . 'layout') this}}
+	{{/if}}
+{{/each}}
 
 	<script src="./assets/bundled.{{TIMESTAMP}}.js?v={{TIMESTAMP}}" type="text/javascript"></script>
 </body>
